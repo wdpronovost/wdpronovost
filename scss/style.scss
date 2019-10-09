@@ -1,0 +1,432 @@
+// Imports
+@import "_reset.scss";
+@import "_vars.scss";
+@import "_strap.scss";
+
+// Font
+
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Ubuntu:300,400,700,900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Ubuntu+Condensed&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,900&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  position: relative;
+}
+
+body {
+  // position: absolute;
+  height: 100%;
+  padding: 0 50px;
+  // overflow: hidden;
+}
+
+.scrollcontaine {
+  position: fixed;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  bottom: 0;
+  overflow-y: scroll;
+}
+
+body {
+  background: -moz-linear-gradient(
+    -45deg,
+    rgb(28, 119, 185) 0%,
+    rgb(138, 199, 243) 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    -45deg,
+    rgb(28, 119, 185) 0%,
+    rgb(138, 199, 243) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+      135deg,
+      rgb(28, 119, 185) 0%,
+      rgb(138, 199, 243) 100%
+    )
+    no-repeat fixed center; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9978b8e6', endColorstr='#33c7ffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Roboto";
+  color: $myWhite;
+}
+
+h1 {
+  font-weight: 800;
+  font-size: 3.5rem;
+  line-height: 1.4;
+}
+
+h2 {
+  font-weight: 800;
+  font-size: 3rem;
+  line-height: 1.4;
+}
+
+h3 {
+  font-weight: 800;
+  font-size: 2.5rem;
+  line-height: 1.2;
+}
+
+// Global Section Styles
+
+section,
+footer {
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+// NavBar
+
+.nav-container {
+  padding: 2% 2%;
+  background: $invisibleBlue;
+}
+
+#navbarSupportedContent {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.5)
+  );
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.75);
+  font-family: "Ubuntu Condensed";
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: $blue !important;
+}
+
+.navbar-brand {
+  color: $myWhite !important;
+}
+
+.navbar-toggler {
+  color: $myWhite !important;
+  border: none;
+}
+
+.navbar-toggler:hover {
+  transform: rotate(90deg);
+}
+
+.brand-thick {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 900;
+}
+
+.brand-thin {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 300;
+}
+
+.navbar {
+  padding: 0;
+}
+
+.navbar-nav {
+  margin-left: auto;
+}
+
+.nav-item {
+  padding-left: 1rem;
+}
+
+// Hero Section
+
+#hero {
+  padding-top: 0;
+}
+
+.hero__container__inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: $invisibleBlue;
+}
+
+.hero__container__left {
+  flex: 1;
+  text-align: left;
+  margin: 7.5% auto;
+
+  h2 {
+    line-height: 1.5;
+  }
+}
+
+.hero__container__right {
+  width: 100%;
+}
+
+.hero__container__right img {
+  max-width: 100%;
+}
+
+// Specialties Section
+
+#specialties {
+  width: 100%;
+}
+
+.specialties__container {
+  background-size: cover;
+  height: 100%;
+  background-color: $myWhite;
+}
+
+.specialties__container__inner {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+  text-align: center;
+}
+
+.specialties__item__icons {
+  font-size: 3.5rem;
+  color: $darkerBlue;
+}
+
+.specialties__item__icons:hover {
+  color: $blue;
+}
+
+.specialties__item {
+  position: relative;
+  flex: 1 0 250px;
+  margin: 2% 2% 0;
+  align-self: stretch;
+}
+
+.specialties__item__title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: $darkerBlue;
+}
+
+.specialties__item > * {
+  padding: 10px;
+}
+
+// .specialties__item > p {
+//   color: rgb(77, 54, 38);
+// }
+
+// About Me Section
+
+#aboutme {
+  padding: 1% 0% 0%;
+  background: url("../assets/wdp__coffee__horizontal.png") top no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+
+.aboutme__intro {
+  width: 100%;
+}
+
+.aboutme__container {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 1)
+  );
+  width: 100%;
+}
+
+.aboutme__container__inner {
+  display: grid;
+  grid-template-areas:
+    ". h h h ."
+    ". p c c ."
+    ". f c c .";
+  grid-gap: 20px;
+  margin-top: 230px;
+  margin: 230px 10% 0;
+  padding-bottom: 50px;
+  z-index: 5;
+}
+
+.aboutme__intro__header {
+  grid-area: h;
+
+  h2 {
+    color: $darkerBlue;
+  }
+}
+
+.aboutme__intro__img {
+  grid-area: p;
+
+  img {
+    display: block;
+    max-width: 100%;
+    border-radius: 50%;
+  }
+}
+
+.aboutme__intro__content {
+  grid-area: c;
+
+  header h3 {
+    color: $darkerBlue;
+  }
+
+  p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin: 2% 0;
+    color: $myBlack;
+  }
+}
+
+.aboutme__intro__file {
+  grid-area: f;
+  text-align: center;
+  font-size: 5rem;
+
+  a {
+    color: $darkerBlue;
+
+    &:hover {
+      color: $blue;
+    }
+  }
+}
+
+.highlight {
+  background-color: $blue;
+  color: $myWhite;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#contact {
+  padding: 20px;
+  text-align: center;
+  color: $myWhite;
+  font-size: 0.8rem;
+  font-weight: 300;
+  background: $invisibleBlue;
+}
+
+.social a i {
+  font-size: 3rem;
+  margin: 0.5% 1.5%;
+  color: $myWhite;
+}
+
+.social a i:hover {
+  color: $blue;
+}
+
+.copyright > p {
+  margin: 0 !important;
+}
+
+@media screen and (max-width: 789px) {
+  .aboutme__container__inner {
+    display: grid;
+    grid-template-areas:
+      ". h ."
+      ". p ."
+      ". c ."
+      ". f .";
+    grid-gap: 20px;
+    margin-top: 230px;
+    margin: 230px 10% 0;
+    padding-bottom: 50px;
+  }
+
+  .aboutme__intro__header,
+  .aboutme__intro__content h3 {
+    text-align: center;
+  }
+
+  .aboutme__intro__img {
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .card-deck {
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 525px) {
+  #aboutme {
+    padding-top: 0;
+  }
+
+  .aboutme__container {
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 1)
+    );
+  }
+
+  .aboutme__container__inner {
+    margin-top: 0px;
+  }
+
+  .aboutme__intro__header h2 {
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  body h2 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  body h1 {
+    font-size: 2rem;
+  }
+
+  body h2 {
+    font-size: 1.5rem;
+  }
+
+  body h3 {
+    font-size: 1.25rem;
+  }
+
+  .aboutme__container__inner {
+    margin-top: 0px;
+  }
+}
