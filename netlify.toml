@@ -1,0 +1,6 @@
+[[redirects]]
+  from = "/presidential-tac-toe"
+  to = "https://presidential-tac-toe.wdpronovost.com"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
