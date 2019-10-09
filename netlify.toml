@@ -4,3 +4,24 @@
   status = 301
   force = true
   headers = {X-From = "Netlify"}
+
+[[redirects]]
+  from = "/party-dice-challenge"
+  to = "https://party-dice-challenge.wdpronovost.com"
+  status = 301
+  force = true
+  headers = {X-From = "Netlify"}
+
+[[redirects]]
+  from = "/america-says"
+  to = "https://america-says.wdpronovost.com"
+  status = 301
+  force = true
+  headers = {X-From = "Netlify"}
+
+[[redirects]]
+  from = "/lumenluv"
+  to = "https://lumenluv.wdpronovost.com"
+  status = 301
+  force = true
+  headers = {X-From = "Netlify"}
