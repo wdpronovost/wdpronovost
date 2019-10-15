@@ -28,15 +28,7 @@
 
 [[redirects]]
   from = "/dailytodo"
-  to = "https://dailytodo.wdpronovost.com/"
-  status = 301
-  force = true
-  headers = {X-From = "Netlify"}
-
-
-[[redirects]]
-  from = "https://dailytodo.wdpronovost.com"
   to = "https://dailytodo-wdpronovost-com.herokuapp.com/"
-  status = 200
+  status = 301
   force = true
   headers = {X-From = "Netlify"}
