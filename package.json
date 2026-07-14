@@ -1,0 +1,14 @@
+{
+  "name": "signal-garden",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "lint": "node scripts/verify.mjs",
+    "test": "node --test tests/signal-garden-v2.spec.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

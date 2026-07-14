@@ -1,34 +1,41 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
 [[redirects]]
   from = "/presidential-tac-toe"
   to = "https://presidential-tac-toe.wdpronovost.com"
   status = 301
   force = true
-  headers = {X-From = "Netlify"}
 
 [[redirects]]
   from = "/party-dice-challenge"
   to = "https://party-dice-challenge.wdpronovost.com"
   status = 301
   force = true
-  headers = {X-From = "Netlify"}
 
 [[redirects]]
   from = "/america-says"
   to = "https://america-says.wdpronovost.com"
   status = 301
   force = true
-  headers = {X-From = "Netlify"}
 
 [[redirects]]
   from = "/lumenluv"
   to = "https://lumenluv.wdpronovost.com"
   status = 301
   force = true
-  headers = {X-From = "Netlify"}
 
 [[redirects]]
   from = "/dailytodo"
   to = "https://dailytodo-wdpronovost-com.herokuapp.com/"
   status = 301
   force = true
-  headers = {X-From = "Netlify"}
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; base-uri 'self'; form-action 'none'; frame-ancestors 'none'"
