@@ -6,8 +6,14 @@ const root = new URL('../', import.meta.url);
 const html = await readFile(new URL('src/index.html', root), 'utf8');
 const css = await readFile(new URL('src/css/site.css', root), 'utf8');
 const js = await readFile(new URL('src/js/site.js', root), 'utf8');
+const nodeVersion = (await readFile(new URL('.nvmrc', root), 'utf8')).trim();
 
 const scenes = ['workshop', 'council', 'station', 'control', 'archive', 'mailbox'];
+
+test('Netlify uses a supported Node runtime', () => {
+  const major = Number.parseInt(nodeVersion, 10);
+  assert.ok(Number.isInteger(major) && major >= 20, `.nvmrc must select Node 20 or newer, received: ${nodeVersion}`);
+});
 
 test('V2 presents a kinetic world with six semantic interactive scenes', () => {
   assert.match(html, /<title>The Signal Garden<\/title>/);
