@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { access, readFile } from 'node:fs/promises';
 
 const root = new URL('../', import.meta.url);
-const routeNames = ['warm-studio', 'field-notes', 'product-lab'];
+const routeNames = ['warm-studio', 'field-notes', 'product-lab', 'billy'];
 const routes = Object.fromEntries(await Promise.all(routeNames.map(async (name) => [
   name,
   {
@@ -19,8 +19,8 @@ const build = await readFile(new URL('scripts/build.mjs', root), 'utf8');
 const allHtml = [selector, ...Object.values(routes).map((route) => route.html)];
 const allCss = [selectorCss, ...Object.values(routes).map((route) => route.css)];
 
-test('directions selector links to three comparison routes', () => {
-  assert.match(selector, /<title>Three Directions — Billy Pronovost<\/title>/);
+test('directions selector links to four comparison routes', () => {
+  assert.match(selector, /<title>Four Directions — Billy Pronovost<\/title>/);
   for (const route of routeNames) assert.match(selector, new RegExp(`href="\\/directions\\/${route}\\/"`));
 });
 
@@ -40,7 +40,7 @@ test('each direction has a unique title, identity, projects, about treatment, an
     assert.match(html, /href="site\.css"/);
     assert.match(html, /src="site\.js"/);
   }
-  assert.equal(titles.size, 3, 'titles should distinguish all three directions');
+  assert.equal(titles.size, 4, 'titles should distinguish all four directions');
 });
 
 test('pages use only local assets and include accessibility/mobile protections', () => {
@@ -64,7 +64,28 @@ test('interactions expose semantic state and live feedback', () => {
   assert.match(routes['field-notes'].html, /role="tabpanel"/);
   assert.match(routes['product-lab'].html, /type="range"/);
   assert.match(routes['product-lab'].html, /aria-live="polite"/);
+  assert.match(routes.billy.html, /role="tablist"/);
+  assert.match(routes.billy.html, /role="tabpanel"/);
+  assert.match(routes.billy.html, /aria-selected="true"/);
+  assert.match(routes.billy.html, /data-mode="(?:leader|builder|developer|designer|systems|collaborator)"/);
+  assert.match(routes.billy.html, /Skalable/);
+  assert.match(routes.billy.html, /Shared World Television/);
+  assert.match(routes.billy.html, /communications[\s\S]*design[\s\S]*software[\s\S]*technology leadership[\s\S]*human–AI experimentation/i);
   for (const { js } of Object.values(routes)) assert.match(js, /addEventListener/);
+});
+
+test('Billy direction is a truthful, local, mode-driven homepage candidate', () => {
+  const { html, css, js } = routes.billy;
+  assert.match(html, /<h1[^>]*>Billy(?:<br>)?Pronovost/i);
+  assert.match(html, /I build technology\s*<em>around people\.<\/em>/);
+  assert.match(html, /Director of Technology/);
+  assert.match(html, /Product Builder/);
+  assert.match(html, /Human–AI Collaborator/);
+  assert.doesNotMatch(html, /href="https?:\/\//i);
+  assert.doesNotMatch(html, /\b(?:finished|polished|award-winning|world-class)\b/i);
+  assert.match(css, /@media\s*\(max-width:\s*700px\)/);
+  assert.match(js, /ArrowRight|ArrowDown/);
+  assert.match(js, /aria-selected/);
 });
 
 test('build copies public directions deterministically and routes reach dist', async () => {
