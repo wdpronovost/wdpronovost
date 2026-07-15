@@ -6,7 +6,7 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "lint": "node scripts/verify.mjs",
-    "test": "node --test tests/signal-garden-v2.spec.mjs"
+    "test": "npm run build && node --test tests/*.spec.mjs"
   },
   "engines": {
     "node": ">=20"
