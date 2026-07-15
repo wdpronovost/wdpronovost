@@ -24,7 +24,8 @@ const forbidden = [
 ];
 for (const [label, pattern] of forbidden) if (pattern.test(text)) failures.push(label);
 if (!/<main id="main-content"/.test(text)) failures.push('main landmark');
-if (!/role="dialog"[^>]*aria-modal="true"/.test(text)) failures.push('modal semantics');
+if (!/role="tablist"[^>]*aria-label="Modes of Practice"/.test(text)) failures.push('Modes of Practice tablist semantics');
+if (!/role="tabpanel"[^>]*aria-live="polite"/.test(text)) failures.push('Modes of Practice live panel semantics');
 if (!/prefers-reduced-motion:reduce/.test(text)) failures.push('reduced-motion protection');
 if (!/mailto:wdp@wdpronovost\.com/.test(text)) failures.push('intentional mailbox address');
 if (failures.length) throw new Error(`Verification failed: ${failures.join(', ')}`);

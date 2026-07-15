@@ -1,6 +1,6 @@
-# The Signal Garden
+# Billy Pronovost — in Practice
 
-A dependency-free, privacy-conscious kinetic portfolio for the existing Netlify project.
+A dependency-free, privacy-conscious portfolio for Billy Pronovost. The production homepage presents six connected Modes of Practice and a public-safe living inventory of selected and ongoing work.
 
 ## Local workflow
 
@@ -11,6 +11,6 @@ npm run lint
 python3 -m http.server 4173 --directory dist
 ```
 
-Production source lives in `src/`; `npm run build` replaces `dist/` with a deterministic deployable build and preserved favicon/redirect data from `public/`. The site includes the intentional public mailbox address `wdp@wdpronovost.com` and GitHub profile link. It includes no analytics, remote fonts, remote runtime assets, forms, or trackers.
+Production source lives in `src/`; `npm run build` replaces `dist/` with a deterministic deployable build and preserved favicon, redirect data, and comparison directions from `public/`. The site includes the intentional public mailbox address `wdp@wdpronovost.com`. It includes no analytics, remote fonts, remote runtime assets, forms, or trackers.
 
-The previous Signal Garden prototype is preserved under `prototypes/signal-garden-v1/` and is not published.
+Earlier Signal Garden homepage implementations are preserved under `prototypes/signal-garden-v1/` and `prototypes/signal-garden-v2/`; neither is published by Netlify. Design comparison routes remain available under `/directions/`.
