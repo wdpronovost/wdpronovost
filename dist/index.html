@@ -58,24 +58,66 @@
       </div>
 
       <article class="exp-card" aria-labelledby="exp-skalable-title">
-        <div class="exp-demo">
-          <div class="reveal" data-reveal aria-hidden="true">
-            <img class="reveal-after" src="/img/explorations/skalable-after.png" alt="" draggable="false">
-            <div class="reveal-before-wrap">
-              <img class="reveal-before" src="/img/explorations/skalable-before.png" alt="" draggable="false">
+        <div class="exp-top">
+          <div class="exp-demo">
+            <div class="reveal" data-reveal aria-hidden="true">
+              <img class="reveal-after" src="/img/explorations/skalable-after.png" alt="" draggable="false">
+              <div class="reveal-before-wrap">
+                <img class="reveal-before" src="/img/explorations/skalable-before.png" alt="" draggable="false">
+              </div>
+              <span class="reveal-tag reveal-tag-before">MESSY IMAGE</span>
+              <span class="reveal-tag reveal-tag-after">CLEAN VECTOR</span>
+              <input class="reveal-range" type="range" min="0" max="100" value="50"
+                     aria-label="Drag to reveal the clean vector version of the Skalable logo">
+              <span class="reveal-handle" aria-hidden="true"></span>
             </div>
-            <span class="reveal-tag reveal-tag-before">MESSY IMAGE</span>
-            <span class="reveal-tag reveal-tag-after">CLEAN VECTOR</span>
-            <input class="reveal-range" type="range" min="0" max="100" value="50"
-                   aria-label="Drag to reveal the clean vector version of the Skalable logo">
-            <span class="reveal-handle" aria-hidden="true"></span>
+            <p class="exp-demo-caption">Drag the handle — a pixel-blurred mark becomes a crisp, infinitely scalable vector.</p>
+          </div>
+
+          <div class="exp-text">
+            <p class="exp-eyebrow">NATIVE iOS APP</p>
+            <h3 id="exp-skalable-title">Skalable</h3>
+            <p class="exp-line">Turn any image into a clean, usable <strong>SVG</strong> — right from your phone, in seconds.</p>
+            <ul class="exp-pills" aria-label="At a glance">
+              <li>iOS</li>
+              <li>Image → SVG</li>
+              <li>Fidelity-first</li>
+              <li>One-time purchase</li>
+            </ul>
+            <p class="exp-date">Exploring now</p>
           </div>
         </div>
-        <div class="exp-text">
-          <p class="exp-eyebrow">NATIVE APP</p>
-          <h3 id="exp-skalable-title">Skalable</h3>
-          <p class="exp-line">Turns any messy image into a clean, resolution-independent vector — right from your phone.</p>
-          <p class="exp-date">Exploring now</p>
+
+        <div class="exp-why">
+          <p class="exp-block-label">WHY IT EXISTS</p>
+          <p>I was building with AI agents and needed a logo. What I had was an AI-generated PNG at some unknown resolution — and raster marks fall apart at the sizes a real site needs. I wanted to fix that from my phone, in the moment, without opening a design tool. So I built Skalable.</p>
+        </div>
+
+        <div class="exp-steps" aria-label="How it works">
+          <p class="exp-block-label">HOW IT WORKS</p>
+          <ol>
+            <li><span class="step-n">1</span><span class="step-t">Import</span><span class="step-d">Drop in a photo, screenshot, or logo — PNG, JPEG, HEIC, WEBP.</span></li>
+            <li><span class="step-n">2</span><span class="step-t">Trace</span><span class="step-d">Skalable reproduces the mark faithfully — colors, gradients, and detail kept intact.</span></li>
+            <li><span class="step-n">3</span><span class="step-t">Export</span><span class="step-d">Out comes a clean SVG you can scale, recolor, and reuse forever.</span></li>
+          </ol>
+        </div>
+
+        <div class="exp-features">
+          <p class="exp-block-label">WHAT MAKES IT DIFFERENT</p>
+          <ul class="chip-grid">
+            <li>Fidelity over shortcuts</li>
+            <li>Any messy source in</li>
+            <li>Resolution-independent out</li>
+            <li>Gradients preserved</li>
+            <li>Simplify only when you choose</li>
+            <li>No desktop, no design tool</li>
+          </ul>
+        </div>
+
+        <div class="exp-foot">
+          <span class="foot-badge">STATUS · Prototype</span>
+          <span class="foot-badge">OUTPUT · SVG</span>
+          <span class="foot-badge">MODEL · One-time purchase</span>
         </div>
       </article>
     </section>
