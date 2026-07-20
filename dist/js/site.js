@@ -106,3 +106,28 @@ tabs.forEach((tab) => {
 });
 
 selectMode(document.querySelector('[role="tab"][aria-selected="true"]'));
+
+/* ---- Explorations: before/after reveal sliders ---- */
+document.querySelectorAll('[data-reveal]').forEach((reveal) => {
+  const range = reveal.querySelector('.reveal-range');
+  const beforeWrap = reveal.querySelector('.reveal-before-wrap');
+  const beforeImg = reveal.querySelector('.reveal-before');
+  const handle = reveal.querySelector('.reveal-handle');
+
+  function syncWidth() {
+    // Pin the inner "before" image to the card's full width so both logos map 1:1.
+    beforeImg.style.setProperty('--card-w', reveal.clientWidth + 'px');
+  }
+  function paint(value) {
+    // Clamp the visual so the round handle never clips off the card edges.
+    const v = Math.max(0, Math.min(100, Number(value)));
+    const clamped = Math.max(3, Math.min(97, v));
+    beforeWrap.style.width = v + '%';
+    handle.style.left = clamped + '%';
+  }
+
+  range.addEventListener('input', () => paint(range.value));
+  window.addEventListener('resize', syncWidth);
+  syncWidth();
+  paint(range.value);
+});
