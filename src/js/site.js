@@ -131,3 +131,106 @@ document.querySelectorAll('[data-reveal]').forEach((reveal) => {
   syncWidth();
   paint(range.value);
 });
+
+/* ---- WDP easter egg: AI signal trace ---- */
+(() => {
+  const trigger = document.querySelector('[data-ai-trace-trigger]');
+  const dialog = document.querySelector('[data-ai-trace]');
+  const closeButton = document.querySelector('[data-ai-trace-close]');
+  if (!trigger || !dialog || !closeButton) return;
+
+  let clickCount = 0;
+  let clickTimer = null;
+  let pendingNavigation = null;
+  let lastFocus = null;
+  let pageSiblings = [];
+
+  function setPageInert(enabled) {
+    if (!pageSiblings.length) {
+      pageSiblings = [...document.body.children].filter((child) => child !== dialog);
+    }
+    pageSiblings.forEach((child) => {
+      if (enabled) child.setAttribute('inert', '');
+      else child.removeAttribute('inert');
+    });
+  }
+
+  function getFocusable() {
+    return [...dialog.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')]
+      .filter((el) => !el.hasAttribute('disabled') && !el.closest('[hidden]'));
+  }
+
+  function openTrace() {
+    lastFocus = document.activeElement;
+    dialog.hidden = false;
+    setPageInert(true);
+    document.body.classList.add('trace-open');
+    closeButton.focus();
+  }
+
+  function closeTrace() {
+    dialog.hidden = true;
+    setPageInert(false);
+    document.body.classList.remove('trace-open');
+    if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+  }
+
+  function followWordmarkLink() {
+    const target = trigger.getAttribute('href');
+    if (!target) return;
+    if (target.startsWith('#')) {
+      document.querySelector(target)?.scrollIntoView();
+      history.replaceState(null, '', target);
+      return;
+    }
+    window.location.href = target;
+  }
+
+  function countLogoClick(event) {
+    event.preventDefault();
+    clickCount += 1;
+    clearTimeout(clickTimer);
+    clearTimeout(pendingNavigation);
+    if (clickCount >= 3) {
+      clickCount = 0;
+      openTrace();
+      return;
+    }
+    clickTimer = setTimeout(() => { clickCount = 0; }, 900);
+    pendingNavigation = setTimeout(() => {
+      if (clickCount === 1) followWordmarkLink();
+      clickCount = 0;
+    }, 340);
+  }
+
+  trigger.addEventListener('click', countLogoClick);
+  trigger.addEventListener('keydown', (event) => {
+    if ((event.key === 'Enter' || event.key === ' ') && event.shiftKey) {
+      event.preventDefault();
+      openTrace();
+    }
+  });
+  closeButton.addEventListener('click', closeTrace);
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) closeTrace();
+  });
+  document.addEventListener('keydown', (event) => {
+    if (dialog.hidden) return;
+    if (event.key === 'Escape') {
+      closeTrace();
+      return;
+    }
+    if (event.key !== 'Tab') return;
+    const focusable = getFocusable();
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  });
+})();
