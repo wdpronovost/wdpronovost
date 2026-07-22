@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f4ddb7">
-  <meta name="description" content="Billy Pronovost builds technology around people—as a technology leader, product builder, developer, designer, systems thinker, and human–AI collaborator.">
+  <meta name="description" content="Billy Pronovost builds small, useful systems with AI in the loop—as a technology leader, product builder, developer, designer, systems thinker, and human–AI collaborator.">
   <title>Billy Pronovost — Technology, Products, and Human–AI Practice</title>
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/css/site.css">
@@ -23,7 +23,7 @@
       <div class="hero-intro">
         <p class="kicker"><span>HELLO, I’M</span> <span class="issue">A PERSON OF MANY MODES</span></p>
         <h1 id="hero-title">Billy<br>Pronovost.</h1>
-        <p class="statement">I build technology <em>around people.</em></p>
+        <p class="statement">I build small, useful systems <em>with AI in the loop.</em></p>
         <p class="intro-copy">I’m Director of Technology at Pendleton. I lead technology, make software, shape products, and work alongside AI—usually where those jobs overlap.</p>
         <a class="down" href="#work">SEE THE WORK <span aria-hidden="true">↓</span></a>
       </div>
@@ -54,7 +54,7 @@
     <section class="explorations" id="explorations" aria-labelledby="exp-title">
       <div class="section-head">
         <p>EXPLORATIONS / WHAT I'M BUILDING WITH AI</p>
-        <h2 id="exp-title">Things I'm making.<br><em>Drag to see them work.</em></h2>
+        <h2 id="exp-title">Things I'm making.<br><em>Drag or tap to see them work.</em></h2>
       </div>
 
       <article class="exp-card" aria-labelledby="exp-skalable-title">
@@ -118,6 +118,87 @@
           <span class="foot-badge">STATUS · Prototype</span>
           <span class="foot-badge">OUTPUT · SVG</span>
           <span class="foot-badge">MODEL · One-time purchase</span>
+        </div>
+      </article>
+
+      <article class="exp-card exp-card-system" aria-labelledby="exp-lumi-title">
+        <div class="exp-top exp-top-system">
+          <div class="exp-demo">
+            <div class="continuity-demo" data-continuity-demo aria-label="Interactive demo of an AI partner turning a real request into verified site work">
+              <div class="continuity-map" aria-hidden="true">
+                <span class="channel-node node-discord">“Site feels stalled”</span>
+                <span class="channel-node node-cli">brief + repo</span>
+                <span class="channel-node node-cron">tests + screenshots</span>
+                <span class="continuity-core">PATCH
+THE SITE</span>
+                <span class="action-node">visible
+card</span>
+                <svg viewBox="0 0 640 360" preserveAspectRatio="none">
+                  <path class="route route-1" d="M118 74 C220 74 252 146 320 180" />
+                  <path class="route route-2" d="M118 180 C212 180 254 180 320 180" />
+                  <path class="route route-3" d="M118 286 C220 286 252 214 320 180" />
+                  <path class="route route-4" d="M394 180 C470 180 505 180 548 180" />
+                </svg>
+              </div>
+
+              <div class="continuity-panel" aria-live="polite">
+                <p class="continuity-label">REQUEST → CONTEXT → PATCH → PROOF</p>
+                <strong data-continuity-title>Start with the actual message.</strong>
+                <span data-continuity-copy>“You aren’t actually doing anything with the site” becomes a concrete target: make a visible card, not another plan.</span>
+              </div>
+
+              <div class="continuity-controls" aria-label="Step through the AI partner workflow">
+                <button type="button" aria-pressed="true" data-continuity-step="request">Request</button>
+                <button type="button" aria-pressed="false" data-continuity-step="context">Context</button>
+                <button type="button" aria-pressed="false" data-continuity-step="patch">Patch</button>
+                <button type="button" aria-pressed="false" data-continuity-step="proof">Proof</button>
+              </div>
+            </div>
+            <p class="exp-demo-caption">Tap the chips — a complaint turns into a repo patch, tests, and screenshots.</p>
+          </div>
+
+          <div class="exp-text">
+            <p class="exp-eyebrow">AI PARTNER SYSTEM</p>
+            <h3 id="exp-lumi-title">Lumi / Hermes</h3>
+            <p class="exp-line">A local AI partner that can pick up context, edit the real site, and prove the work happened.</p>
+            <ul class="exp-pills" aria-label="At a glance">
+              <li>Local context</li>
+              <li>Repo edits</li>
+              <li>Tests</li>
+              <li>Screenshots</li>
+            </ul>
+            <p class="exp-date">Live system</p>
+          </div>
+        </div>
+
+        <div class="exp-why">
+          <p class="exp-block-label">WHY IT EXISTS</p>
+          <p>I want AI collaboration to leave artifacts behind: changed files, passing checks, screenshots, and a better next version of the thing we’re building.</p>
+        </div>
+
+        <div class="exp-steps" aria-label="How this workflow works">
+          <p class="exp-block-label">HOW IT WORKS</p>
+          <ol>
+            <li><span class="step-n">1</span><span class="step-t">Read</span><span class="step-d">Load the brief, repo state, and the latest correction.</span></li>
+            <li><span class="step-n">2</span><span class="step-t">Change</span><span class="step-d">Patch source files in the actual site, not a throwaway mockup.</span></li>
+            <li><span class="step-n">3</span><span class="step-t">Verify</span><span class="step-d">Run tests and capture screenshots before claiming progress.</span></li>
+          </ol>
+        </div>
+
+        <div class="exp-features">
+          <p class="exp-block-label">WHAT MAKES IT DIFFERENT</p>
+          <ul class="chip-grid">
+            <li>Starts from real feedback</li>
+            <li>Touches the actual repo</li>
+            <li>Uses memory without leaking secrets</li>
+            <li>Shows proof, not promises</li>
+          </ul>
+        </div>
+
+        <div class="exp-foot">
+          <span class="foot-badge">STATUS · Running locally</span>
+          <span class="foot-badge">OUTPUT · Site changes</span>
+          <span class="foot-badge">PROOF · Tests + screenshots</span>
         </div>
       </article>
     </section>

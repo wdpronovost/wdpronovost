@@ -34,10 +34,13 @@ test('Netlify uses a supported Node runtime', () => {
 
 test('production homepage truthfully identifies Billy and the practice', () => {
   assert.match(html, /<title>Billy Pronovost — Technology, Products, and Human–AI Practice<\/title>/);
-  assert.match(html, /<meta name="description" content="Billy Pronovost builds technology around people/);
+  assert.match(html, /<meta name="description" content="Billy Pronovost builds small, useful systems with AI in the loop/);
   assert.match(html, /<h1[^>]*>Billy(?:<br>)?Pronovost/i);
-  assert.match(html, /I build technology\s*<em>around people\.<\/em>/);
+  assert.match(html, /I build small, useful systems\s*<em>with AI in the loop\.<\/em>/);
   assert.match(html, /Director of Technology at Pendleton/);
+  assert.match(html, /Things I'm making/);
+  assert.match(html, /Lumi \/ Hermes/);
+  assert.match(html, /changed files, passing checks, screenshots/);
   assert.doesNotMatch(html, /Back to design directions|The Signal Garden|Route the signal/i);
 });
 
@@ -54,6 +57,18 @@ test('Modes of Practice is a six-mode semantic tab interaction with a meaningful
   assert.match(html, /id="tab-leader" role="tab" aria-selected="true"/);
   assert.match(html, /PUBLIC EVIDENCE \/ 01/);
   assert.match(js, /selectMode\(document\.querySelector/);
+});
+
+test('Explorations feed shows the work with interactive project demos', () => {
+  assert.match(html, /id="explorations"/);
+  assert.match(html, /data-reveal/);
+  assert.match(html, /data-continuity-demo/);
+  assert.match(html, /Skalable/);
+  assert.match(html, /Lumi \/ Hermes/);
+  assert.match(html, /REQUEST → CONTEXT → PATCH → PROOF/);
+  assert.match(css, /continuity-demo/);
+  assert.match(js, /data-continuity-step/);
+  assert.match(js, /Start with the actual message/);
 });
 
 test('each mode has concrete public-safe evidence and visible connections', () => {

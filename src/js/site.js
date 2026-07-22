@@ -234,3 +234,28 @@ document.querySelectorAll('[data-reveal]').forEach((reveal) => {
     }
   });
 })();
+
+
+/* ---- Explorations: continuity system mini demo ---- */
+(() => {
+  const demo = document.querySelector('[data-continuity-demo]');
+  if (!demo) return;
+  const title = demo.querySelector('[data-continuity-title]');
+  const copy = demo.querySelector('[data-continuity-copy]');
+  const buttons = [...demo.querySelectorAll('[data-continuity-step]')];
+  const steps = {
+    request: ['Start with the actual message.', '“You aren’t actually doing anything with the site” becomes a concrete target: make a visible card, not another plan.'],
+    context: ['Pull in the real context.', 'The site brief, repo state, and prior design rules shape the next edit before any code changes.'],
+    patch: ['Change the source files.', 'HTML, CSS, JS, and tests are patched in the wdpronovost.com repo — the artifact is the site itself.'],
+    proof: ['Prove it happened.', 'Build, tests, lint, and screenshots verify the card before it gets considered for the live branch.']
+  };
+  function setStep(step) {
+    const [heading, body] = steps[step];
+    demo.dataset.active = step;
+    title.textContent = heading;
+    copy.textContent = body;
+    buttons.forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.continuityStep === step)));
+  }
+  buttons.forEach((button) => button.addEventListener('click', () => setStep(button.dataset.continuityStep)));
+  setStep('request');
+})();
