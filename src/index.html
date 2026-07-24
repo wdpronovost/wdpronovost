@@ -203,6 +203,37 @@ card</span>
       </article>
     </section>
 
+    <section class="buildlog" id="buildlog" aria-labelledby="buildlog-title">
+      <div class="section-head">
+        <p>BUILD LOG / THIS SITE, EVOLVING IN PUBLIC</p>
+        <h2 id="buildlog-title">The page keeps<br><em>a record of itself.</em></h2>
+      </div>
+
+      <div class="log-shell">
+        <div class="log-meta">
+          <p class="log-lead">Every change to this site lands as an entry below — rendered from the repo's own history when the page is built. No hand-authored changelog; the site documents its own evolution.</p>
+          <dl class="log-stats" aria-label="Build log summary">
+            <div><dt>Entries</dt><dd><!--BUILDLOG_COUNT--></dd></div>
+            <div><dt>Last change</dt><dd><!--BUILDLOG_UPDATED--></dd></div>
+            <div><dt>Source</dt><dd>git history</dd></div>
+          </dl>
+        </div>
+
+        <div class="log-filters" role="group" aria-label="Filter build log by change type">
+          <button type="button" class="log-chip" aria-pressed="true" data-log-filter="all">All</button>
+          <button type="button" class="log-chip" aria-pressed="false" data-log-filter="exploration">Explorations</button>
+          <button type="button" class="log-chip" aria-pressed="false" data-log-filter="feature">Features</button>
+          <button type="button" class="log-chip" aria-pressed="false" data-log-filter="fix">Fixes</button>
+        </div>
+
+        <p class="log-status" role="status" aria-live="polite" data-log-status></p>
+
+        <ol class="log-list" aria-label="Chronological record of changes to this site, newest first">
+<!--BUILDLOG_ENTRIES-->
+        </ol>
+      </div>
+    </section>
+
     <section class="work" id="work" aria-labelledby="work-title">
       <div class="section-head">
         <p>SELECTED WORK / A LIVING INVENTORY</p>

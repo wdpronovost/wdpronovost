@@ -84,3 +84,42 @@ body.trace-open{overflow:hidden}.trace-dialog{position:fixed;inset:0;z-index:30;
 .continuity-demo[data-active="memory"] .continuity-core{background:var(--teal)}.continuity-demo[data-active="tools"] .action-node{background:var(--teal)}.continuity-demo[data-active="proof"] .action-node{box-shadow:0 0 0 5px var(--butter),5px 5px 0 var(--ink)}.continuity-demo[data-active="channels"] .channel-node{background:var(--butter)}
 @media(max-width:760px){.continuity-demo{min-height:0;display:block}.continuity-map{min-height:420px;margin-bottom:16px}.continuity-map svg{display:none}.channel-node,.continuity-core,.action-node{left:50%;right:auto;top:auto;bottom:auto;transform:translateX(-50%);width:min(220px,82%);height:48px;font-size:9px;box-shadow:3px 3px 0 var(--ink)}.node-discord{top:26px}.node-cli{top:98px}.node-cron{top:170px}.continuity-core{top:244px;border-radius:12px;font-size:15px;height:62px;line-height:1}.action-node{top:334px;height:54px}.continuity-panel{margin-bottom:14px}.continuity-controls{grid-template-columns:repeat(2,1fr)}}
 @media(prefers-reduced-motion:reduce){.continuity-map .route-4{animation:none}}
+
+
+/* ---- Build Log: the site's own evolution, rendered from git history ---- */
+.buildlog{padding:clamp(48px,8vw,110px) clamp(18px,4vw,64px);border-top:1px solid var(--line);background:var(--cream)}
+.buildlog .section-head{display:block;max-width:1040px;margin:0 auto clamp(28px,4vw,52px)}
+.buildlog .section-head p{margin:0 0 12px;font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--tomato)}
+.buildlog .section-head h2{margin:0;font-family:var(--serif);font-weight:400;font-size:clamp(30px,5.5vw,60px);line-height:.98;letter-spacing:-.03em}
+.buildlog .section-head em{font-style:italic;color:var(--teal)}
+.log-shell{max-width:1040px;margin:0 auto}
+.log-meta{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:clamp(20px,4vw,48px);align-items:start;margin-bottom:clamp(24px,3vw,36px)}
+.log-lead{margin:0;font-size:clamp(15px,1.5vw,18px);line-height:1.6;max-width:52ch;font-family:var(--serif)}
+.log-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:0}
+.log-stats div{padding:12px 14px;border:1px solid var(--line);border-radius:6px;background:var(--butter)}
+.log-stats dt{margin:0 0 5px;font-size:9px;font-weight:850;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+.log-stats dd{margin:0;font-family:var(--serif);font-size:clamp(16px,1.8vw,22px);letter-spacing:-.02em}
+.log-filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px}
+.log-chip{min-height:40px;padding:8px 16px;border:1px solid var(--ink);border-radius:999px;background:var(--cream);font-size:12px;font-weight:800;letter-spacing:.05em;transition:background .16s ease,color .16s ease,box-shadow .16s ease}
+.log-chip[aria-pressed="true"]{background:var(--plum);color:var(--cream);box-shadow:3px 3px 0 var(--tomato)}
+.log-status{margin:0 0 22px;min-height:18px;font-size:12px;font-weight:700;letter-spacing:.03em;color:var(--faint)}
+.log-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.log-entry{display:grid;grid-template-columns:132px 118px 1fr auto;align-items:baseline;gap:14px;padding:18px 4px;border-bottom:1px solid var(--line)}
+.log-entry[hidden]{display:none}
+.log-date{font-size:12px;font-weight:750;letter-spacing:.03em;color:var(--faint);white-space:nowrap}
+.log-type{justify-self:start;font-size:10px;font-weight:850;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border:1px solid var(--ink);border-radius:4px;background:var(--cream);white-space:nowrap}
+.log-type-exploration{background:var(--plum);color:var(--cream);border-color:var(--plum)}
+.log-type-feature{background:var(--teal);color:var(--cream);border-color:var(--teal)}
+.log-type-fix{background:var(--butter)}
+.log-type-update{background:var(--cream)}
+.log-title{margin:0;font-size:clamp(16px,1.7vw,20px);font-family:var(--serif);line-height:1.35;letter-spacing:-.01em}
+.log-hash{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;letter-spacing:.04em;color:var(--faint);white-space:nowrap}
+@media(max-width:760px){
+  .log-meta{grid-template-columns:1fr;gap:22px}
+  .log-stats{max-width:none}
+  .log-entry{grid-template-columns:1fr auto;grid-template-areas:"type hash" "title title" "date date";row-gap:8px;column-gap:12px;padding:16px 2px}
+  .log-type{grid-area:type}
+  .log-hash{grid-area:hash;justify-self:end;align-self:center}
+  .log-title{grid-area:title}
+  .log-date{grid-area:date}
+}

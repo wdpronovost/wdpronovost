@@ -1,0 +1,52 @@
+[
+  {
+    "hash": "3287375",
+    "date": "2026-07-21",
+    "subject": "Add Lumi Hermes exploration card"
+  },
+  {
+    "hash": "f9348a9",
+    "date": "2026-07-21",
+    "subject": "Add AI signal trace easter egg"
+  },
+  {
+    "hash": "1fe5861",
+    "date": "2026-07-20",
+    "subject": "fix(explorations): a11y + responsive fixes; stop tracking dist build output"
+  },
+  {
+    "hash": "20756d4",
+    "date": "2026-07-20",
+    "subject": "feat(explorations): expand Skalable card with story, how-it-works, features, status"
+  },
+  {
+    "hash": "21f9fdb",
+    "date": "2026-07-20",
+    "subject": "feat: add Explorations feed with interactive Skalable before/after reveal slider"
+  },
+  {
+    "hash": "2692d14",
+    "date": "2026-07-15",
+    "subject": "feat: launch Modes of Practice homepage"
+  },
+  {
+    "hash": "ba73e1f",
+    "date": "2026-07-15",
+    "subject": "feat: add focused Billy homepage direction"
+  },
+  {
+    "hash": "547b34c",
+    "date": "2026-07-14",
+    "subject": "feat: add three portfolio design directions"
+  },
+  {
+    "hash": "b5655ab",
+    "date": "2026-07-14",
+    "subject": "fix: pin Netlify Node runtime"
+  },
+  {
+    "hash": "92115a3",
+    "date": "2026-07-14",
+    "subject": "feat: launch kinetic Signal Garden redesign"
+  }
+]

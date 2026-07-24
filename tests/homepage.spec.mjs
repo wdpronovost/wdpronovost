@@ -119,3 +119,22 @@ test('build maps deterministic production source paths and preserves directions'
     "['public/directions', 'dist/directions']"
   ]) assert.ok(build.includes(pair), `missing deterministic build mapping ${pair}`);
 });
+
+test('Build Log renders the site history from git without leaking identity', async () => {
+  const dist = await readFile(new URL('dist/index.html', root), 'utf8');
+  // Section scaffolding and interaction hooks exist in source.
+  assert.match(html, /id="buildlog"/);
+  assert.match(html, /BUILD LOG \/ THIS SITE, EVOLVING IN PUBLIC/);
+  assert.match(html, /data-log-filter="all"/);
+  assert.match(css, /\.log-entry/);
+  assert.match(js, /data-log-filter/);
+  assert.match(js, /applyFilter/);
+  // Build injects real entries and resolves every placeholder.
+  assert.match(dist, /class="log-entry" data-log-type="/);
+  assert.doesNotMatch(dist, /<!--BUILDLOG_(?:ENTRIES|COUNT|UPDATED)-->/);
+  // Privacy: no author emails or key markers reach the rendered page (the
+  // intentional public mailbox is the only allowed address).
+  const withoutMailbox = dist.replaceAll('wdp@wdpronovost.com', '');
+  assert.doesNotMatch(withoutMailbox, /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/);
+  assert.match(build, /never author name or email/);
+});

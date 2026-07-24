@@ -259,3 +259,33 @@ document.querySelectorAll('[data-reveal]').forEach((reveal) => {
   buttons.forEach((button) => button.addEventListener('click', () => setStep(button.dataset.continuityStep)));
   setStep('request');
 })();
+
+
+/* ---- Build Log: filter the site's own change history ---- */
+(() => {
+  const shell = document.querySelector('.log-shell');
+  if (!shell) return;
+  const chips = [...shell.querySelectorAll('[data-log-filter]')];
+  const entries = [...shell.querySelectorAll('.log-entry')];
+  const status = shell.querySelector('[data-log-status]');
+  if (!chips.length || !entries.length) return;
+
+  const labels = { all: 'changes', exploration: 'explorations', feature: 'features', fix: 'fixes' };
+
+  function applyFilter(filter) {
+    let shown = 0;
+    entries.forEach((entry) => {
+      const match = filter === 'all' || entry.dataset.logType === filter;
+      entry.hidden = !match;
+      if (match) shown += 1;
+    });
+    chips.forEach((chip) => chip.setAttribute('aria-pressed', String(chip.dataset.logFilter === filter)));
+    if (status) {
+      const noun = labels[filter] || 'changes';
+      status.textContent = `Showing ${shown} ${shown === 1 ? noun.replace(/s$/, '') : noun}.`;
+    }
+  }
+
+  chips.forEach((chip) => chip.addEventListener('click', () => applyFilter(chip.dataset.logFilter)));
+  applyFilter('all');
+})();
