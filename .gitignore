@@ -1,5 +1,6 @@
 /design
 .DS_Store
-DS_Storedesign-tests/
+DS_Store
+design-tests/
 
 dist/

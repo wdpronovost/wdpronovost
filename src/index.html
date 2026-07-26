@@ -12,6 +12,19 @@
 </head>
 <body>
   <a class="skip" href="#main-content">Skip to main content</a>
+  <nav class="page-ledger" aria-label="Page sections" data-ledger>
+    <p class="ledger-title">Index</p>
+    <ol>
+      <li><a href="#hero" data-ledger-link="hero"><span>01</span>Hero / Intro</a></li>
+      <li><a href="#explorations" data-ledger-link="explorations"><span>02</span>Explorations</a></li>
+      <li><a href="#exp-skalable" data-ledger-link="exp-skalable"><span>02A</span>Skalable</a></li>
+      <li><a href="#exp-lumi" data-ledger-link="exp-lumi"><span>02B</span>Lumi / Hermes</a></li>
+      <li><a href="#buildlog" data-ledger-link="buildlog"><span>03</span>Build Log</a></li>
+      <li><a href="#work" data-ledger-link="work"><span>04</span>Work</a></li>
+      <li><a href="#about" data-ledger-link="about"><span>05</span>About</a></li>
+    </ol>
+  </nav>
+
   <header class="site-header">
     <a class="wordmark" href="#main-content" aria-label="Billy Pronovost, home" data-ai-trace-trigger>W<span>D</span>P</a>
     <p>PORTLAND, OREGON</p>
@@ -19,7 +32,7 @@
   </header>
 
   <main id="main-content">
-    <section class="hero" aria-labelledby="hero-title">
+    <section class="hero reveal-group" id="hero" aria-labelledby="hero-title" data-ledger-section>
       <div class="hero-intro">
         <p class="kicker"><span>HELLO, I’M</span> <span class="issue">A PERSON OF MANY MODES</span></p>
         <h1 id="hero-title">Billy<br>Pronovost.</h1>
@@ -51,13 +64,13 @@
       </div>
     </section>
 
-    <section class="explorations" id="explorations" aria-labelledby="exp-title">
+    <section class="explorations reveal-group" id="explorations" aria-labelledby="exp-title" data-ledger-section>
       <div class="section-head">
         <p>EXPLORATIONS / WHAT I'M BUILDING WITH AI</p>
         <h2 id="exp-title">Things I'm making.<br><em>Drag or tap to see them work.</em></h2>
       </div>
 
-      <article class="exp-card" aria-labelledby="exp-skalable-title">
+      <article class="exp-card reveal-group" id="exp-skalable" aria-labelledby="exp-skalable-title" data-ledger-section>
         <div class="exp-top">
           <div class="exp-demo">
             <div class="reveal" data-reveal>
@@ -121,7 +134,7 @@
         </div>
       </article>
 
-      <article class="exp-card exp-card-system" aria-labelledby="exp-lumi-title">
+      <article class="exp-card exp-card-system reveal-group" id="exp-lumi" aria-labelledby="exp-lumi-title" data-ledger-section>
         <div class="exp-top exp-top-system">
           <div class="exp-demo">
             <div class="continuity-demo" data-continuity-demo aria-label="Interactive demo of an AI partner turning a real request into verified site work">
@@ -203,7 +216,7 @@ card</span>
       </article>
     </section>
 
-    <section class="buildlog" id="buildlog" aria-labelledby="buildlog-title">
+    <section class="buildlog reveal-group" id="buildlog" aria-labelledby="buildlog-title" data-ledger-section>
       <div class="section-head">
         <p>BUILD LOG / THIS SITE, EVOLVING IN PUBLIC</p>
         <h2 id="buildlog-title">The page keeps<br><em>a record of itself.</em></h2>
@@ -234,7 +247,7 @@ card</span>
       </div>
     </section>
 
-    <section class="work" id="work" aria-labelledby="work-title">
+    <section class="work reveal-group" id="work" aria-labelledby="work-title" data-ledger-section>
       <div class="section-head">
         <p>SELECTED WORK / A LIVING INVENTORY</p>
         <h2 id="work-title">Different forms.<br><em>One throughline.</em></h2>
@@ -271,7 +284,7 @@ card</span>
       <p class="inventory-footnote">Names are included as an honest inventory of ongoing and selected work—not as claims that every project is complete or public. Lumi and Hermes belong to the broader human–AI practice behind this work.</p>
     </section>
 
-    <section class="about" id="about" aria-labelledby="about-title">
+    <section class="about reveal-group" id="about" aria-labelledby="about-title" data-ledger-section>
       <div class="about-lead">
         <p>ABOUT / THE SHORT VERSION</p>
         <h2 id="about-title">The medium changed.<br>The concern didn’t.</h2>
@@ -290,7 +303,7 @@ card</span>
       </aside>
     </section>
 
-    <section class="contact" aria-labelledby="contact-title">
+    <section class="contact reveal-group" aria-labelledby="contact-title">
       <p>HAVE A COMPLICATED, HUMAN PROBLEM?</p>
       <h2 id="contact-title">Let’s make it<br>easier to hold.</h2>
       <a href="mailto:wdp@wdpronovost.com">wdp@wdpronovost.com <span aria-hidden="true">↗</span></a>

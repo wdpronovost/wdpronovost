@@ -289,3 +289,52 @@ document.querySelectorAll('[data-reveal]').forEach((reveal) => {
   chips.forEach((chip) => chip.addEventListener('click', () => applyFilter(chip.dataset.logFilter)));
   applyFilter('all');
 })();
+
+/* ---- Quiet ledger + weighted reveal treatment ---- */
+(() => {
+  document.documentElement.classList.add('js');
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const revealGroups = [...document.querySelectorAll('.reveal-group')];
+  revealGroups.forEach((group) => {
+    [...group.children].forEach((child, index) => child.style.setProperty('--stagger', String(Math.min(index, 8))));
+    if (reduceMotion) group.classList.add('is-visible');
+  });
+
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
+    revealGroups.forEach((group) => revealObserver.observe(group));
+  } else {
+    revealGroups.forEach((group) => group.classList.add('is-visible'));
+  }
+
+  const ledger = document.querySelector('[data-ledger]');
+  const ledgerSections = [...document.querySelectorAll('[data-ledger-section]')];
+  if (!ledger || !ledgerSections.length) return;
+  const links = [...ledger.querySelectorAll('[data-ledger-link]')];
+
+  function setActive(id) {
+    links.forEach((link) => link.classList.toggle('is-active', link.dataset.ledgerLink === id));
+  }
+
+  if ('IntersectionObserver' in window) {
+    const visible = new Map();
+    const ledgerObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) visible.set(entry.target.id, entry.intersectionRatio);
+        else visible.delete(entry.target.id);
+      });
+      const active = [...visible.entries()].sort((a, b) => b[1] - a[1])[0]?.[0];
+      if (active) setActive(active);
+    }, { rootMargin: '-18% 0px -58% 0px', threshold: [0.05, 0.18, 0.32, 0.5, 0.7] });
+    ledgerSections.forEach((section) => ledgerObserver.observe(section));
+  }
+
+  setActive(ledgerSections[0].id);
+})();

@@ -103,6 +103,32 @@ test('pointer, keyboard, mobile, focus, and reduced-motion contracts exist', () 
   assert.match(css, /overflow-x:hidden/);
 });
 
+test('quiet ledger and weighted reveals render in built homepage', async () => {
+  const dist = await readFile(new URL('dist/index.html', root), 'utf8');
+  for (const [id, label] of [
+    ['hero', 'Hero / Intro'],
+    ['explorations', 'Explorations'],
+    ['exp-skalable', 'Skalable'],
+    ['exp-lumi', 'Lumi / Hermes'],
+    ['buildlog', 'Build Log'],
+    ['work', 'Work'],
+    ['about', 'About']
+  ]) {
+    assert.match(dist, new RegExp(`href="#${id}"[^>]*data-ledger-link="${id}"[^>]*>[\\s\\S]*${label}`));
+    assert.match(dist, new RegExp(`id="${id}"[^>]*data-ledger-section`));
+  }
+  assert.match(dist, /class="page-ledger" aria-label="Page sections" data-ledger/);
+  assert.match(dist, /class="hero reveal-group"/);
+  assert.match(dist, /class="exp-card reveal-group" id="exp-skalable"/);
+  assert.match(css, /\.js \.reveal-group>\*/);
+  assert.match(css, /cubic-bezier\(\.16,1,\.3,1\)/);
+  assert.match(css, /@media\(max-width:900px\)\{\.page-ledger\{display:none\}/);
+  assert.match(css, /prefers-reduced-motion:reduce\)\{\.js \.reveal-group>\*/);
+  assert.match(js, /IntersectionObserver/);
+  assert.match(js, /data-ledger-section/);
+  assert.match(js, /classList\.add\('is-visible'\)/);
+});
+
 test('homepage stays local-only and avoids stale project exits', () => {
   assert.doesNotMatch(html, /<(?:script|link|img)[^>]+(?:src|href)="https?:\/\//i);
   assert.doesNotMatch(html, /<a[^>]+href="https?:\/\//i);
