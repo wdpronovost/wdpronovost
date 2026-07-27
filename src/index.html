@@ -22,7 +22,7 @@
     <ol>
       <li><a href="#explorations" data-ledger-link="explorations">Explorations</a></li>
       <li><a href="#buildlog" data-ledger-link="buildlog">Build Log</a></li>
-      <li><a href="#work" data-ledger-link="work">Work</a></li>
+      <li><a href="#work" data-ledger-link="work">On the bench</a></li>
       <li><a href="#about" data-ledger-link="about">About</a></li>
     </ol>
     <a class="section-nav-cta" href="#contact">Get in touch <span aria-hidden="true">↗</span></a>
@@ -35,7 +35,7 @@
         <h1 id="hero-title">Billy<br>Pronovost.</h1>
         <p class="statement">I build small, useful systems <em>with AI in the loop.</em></p>
         <p class="intro-copy">I’m Director of Technology at Pendleton. I lead technology, make software, shape products, and work alongside AI—usually where those jobs overlap.</p>
-        <a class="down" href="#work">SEE THE WORK <span aria-hidden="true">↓</span></a>
+        <a class="down" href="#explorations">TRY THE WORK <span aria-hidden="true">↓</span></a>
       </div>
 
       <div class="mode-composer" data-interaction="identity-modes">
@@ -63,8 +63,8 @@
 
     <section class="explorations reveal-group" id="explorations" aria-labelledby="exp-title" data-ledger-section>
       <div class="section-head">
-        <p>EXPLORATIONS / WHAT I'M BUILDING WITH AI</p>
-        <h2 id="exp-title">Things I'm making.<br><em>Drag or tap to see them work.</em></h2>
+        <p>THINGS I'VE BUILT / USE THEM RIGHT HERE</p>
+        <h2 id="exp-title">Three products.<br><em>Each one demos itself.</em></h2>
       </div>
 
       <article class="exp-card reveal-group" id="exp-skalable" aria-labelledby="exp-skalable-title">
@@ -127,6 +127,90 @@
         <div class="exp-foot">
           <span class="foot-badge">STATUS · Prototype</span>
           <span class="foot-badge">OUTPUT · SVG</span>
+          <span class="foot-badge">MODEL · One-time purchase</span>
+        </div>
+      </article>
+
+      <article class="exp-card exp-card-equa reveal-group" id="exp-equa" aria-labelledby="exp-equa-title">
+        <div class="exp-top">
+          <div class="exp-demo">
+            <div class="split-demo" data-split-demo>
+              <p class="split-label">SHARED HOUSEHOLD BILLS / <strong data-split-bill>$2,400</strong> A MONTH</p>
+
+              <div class="split-inputs">
+                <label>
+                  <span>Partner A earns</span>
+                  <output data-split-out="a">$70,000</output>
+                  <input type="range" min="20000" max="200000" step="5000" value="70000"
+                         data-split-input="a" aria-label="Partner A annual income">
+                </label>
+                <label>
+                  <span>Partner B earns</span>
+                  <output data-split-out="b">$110,000</output>
+                  <input type="range" min="20000" max="200000" step="5000" value="110000"
+                         data-split-input="b" aria-label="Partner B annual income">
+                </label>
+              </div>
+
+              <div class="split-bar" role="img" aria-hidden="true">
+                <span class="split-seg split-seg-a" data-split-seg="a"><b data-split-pct="a">39%</b></span>
+                <span class="split-seg split-seg-b" data-split-seg="b"><b data-split-pct="b">61%</b></span>
+              </div>
+
+              <div class="split-result" aria-live="polite">
+                <div><span>A pays</span><strong data-split-amt="a">$933</strong></div>
+                <div><span>B pays</span><strong data-split-amt="b">$1,467</strong></div>
+              </div>
+
+              <p class="split-compare" data-split-compare>Split 50/50 instead and Partner A pays <b>$267</b> more than their income share.</p>
+            </div>
+            <p class="exp-demo-caption">Move either income — the fair share recalculates. This is the actual math inside the app.</p>
+          </div>
+
+          <div class="exp-text">
+            <p class="exp-eyebrow">iOS + ANDROID APP · SHIPPED</p>
+            <h3 id="exp-equa-title">Equa</h3>
+            <p class="exp-line">Couples split shared expenses by <strong>what each person earns</strong> — not down the middle.</p>
+            <ul class="exp-pills" aria-label="At a glance">
+              <li>iOS + Android</li>
+              <li>Income-based split</li>
+              <li>Zero-knowledge</li>
+              <li>One-time purchase</li>
+            </ul>
+            <p class="exp-date">Live at getequa.com</p>
+          </div>
+        </div>
+
+        <div class="exp-why">
+          <p class="exp-block-label">WHY IT EXISTS</p>
+          <p>Splitting rent 50/50 when one partner earns twice as much isn’t actually fair, and most couples know it — they just don’t want to run the spreadsheet every month. Equa does that math quietly in the background so the conversation can be about something else.</p>
+        </div>
+
+        <div class="exp-steps" aria-label="How it works">
+          <p class="exp-block-label">HOW IT WORKS</p>
+          <ol>
+            <li><span class="step-n">1</span><span class="step-t">Pair</span><span class="step-d">Two people connect with a pairing code. One purchase covers both.</span></li>
+            <li><span class="step-n">2</span><span class="step-t">Split</span><span class="step-d">Enter incomes; Equa sets each fair share. Override to 50/50 or custom any time.</span></li>
+            <li><span class="step-n">3</span><span class="step-t">Balance</span><span class="step-d">Log expenses or scan a receipt. Equa tracks who covered what and when you’re even.</span></li>
+          </ol>
+        </div>
+
+        <div class="exp-features">
+          <p class="exp-block-label">WHAT MAKES IT DIFFERENT</p>
+          <ul class="chip-grid">
+            <li>Fairness is the default</li>
+            <li>End-to-end encrypted on device</li>
+            <li>No bank connection required</li>
+            <li>No subscription</li>
+            <li>Receipt scanning</li>
+            <li>Shared savings goals</li>
+            <li>Free demo, no account</li>
+          </ul>
+        </div>
+
+        <div class="exp-foot">
+          <span class="foot-badge">STATUS · Shipped</span>
+          <span class="foot-badge">PLATFORM · iOS + Android</span>
           <span class="foot-badge">MODEL · One-time purchase</span>
         </div>
       </article>
@@ -246,39 +330,36 @@ card</span>
 
     <section class="work reveal-group" id="work" aria-labelledby="work-title" data-ledger-section>
       <div class="section-head">
-        <p>SELECTED WORK / A LIVING INVENTORY</p>
-        <h2 id="work-title">Different forms.<br><em>One throughline.</em></h2>
-        <p class="work-note" id="work-note" role="status" aria-live="polite">Showing named work connected to <strong>technology leadership</strong>. Choose another mode above to shift the emphasis.</p>
+        <p>ALSO IN FLIGHT / SHORTER FORM</p>
+        <h2 id="work-title">Other things<br><em>on the bench.</em></h2>
       </div>
 
-      <div class="work-group">
-        <header><p>PRODUCTS</p><span>TOOLS WITH A PARTICULAR JOB TO DO</span></header>
-        <ul>
-          <li data-modes="builder developer designer systems leader"><span class="project-name">Skalable</span><span class="project-kind">native app / product practice</span></li>
-          <li data-modes="builder developer designer systems"><span class="project-name">CeQR</span><span class="project-kind">small product / bounded utility</span></li>
-          <li data-modes="builder developer designer systems"><span class="project-name">Equa</span><span class="project-kind">decision tool / visible reasoning</span></li>
-          <li data-modes="builder developer designer"><span class="project-name">Tocin</span><span class="project-kind">focused software product</span></li>
-        </ul>
-      </div>
-
-      <div class="work-group">
-        <header><p>SYSTEMS</p><span>CONNECTED PARTS, MADE USEFUL</span></header>
-        <ul>
-          <li data-modes="leader systems developer designer"><span class="project-name">Storycraft</span><span class="project-kind">story-making system</span></li>
-          <li data-modes="leader systems collaborator developer"><span class="project-name">Elumri</span><span class="project-kind">continuity / human–AI system</span></li>
-          <li data-modes="leader systems developer"><span class="project-name">Proxidian</span><span class="project-kind">technical system / working exploration</span></li>
-        </ul>
-      </div>
-
-      <div class="work-group">
-        <header><p>EXPERIMENTS</p><span>QUESTIONS BUILT FAR ENOUGH TO TOUCH</span></header>
-        <ul>
-          <li data-modes="collaborator systems designer leader"><span class="project-name">WeTheAIs</span><span class="project-kind">public human–AI practice</span></li>
-          <li data-modes="designer developer builder"><span class="project-name">KittyScapes</span><span class="project-kind">playful interactive experiment</span></li>
-          <li data-modes="collaborator systems designer builder"><span class="project-name">Shared World Television</span><span class="project-kind">participatory media experiment</span></li>
-        </ul>
-      </div>
-      <p class="inventory-footnote">Names are included as an honest inventory of ongoing and selected work—not as claims that every project is complete or public. Lumi and Hermes belong to the broader human–AI practice behind this work.</p>
+      <ul class="bench-grid">
+        <li>
+          <p class="bench-kind">FIELD REPORTING</p>
+          <h3>CeQR</h3>
+          <p class="bench-line">A QR code on the wall becomes a facility issue report — no app, no login for the person reporting it.</p>
+          <p class="bench-status">Near launch</p>
+        </li>
+        <li>
+          <p class="bench-kind">AI WRITING SYSTEM</p>
+          <h3>Storycraft</h3>
+          <p class="bench-line">Multiple agents draft, critique, and revise a long-form novel against a shared story bible.</p>
+          <p class="bench-status">Working prototype</p>
+        </li>
+        <li>
+          <p class="bench-kind">GOVERNANCE PLATFORM</p>
+          <h3>Elumri</h3>
+          <p class="bench-line">Structure for human–AI decisions: who decided what, on what basis, and what it changed.</p>
+          <p class="bench-status">In build</p>
+        </li>
+        <li>
+          <p class="bench-kind">RELATIONSHIP TRACKER</p>
+          <h3>Tocin</h3>
+          <p class="bench-line">A quiet iOS app for keeping up with the people you actually mean to keep up with.</p>
+          <p class="bench-status">In build</p>
+        </li>
+      </ul>
     </section>
 
     <section class="about reveal-group" id="about" aria-labelledby="about-title" data-ledger-section>

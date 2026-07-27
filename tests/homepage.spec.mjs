@@ -80,16 +80,30 @@ test('each mode has concrete public-safe evidence and visible connections', () =
   assert.doesNotMatch(html + js, /\b(?:award-winning|world-class|best-in-class)\b/i);
 });
 
-test('mode selection updates evidence, accessible status, and named-work emphasis', () => {
+test('mode selection updates evidence and the three built-out examples are present', () => {
   assert.match(js, /proof\.textContent = detail\.proof/);
   assert.match(js, /panel\.setAttribute\('aria-labelledby', tab\.id\)/);
-  assert.match(js, /workNote\.innerHTML/);
-  assert.match(js, /relatedNames\.join/);
-  assert.match(js, /classList\.toggle\('is-related'/);
-  assert.match(html, /id="work-note" role="status" aria-live="polite"/);
-  for (const project of ['Skalable', 'CeQR', 'Equa', 'Tocin', 'Storycraft', 'Elumri', 'Proxidian', 'WeTheAIs', 'KittyScapes', 'Shared World Television']) {
+  for (const id of ['exp-skalable', 'exp-equa', 'exp-lumi']) {
+    assert.match(html, new RegExp(`id="${id}"`));
+  }
+  for (const project of ['Skalable', 'Equa', 'CeQR', 'Storycraft', 'Elumri', 'Tocin']) {
     assert.match(html, new RegExp(project));
   }
+  assert.doesNotMatch(html, /A LIVING INVENTORY|One throughline/);
+});
+
+test('Equa fair-split demo is interactive and computes from income', () => {
+  assert.match(html, /data-split-demo/);
+  for (const hook of ['data-split-input="a"', 'data-split-input="b"', 'data-split-amt="a"', 'data-split-pct="a"', 'data-split-compare']) {
+    assert.ok(html.includes(hook), `missing split demo hook ${hook}`);
+  }
+  assert.match(html, /type="range"[^>]*data-split-input/);
+  assert.match(js, /const shareA = total > 0 \? a \/ total : 0\.5/);
+  assert.match(js, /addEventListener\('input', render\)/);
+  assert.match(css, /\.split-bar\{display:flex/);
+  // Facts must match the shipped product, no invented pricing on this page.
+  assert.match(html, /One-time purchase/);
+  assert.doesNotMatch(html, /\$\d+\.\d\d/);
 });
 
 test('pointer, keyboard, mobile, focus, and reduced-motion contracts exist', () => {
@@ -132,7 +146,6 @@ test('homepage stays local-only and avoids stale project exits', () => {
   assert.doesNotMatch(html, /<(?:script|link|img)[^>]+(?:src|href)="https?:\/\//i);
   assert.doesNotMatch(html, /<a[^>]+href="https?:\/\//i);
   assert.match(html, /mailto:wdp@wdpronovost\.com/);
-  assert.match(html, /Names are included as an honest inventory/);
   assert.doesNotMatch(html, /googletagmanager|google-analytics|fonts\.googleapis/i);
 });
 

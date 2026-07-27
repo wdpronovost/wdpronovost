@@ -82,7 +82,9 @@ function selectMode(tab, moveFocus = false) {
   connection.innerHTML = `<span>Works beside</span> ${detail.connection}`;
   const relatedProjects = projects.filter((project) => project.dataset.modes.split(' ').includes(mode));
   const relatedNames = relatedProjects.map((project) => project.querySelector('.project-name').textContent);
-  workNote.innerHTML = `Showing ${relatedProjects.length} named works connected to <strong>${detail.label}</strong>: ${relatedNames.join(', ')}.`;
+  if (workNote) {
+    workNote.innerHTML = `Showing ${relatedProjects.length} named works connected to <strong>${detail.label}</strong>: ${relatedNames.join(', ')}.`;
+  }
   projects.forEach((project) => project.classList.toggle('is-related', relatedProjects.includes(project)));
   document.body.dataset.mode = mode;
   if (moveFocus) tab.focus();
@@ -288,6 +290,55 @@ document.querySelectorAll('[data-reveal]').forEach((reveal) => {
 
   chips.forEach((chip) => chip.addEventListener('click', () => applyFilter(chip.dataset.logFilter)));
   applyFilter('all');
+})();
+
+/* ---- Equa: income-based fair split demo ---- */
+(() => {
+  const demo = document.querySelector('[data-split-demo]');
+  if (!demo) return;
+
+  const BILL = 2400;
+  const inputs = {
+    a: demo.querySelector('[data-split-input="a"]'),
+    b: demo.querySelector('[data-split-input="b"]')
+  };
+  if (!inputs.a || !inputs.b) return;
+
+  const money = (n) => '$' + Math.round(n).toLocaleString('en-US');
+
+  function render() {
+    const a = Number(inputs.a.value);
+    const b = Number(inputs.b.value);
+    const total = a + b;
+    const shareA = total > 0 ? a / total : 0.5;
+    const shareB = 1 - shareA;
+    const pctA = Math.round(shareA * 100);
+    const pctB = 100 - pctA;
+    const payA = BILL * shareA;
+    const payB = BILL - payA;
+
+    demo.querySelector('[data-split-out="a"]').textContent = money(a);
+    demo.querySelector('[data-split-out="b"]').textContent = money(b);
+    demo.querySelector('[data-split-pct="a"]').textContent = pctA + '%';
+    demo.querySelector('[data-split-pct="b"]').textContent = pctB + '%';
+    demo.querySelector('[data-split-seg="a"]').style.flexGrow = String(Math.max(shareA, 0.001));
+    demo.querySelector('[data-split-seg="b"]').style.flexGrow = String(Math.max(shareB, 0.001));
+    demo.querySelector('[data-split-amt="a"]').textContent = money(payA);
+    demo.querySelector('[data-split-amt="b"]').textContent = money(payB);
+
+    const half = BILL / 2;
+    const gap = Math.abs(half - payA);
+    const compare = demo.querySelector('[data-split-compare]');
+    if (gap < 1) {
+      compare.innerHTML = 'Equal incomes, so the fair split <b>is</b> 50/50 — the app just stops you having to check.';
+    } else {
+      const behind = payA < half ? 'Partner A' : 'Partner B';
+      compare.innerHTML = `Split 50/50 instead and ${behind} pays <b>${money(gap)}</b> more than their income share.`;
+    }
+  }
+
+  Object.values(inputs).forEach((input) => input.addEventListener('input', render));
+  render();
 })();
 
 /* ---- Quiet ledger + weighted reveal treatment ---- */

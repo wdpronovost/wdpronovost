@@ -1,5 +1,10 @@
 [
   {
+    "hash": "de31961",
+    "date": "2026-07-27",
+    "subject": "fix(nav): replace floating left ledger with sticky section bar"
+  },
+  {
     "hash": "075474e",
     "date": "2026-07-26",
     "subject": "feat(ledger): add sticky section ledger and weighted staggered reveals"

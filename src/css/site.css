@@ -124,6 +124,38 @@ body.trace-open{overflow:hidden}.trace-dialog{position:fixed;inset:0;z-index:30;
   .log-date{grid-area:date}
 }
 
+/* ---- Bench grid (also in flight) ---- */
+.bench-grid{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0;margin:0;padding:0;border-top:2px solid var(--ink);border-left:1px solid var(--ink)}
+.bench-grid li{display:flex;flex-direction:column;gap:9px;padding:26px 24px 24px;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);background:var(--cream);transition:background .2s ease}
+.bench-grid li:hover{background:var(--butter)}
+.bench-kind{margin:0;font-size:9px;font-weight:850;letter-spacing:.15em;color:var(--faint)}
+.bench-grid h3{margin:0;font:500 clamp(28px,3vw,40px)/1 var(--serif);letter-spacing:-.04em}
+.bench-line{margin:0;font-size:14px;line-height:1.5}
+.bench-status{margin:auto 0 0;padding-top:14px;font-size:10px;font-weight:850;letter-spacing:.12em;color:var(--tomato)}
+
+/* ---- Equa: income split demo ---- */
+.split-demo{display:flex;flex-direction:column;gap:18px;padding:22px 20px;border:1px solid var(--ink);border-radius:4px;background:var(--butter)}
+.split-label{margin:0;font-size:10px;font-weight:850;letter-spacing:.13em;color:var(--ink)}
+.split-label strong{color:var(--tomato)}
+.split-inputs{display:grid;gap:14px}
+.split-inputs label{display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:6px}
+.split-inputs label>span{font-size:12px;font-weight:750;letter-spacing:.04em}
+.split-inputs output{font-family:var(--serif);font-size:20px;letter-spacing:-.02em}
+.split-inputs input[type=range]{grid-column:1/3;width:100%;min-height:32px;accent-color:var(--tomato);cursor:grab}
+.split-bar{display:flex;height:38px;overflow:hidden;border:1px solid var(--ink);border-radius:3px}
+.split-seg{display:flex;align-items:center;justify-content:center;min-width:0;transition:flex-grow .28s cubic-bezier(.16,1,.3,1)}
+.split-seg b{font-size:11px;font-weight:850;letter-spacing:.1em}
+.split-seg-a{background:var(--plum);color:var(--cream)}
+.split-seg-b{background:var(--teal);color:var(--cream)}
+.split-result{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.split-result div{display:flex;flex-direction:column;gap:3px;padding:12px 14px;border:1px solid var(--ink);background:var(--cream)}
+.split-result span{font-size:10px;font-weight:850;letter-spacing:.12em;color:var(--faint)}
+.split-result strong{font-family:var(--serif);font-size:clamp(24px,2.4vw,32px);font-weight:500;letter-spacing:-.03em}
+.split-compare{margin:0;font:italic 14px/1.5 var(--serif);color:#635b53}
+.split-compare b{font-style:normal;font-weight:800;color:var(--tomato)}
+@media(max-width:700px){.split-demo{padding:18px 15px;gap:15px}.split-result{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.split-seg{transition:none}}
+
 /* ---- Sticky section bar + weighted reveal treatment ---- */
 .section-nav{position:sticky;top:0;z-index:8;display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:46px;padding:0 clamp(18px,4vw,64px);border-bottom:1px solid var(--ink);background:rgba(255,250,240,.92);backdrop-filter:saturate(140%) blur(8px)}
 .section-nav ol{list-style:none;display:flex;align-items:center;gap:clamp(14px,2.4vw,34px);margin:0;padding:0;overflow-x:auto;scrollbar-width:none}
