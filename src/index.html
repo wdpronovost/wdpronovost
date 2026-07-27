@@ -12,27 +12,24 @@
 </head>
 <body>
   <a class="skip" href="#main-content">Skip to main content</a>
-  <nav class="page-ledger" aria-label="Page sections" data-ledger>
-    <p class="ledger-title">Index</p>
-    <ol>
-      <li><a href="#hero" data-ledger-link="hero"><span>01</span>Hero / Intro</a></li>
-      <li><a href="#explorations" data-ledger-link="explorations"><span>02</span>Explorations</a></li>
-      <li><a href="#exp-skalable" data-ledger-link="exp-skalable"><span>02A</span>Skalable</a></li>
-      <li><a href="#exp-lumi" data-ledger-link="exp-lumi"><span>02B</span>Lumi / Hermes</a></li>
-      <li><a href="#buildlog" data-ledger-link="buildlog"><span>03</span>Build Log</a></li>
-      <li><a href="#work" data-ledger-link="work"><span>04</span>Work</a></li>
-      <li><a href="#about" data-ledger-link="about"><span>05</span>About</a></li>
-    </ol>
-  </nav>
-
   <header class="site-header">
     <a class="wordmark" href="#main-content" aria-label="Billy Pronovost, home" data-ai-trace-trigger>W<span>D</span>P</a>
     <p>PORTLAND, OREGON</p>
     <a href="mailto:wdp@wdpronovost.com">LET’S TALK <span aria-hidden="true">↗</span></a>
   </header>
 
+  <nav class="section-nav" aria-label="Page sections" data-ledger>
+    <ol>
+      <li><a href="#explorations" data-ledger-link="explorations">Explorations</a></li>
+      <li><a href="#buildlog" data-ledger-link="buildlog">Build Log</a></li>
+      <li><a href="#work" data-ledger-link="work">Work</a></li>
+      <li><a href="#about" data-ledger-link="about">About</a></li>
+    </ol>
+    <a class="section-nav-cta" href="#contact">Get in touch <span aria-hidden="true">↗</span></a>
+  </nav>
+
   <main id="main-content">
-    <section class="hero reveal-group" id="hero" aria-labelledby="hero-title" data-ledger-section>
+    <section class="hero reveal-group" id="hero" aria-labelledby="hero-title">
       <div class="hero-intro">
         <p class="kicker"><span>HELLO, I’M</span> <span class="issue">A PERSON OF MANY MODES</span></p>
         <h1 id="hero-title">Billy<br>Pronovost.</h1>
@@ -70,7 +67,7 @@
         <h2 id="exp-title">Things I'm making.<br><em>Drag or tap to see them work.</em></h2>
       </div>
 
-      <article class="exp-card reveal-group" id="exp-skalable" aria-labelledby="exp-skalable-title" data-ledger-section>
+      <article class="exp-card reveal-group" id="exp-skalable" aria-labelledby="exp-skalable-title">
         <div class="exp-top">
           <div class="exp-demo">
             <div class="reveal" data-reveal>
@@ -134,7 +131,7 @@
         </div>
       </article>
 
-      <article class="exp-card exp-card-system reveal-group" id="exp-lumi" aria-labelledby="exp-lumi-title" data-ledger-section>
+      <article class="exp-card exp-card-system reveal-group" id="exp-lumi" aria-labelledby="exp-lumi-title">
         <div class="exp-top exp-top-system">
           <div class="exp-demo">
             <div class="continuity-demo" data-continuity-demo aria-label="Interactive demo of an AI partner turning a real request into verified site work">
@@ -303,7 +300,7 @@ card</span>
       </aside>
     </section>
 
-    <section class="contact reveal-group" aria-labelledby="contact-title">
+    <section class="contact reveal-group" id="contact" aria-labelledby="contact-title">
       <p>HAVE A COMPLICATED, HUMAN PROBLEM?</p>
       <h2 id="contact-title">Let’s make it<br>easier to hold.</h2>
       <a href="mailto:wdp@wdpronovost.com">wdp@wdpronovost.com <span aria-hidden="true">↗</span></a>

@@ -335,6 +335,4 @@ document.querySelectorAll('[data-reveal]').forEach((reveal) => {
     }, { rootMargin: '-18% 0px -58% 0px', threshold: [0.05, 0.18, 0.32, 0.5, 0.7] });
     ledgerSections.forEach((section) => ledgerObserver.observe(section));
   }
-
-  setActive(ledgerSections[0].id);
 })();

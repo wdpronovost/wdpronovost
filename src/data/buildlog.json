@@ -1,5 +1,10 @@
 [
   {
+    "hash": "075474e",
+    "date": "2026-07-26",
+    "subject": "feat(ledger): add sticky section ledger and weighted staggered reveals"
+  },
+  {
     "hash": "b96aff6",
     "date": "2026-07-24",
     "subject": "feat(buildlog): add self-writing Build Log rendered from git history"
