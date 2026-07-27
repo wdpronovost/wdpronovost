@@ -1,3 +1,6 @@
+/* Match the main site's typography (local fonts only, no network requests). */
+@font-face{font-family:LocalSans;src:local("Avenir Next"),local("Avenir"),local("Helvetica Neue");font-display:swap}
+@font-face{font-family:LocalSerif;src:local("Iowan Old Style"),local("Palatino"),local("Georgia");font-display:swap}
 :root{
   --butter:#f4ddb7;--cream:#fffaf0;--tomato:#b94937;--plum:#392d4d;--teal:#176d65;
   --ink:#231f20;--faint:#8b7f72;--line:rgba(35,31,32,.28);
@@ -5,6 +8,7 @@
 }
 *{box-sizing:border-box}
 html{background:var(--cream);scroll-behavior:smooth}
+body,html{overflow-x:hidden}
 body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.5 var(--sans);-webkit-font-smoothing:antialiased}
 button{font:inherit;color:inherit;cursor:pointer}
 :focus-visible{outline:3px solid #1b79ff;outline-offset:3px}
@@ -16,7 +20,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .lab-head h1{margin:0 0 18px;font:500 clamp(40px,8vw,74px)/.92 var(--serif);letter-spacing:-.05em}
 .lab-intro{max-width:600px;margin:0;font-size:clamp(15px,1.6vw,17px);line-height:1.55}
 .lab-intro em{font-family:var(--serif)}
-.lab-progress{position:sticky;top:0;z-index:5;margin:26px -100vw 0;padding:11px clamp(18px,5vw,64px);background:var(--ink);color:var(--cream);font-size:11px;font-weight:850;letter-spacing:.14em}
+.lab-progress{position:sticky;top:0;z-index:5;margin:26px calc(-1 * clamp(18px,5vw,64px)) 0;padding:11px clamp(18px,5vw,64px);background:var(--ink);color:var(--cream);font-size:11px;font-weight:850;letter-spacing:.14em}
 
 .lab-main{padding:0 clamp(14px,5vw,64px)}
 
@@ -90,10 +94,12 @@ button{font:inherit;color:inherit;cursor:pointer}
 /* C: margin notes */
 .demo-margin{position:relative;height:100%;display:flex;align-items:center}
 .demo-margin>p{margin:0;max-width:60%;font:500 17px/1.4 var(--serif)}
-.demo-margin .note{position:absolute;right:4px;padding:6px 9px;background:var(--plum);color:var(--cream);font-size:10px;font-weight:750;letter-spacing:.04em;opacity:0}
+.demo-margin .note{position:absolute;right:4px;max-width:44%;padding:6px 9px;background:var(--plum);color:var(--cream);font-size:10px;font-weight:750;letter-spacing:.04em;opacity:0}
+.demo-margin .n1{top:16%}
+.demo-margin .n2{top:62%}
 .demo-margin .note i{position:absolute;left:-26px;top:50%;width:24px;height:1px;background:var(--plum)}
-.demo-margin.run .n1{top:26%;animation:noteIn .5s ease .35s forwards}
-.demo-margin.run .n2{top:60%;animation:noteIn .5s ease .95s forwards}
+.demo-margin.run .n1{animation:noteIn .5s ease .35s forwards}
+.demo-margin.run .n2{animation:noteIn .5s ease .95s forwards}
 @keyframes noteIn{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:translateX(0)}}
 
 /* D: diff */
@@ -159,10 +165,13 @@ button{font:inherit;color:inherit;cursor:pointer}
 
 @media(max-width:640px){
   .lab-progress{margin-left:-18px;margin-right:-18px}
-  .stage{height:172px}
-  .stage-tall{height:225px}
+  .stage{height:186px}
+  .stage-tall{height:248px}
+  .demo-hero h3{line-height:.94}
+  .demo-diff{gap:7px}
+  .diff-line{font-size:13px;padding:8px 10px 8px 24px}
   .demo-margin>p{max-width:100%;font-size:15px}
-  .demo-margin .note{right:auto;left:0;font-size:9px}
+  .demo-margin .note{right:0;left:auto;max-width:52%;font-size:9px}
   .demo-margin .note i{display:none}
 }
 @media(prefers-reduced-motion:reduce){
