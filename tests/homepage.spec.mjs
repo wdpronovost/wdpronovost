@@ -38,7 +38,7 @@ test('production homepage truthfully identifies Billy and the practice', () => {
   assert.match(html, /<h1[^>]*>Billy(?:<br>)?Pronovost/i);
   assert.match(html, /I build small, useful systems\s*<em>with AI in the loop\.<\/em>/);
   assert.match(html, /Director of Technology at Pendleton/);
-  assert.match(html, /Things I'm making/);
+  assert.match(html, /Three products/);
   assert.match(html, /Lumi \/ Hermes/);
   assert.match(html, /changed files, passing checks, screenshots/);
   assert.doesNotMatch(html, /Back to design directions|The Signal Garden|Route the signal/i);

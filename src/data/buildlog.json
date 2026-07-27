@@ -1,5 +1,10 @@
 [
   {
+    "hash": "656316c",
+    "date": "2026-07-27",
+    "subject": "feat(site): add Equa fair-split demo, replace inventory list with bench grid, tighten copy"
+  },
+  {
     "hash": "de31961",
     "date": "2026-07-27",
     "subject": "fix(nav): replace floating left ledger with sticky section bar"
