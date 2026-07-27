@@ -1,5 +1,15 @@
 [
   {
+    "hash": "467a402",
+    "date": "2026-07-27",
+    "subject": "fix(lab): constrain page to 1080px container instead of full-bleed"
+  },
+  {
+    "hash": "24cd582",
+    "date": "2026-07-27",
+    "subject": "feat(lab): showcase The Lab as a method card; fix Lumi node text collision"
+  },
+  {
     "hash": "87f50a4",
     "date": "2026-07-27",
     "subject": "fix(lab): remove CSP-blocked inline styles; add lint guard for inline style attrs"

@@ -292,6 +292,37 @@ document.querySelectorAll('[data-reveal]').forEach((reveal) => {
   applyFilter('all');
 })();
 
+/* ---- Bench cards: play each vignette once in view, replay on hover/tap ---- */
+(() => {
+  const cards = [...document.querySelectorAll('.bench-card')];
+  if (!cards.length) return;
+
+  function play(card) {
+    card.classList.remove('is-live');
+    void card.offsetWidth; // reflow so the animation can restart
+    card.classList.add('is-live');
+  }
+
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !entry.target.dataset.played) {
+          entry.target.dataset.played = '1';
+          play(entry.target);
+        }
+      });
+    }, { threshold: 0.45 });
+    cards.forEach((card) => io.observe(card));
+  } else {
+    cards.forEach((card) => card.classList.add('is-live'));
+  }
+
+  cards.forEach((card) => {
+    card.addEventListener('mouseenter', () => play(card));
+    card.addEventListener('click', () => play(card));
+  });
+})();
+
 /* ---- The Lab: pick-one method demo ---- */
 (() => {
   const demo = document.querySelector('[data-lab-demo]');

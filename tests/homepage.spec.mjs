@@ -118,6 +118,24 @@ test('The Lab card showcases the method and links to the live picker', () => {
   assert.ok(html.indexOf('id="exp-lab"') > html.indexOf('id="exp-lumi"'), 'Lab card should close the section');
 });
 
+test('bench cards carry live vignettes, not just prose', () => {
+  for (const key of ['ceqr', 'storycraft', 'elumri', 'tocin']) {
+    assert.match(html, new RegExp(`data-bench="${key}"`));
+  }
+  assert.match(html, /class="bench-viz"/);
+  // Each vignette must depict the product's actual function.
+  assert.match(html, /ceqr-ticket/);
+  assert.match(html, /story-revise/);
+  assert.match(html, /elumri-trace/);
+  assert.match(html, /tocin-orbit/);
+  assert.match(js, /entry\.target\.dataset\.played/);
+  assert.match(css, /\.bench-card\.is-live/);
+  // Decorative vignettes must be hidden from screen readers.
+  assert.match(html, /class="bench-viz" aria-hidden="true"/);
+  // Motion must be disableable.
+  assert.match(css, /prefers-reduced-motion:reduce\)\{\s*\.bench-card/);
+});
+
 test('pointer, keyboard, mobile, focus, and reduced-motion contracts exist', () => {
   assert.match(js, /addEventListener\('click'/);
   for (const key of ['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp', 'Home', 'End']) assert.match(js, new RegExp(key));
