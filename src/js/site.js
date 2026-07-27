@@ -411,8 +411,18 @@ document.querySelectorAll('[data-reveal]').forEach((reveal) => {
         entry.target.classList.add('is-visible');
         observer.unobserve(entry.target);
       });
-    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
+      // A ratio threshold can NEVER be satisfied by an element taller than the
+      // viewport (a 6000px section on a 844px phone maxes out around 0.14), which
+      // would leave that content stuck at opacity:0 forever. Trigger on any
+      // intersection instead and let rootMargin do the timing.
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0 });
     revealGroups.forEach((group) => revealObserver.observe(group));
+
+    // Belt-and-braces: never let content stay invisible. If anything is still
+    // hidden shortly after load, reveal it outright.
+    window.setTimeout(() => {
+      revealGroups.forEach((group) => group.classList.add('is-visible'));
+    }, 2500);
   } else {
     revealGroups.forEach((group) => group.classList.add('is-visible'));
   }

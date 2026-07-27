@@ -1,5 +1,10 @@
 [
   {
+    "hash": "e90f68e",
+    "date": "2026-07-27",
+    "subject": "feat(bench): give each bench card a live vignette depicting its real function"
+  },
+  {
     "hash": "467a402",
     "date": "2026-07-27",
     "subject": "fix(lab): constrain page to 1080px container instead of full-bleed"

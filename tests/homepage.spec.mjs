@@ -136,6 +136,19 @@ test('bench cards carry live vignettes, not just prose', () => {
   assert.match(css, /prefers-reduced-motion:reduce\)\{\s*\.bench-card/);
 });
 
+test('reveal animation can never strand tall sections at opacity:0', () => {
+  // A ratio threshold is unsatisfiable for an element taller than the viewport.
+  // The Explorations section is several thousand px tall on a phone, so the
+  // reveal observer must trigger on ANY intersection (threshold 0).
+  const observerCall = /rootMargin:\s*'[^']*',\s*threshold:\s*0\s*\}/.exec(js);
+  assert.ok(observerCall, 'reveal observer must use threshold: 0, not a ratio');
+  assert.doesNotMatch(js, /threshold:\s*0\.12/);
+  // And there must be an unconditional fallback that reveals content regardless.
+  assert.match(js, /setTimeout\(\(\) => \{\s*revealGroups\.forEach/);
+  // Non-JS and reduced-motion users must always see content.
+  assert.match(css, /\.reveal-group>\*\{opacity:1/);
+});
+
 test('pointer, keyboard, mobile, focus, and reduced-motion contracts exist', () => {
   assert.match(js, /addEventListener\('click'/);
   for (const key of ['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp', 'Home', 'End']) assert.match(js, new RegExp(key));
