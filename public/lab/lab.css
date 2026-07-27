@@ -16,13 +16,14 @@ button{font:inherit;color:inherit;cursor:pointer}
 
 /* ---- head ---- */
 .lab-head{padding:clamp(30px,6vw,64px) clamp(18px,5vw,64px) clamp(24px,4vw,40px);background:var(--butter);border-bottom:1px solid var(--ink)}
+.lab-head>*{max-width:1080px;margin-left:auto;margin-right:auto}
 .lab-kicker{margin:0 0 18px;font-size:10px;font-weight:850;letter-spacing:.18em}
 .lab-head h1{margin:0 0 18px;font:500 clamp(40px,8vw,74px)/.92 var(--serif);letter-spacing:-.05em}
 .lab-intro{max-width:600px;margin:0;font-size:clamp(15px,1.6vw,17px);line-height:1.55}
 .lab-intro em{font-family:var(--serif)}
-.lab-progress{position:sticky;top:0;z-index:5;margin:26px calc(-1 * clamp(18px,5vw,64px)) 0;padding:11px clamp(18px,5vw,64px);background:var(--ink);color:var(--cream);font-size:11px;font-weight:850;letter-spacing:.14em}
+.lab-progress{position:sticky;top:0;z-index:5;display:block;width:100%;max-width:1080px;margin:26px auto 0;padding:11px 16px;border-radius:2px;background:var(--ink);color:var(--cream);font-size:11px;font-weight:850;letter-spacing:.14em}
 
-.lab-main{padding:0 clamp(14px,5vw,64px)}
+.lab-main{max-width:1080px;margin:0 auto;padding:0 clamp(14px,5vw,64px)}
 
 /* ---- question ---- */
 .q{padding:clamp(38px,7vw,72px) 0;border-bottom:1px solid var(--line)}
@@ -160,11 +161,12 @@ button{font:inherit;color:inherit;cursor:pointer}
 .result-free label{display:block;margin-bottom:8px;font-size:13px;font-weight:750}
 .result-free textarea{width:100%;padding:12px;border:1px solid var(--line);background:var(--cream);font:15px/1.5 var(--sans);resize:vertical}
 
-.lab-foot{display:flex;justify-content:space-between;gap:14px;padding:22px clamp(18px,5vw,64px);background:var(--ink);color:var(--cream);font-size:10px;font-weight:750;letter-spacing:.1em}
+.lab-foot{display:flex;justify-content:space-between;gap:14px;max-width:1080px;margin:0 auto;padding:22px clamp(18px,5vw,64px);color:var(--cream);font-size:10px;font-weight:750;letter-spacing:.1em}
+.lab-foot-wrap{background:var(--ink)}
 .lab-foot a{color:inherit}
 
 @media(max-width:640px){
-  .lab-progress{margin-left:-18px;margin-right:-18px}
+  .lab-progress{margin-left:0;margin-right:0}
   .stage{height:186px}
   .stage-tall{height:248px}
   .demo-hero h3{line-height:.94}
