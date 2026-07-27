@@ -38,7 +38,7 @@ test('production homepage truthfully identifies Billy and the practice', () => {
   assert.match(html, /<h1[^>]*>Billy(?:<br>)?Pronovost/i);
   assert.match(html, /I build small, useful systems\s*<em>with AI in the loop\.<\/em>/);
   assert.match(html, /Director of Technology at Pendleton/);
-  assert.match(html, /Three products/);
+  assert.match(html, /Nothing here is/);
   assert.match(html, /Lumi \/ Hermes/);
   assert.match(html, /changed files, passing checks, screenshots/);
   assert.doesNotMatch(html, /Back to design directions|The Signal Garden|Route the signal/i);
@@ -83,7 +83,7 @@ test('each mode has concrete public-safe evidence and visible connections', () =
 test('mode selection updates evidence and the three built-out examples are present', () => {
   assert.match(js, /proof\.textContent = detail\.proof/);
   assert.match(js, /panel\.setAttribute\('aria-labelledby', tab\.id\)/);
-  for (const id of ['exp-skalable', 'exp-equa', 'exp-lumi']) {
+  for (const id of ['exp-skalable', 'exp-equa', 'exp-lumi', 'exp-lab']) {
     assert.match(html, new RegExp(`id="${id}"`));
   }
   for (const project of ['Skalable', 'Equa', 'CeQR', 'Storycraft', 'Elumri', 'Tocin']) {
@@ -104,6 +104,18 @@ test('Equa fair-split demo is interactive and computes from income', () => {
   // Facts must match the shipped product, no invented pricing on this page.
   assert.match(html, /One-time purchase/);
   assert.doesNotMatch(html, /\$\d+\.\d\d/);
+});
+
+test('The Lab card showcases the method and links to the live picker', () => {
+  assert.match(html, /id="exp-lab"/);
+  assert.match(html, /data-lab-demo/);
+  assert.match(html, /data-lab-opt="hard"/);
+  assert.match(html, /data-lab-opt="soft"/);
+  assert.match(html, /href="\/lab\/"/);
+  assert.match(js, /aria-pressed', String\(o === opt\)/);
+  assert.match(css, /\.lab-demo\{display:flex/);
+  // The Lab must be the LAST exploration card: it explains how the others were made.
+  assert.ok(html.indexOf('id="exp-lab"') > html.indexOf('id="exp-lumi"'), 'Lab card should close the section');
 });
 
 test('pointer, keyboard, mobile, focus, and reduced-motion contracts exist', () => {

@@ -1,5 +1,10 @@
 [
   {
+    "hash": "87f50a4",
+    "date": "2026-07-27",
+    "subject": "fix(lab): remove CSP-blocked inline styles; add lint guard for inline style attrs"
+  },
+  {
     "hash": "6d66e83",
     "date": "2026-07-27",
     "subject": "fix(lab): kill horizontal overflow from sticky bar, unstack margin notes, mobile clipping"

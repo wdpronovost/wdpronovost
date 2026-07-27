@@ -292,6 +292,27 @@ document.querySelectorAll('[data-reveal]').forEach((reveal) => {
   applyFilter('all');
 })();
 
+/* ---- The Lab: pick-one method demo ---- */
+(() => {
+  const demo = document.querySelector('[data-lab-demo]');
+  if (!demo) return;
+  const opts = [...demo.querySelectorAll('[data-lab-opt]')];
+  const out = demo.querySelector('[data-lab-out]');
+  if (!opts.length || !out) return;
+
+  const COPY = {
+    hard: 'You picked <b>the hard shadow</b>. Confident, a little retro-print — it matches the rest of this page. That preference is now a fact I can build on.',
+    soft: 'You picked <b>the soft lift</b>. Calmer and more modern — it would pull the whole site in a softer direction. Noted, and the AI adapts.'
+  };
+
+  opts.forEach((opt) => {
+    opt.addEventListener('click', () => {
+      opts.forEach((o) => o.setAttribute('aria-pressed', String(o === opt)));
+      out.innerHTML = COPY[opt.dataset.labOpt] || '';
+    });
+  });
+})();
+
 /* ---- Equa: income-based fair split demo ---- */
 (() => {
   const demo = document.querySelector('[data-split-demo]');

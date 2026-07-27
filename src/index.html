@@ -21,6 +21,7 @@
   <nav class="section-nav" aria-label="Page sections" data-ledger>
     <ol>
       <li><a href="#explorations" data-ledger-link="explorations">Explorations</a></li>
+      <li><a href="#exp-lab" data-ledger-link="exp-lab">The Lab</a></li>
       <li><a href="#buildlog" data-ledger-link="buildlog">Build Log</a></li>
       <li><a href="#work" data-ledger-link="work">On the bench</a></li>
       <li><a href="#about" data-ledger-link="about">About</a></li>
@@ -64,7 +65,8 @@
     <section class="explorations reveal-group" id="explorations" aria-labelledby="exp-title" data-ledger-section>
       <div class="section-head">
         <p>THINGS I'VE BUILT / USE THEM RIGHT HERE</p>
-        <h2 id="exp-title">Three products.<br><em>Each one demos itself.</em></h2>
+        <h2 id="exp-title">Nothing here is<br><em>a screenshot.</em></h2>
+        <p class="section-lede">Every card below runs the real thing in your browser — drag it, tap it, break it. The last one is the method I used to build this page.</p>
       </div>
 
       <article class="exp-card reveal-group" id="exp-skalable" aria-labelledby="exp-skalable-title">
@@ -294,6 +296,62 @@ card</span>
           <span class="foot-badge">STATUS · Running locally</span>
           <span class="foot-badge">OUTPUT · Site changes</span>
           <span class="foot-badge">PROOF · Tests + screenshots</span>
+        </div>
+      </article>
+      <article class="exp-card exp-card-lab reveal-group" id="exp-lab" aria-labelledby="exp-lab-title">
+        <div class="exp-top">
+          <div class="exp-demo">
+            <div class="lab-demo" data-lab-demo>
+              <p class="lab-demo-label">DESIGN DECISION / PICK ONE</p>
+
+              <div class="lab-demo-opts" role="group" aria-label="Choose a button treatment">
+                <button type="button" class="lab-demo-opt" data-lab-opt="hard" aria-pressed="false">
+                  <span class="lab-swatch sw-hard">Get in touch</span>
+                  <span class="lab-demo-name">A · Hard shadow</span>
+                </button>
+                <button type="button" class="lab-demo-opt" data-lab-opt="soft" aria-pressed="false">
+                  <span class="lab-swatch sw-soft">Get in touch</span>
+                  <span class="lab-demo-name">B · Soft lift</span>
+                </button>
+              </div>
+
+              <p class="lab-demo-out" role="status" aria-live="polite" data-lab-out>Nothing picked yet — that's the point. The machine doesn't choose.</p>
+            </div>
+            <p class="exp-demo-caption">Pick one. That's the whole loop — AI builds the options, a human makes the call.</p>
+          </div>
+
+          <div class="exp-text">
+            <p class="exp-eyebrow">METHOD · RUNNING ON THIS SITE</p>
+            <h3 id="exp-lab-title">The Lab</h3>
+            <p class="exp-line">I can't describe a design in words. So I have my AI <strong>build the options for real</strong> and I pick.</p>
+            <ul class="exp-pills" aria-label="At a glance">
+              <li>Live options</li>
+              <li>No mockups</li>
+              <li>Human decides</li>
+              <li>Ships same day</li>
+            </ul>
+            <p class="exp-date">Used to build this page</p>
+          </div>
+        </div>
+
+        <div class="exp-why">
+          <p class="exp-block-label">WHY IT EXISTS</p>
+          <p>Describing motion in words doesn’t work — “make it feel calmer” means nothing until you see it. So instead of writing a spec, I have the AI build every option as working code, put them side by side, and choose from the real thing. Taste stays human; the labor of building five variants doesn’t.</p>
+        </div>
+
+        <div class="exp-steps" aria-label="How it works">
+          <p class="exp-block-label">HOW IT WORKS</p>
+          <ol>
+            <li><span class="step-n">1</span><span class="step-t">Build</span><span class="step-d">AI implements each candidate as real, running code — not a picture of one.</span></li>
+            <li><span class="step-n">2</span><span class="step-t">Choose</span><span class="step-d">I use them side by side on my phone and pick what actually feels right.</span></li>
+            <li><span class="step-n">3</span><span class="step-t">Ship</span><span class="step-d">The winner goes into the live site, tested and deployed, usually within the hour.</span></li>
+          </ol>
+        </div>
+
+        <div class="exp-foot">
+          <span class="foot-badge">STATUS · In use</span>
+          <span class="foot-badge">ROLE · AI builds, human decides</span>
+          <a class="foot-badge foot-badge-link" href="/lab/">OPEN THE LAB <span aria-hidden="true">↗</span></a>
         </div>
       </article>
     </section>
