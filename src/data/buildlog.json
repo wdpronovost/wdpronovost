@@ -1,5 +1,10 @@
 [
   {
+    "hash": "0da4474",
+    "date": "2026-07-27",
+    "subject": "fix(skalable): correct status to TestFlight build 32, ground facts in repo STATUS"
+  },
+  {
     "hash": "656316c",
     "date": "2026-07-27",
     "subject": "feat(site): add Equa fair-split demo, replace inventory list with bench grid, tighten copy"

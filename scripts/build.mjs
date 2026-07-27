@@ -11,13 +11,18 @@ const copies = [
   ['public/favicon.ico', 'dist/favicon.ico'],
   ['public/_redirects', 'dist/_redirects'],
   ['public/directions', 'dist/directions'],
-  ['public/img', 'dist/img']
+  ['public/img', 'dist/img'],
+  // Internal direction picker (noindex): live A/B demos for design decisions.
+  ['public/lab/index.html', 'dist/lab/index.html'],
+  ['public/lab/lab.css', 'dist/css/lab.css'],
+  ['public/lab/lab.js', 'dist/js/lab.js']
 ];
 
 await rm('dist', { recursive: true, force: true });
 await Promise.all([
   mkdir('dist/css', { recursive: true }),
-  mkdir('dist/js', { recursive: true })
+  mkdir('dist/js', { recursive: true }),
+  mkdir('dist/lab', { recursive: true })
 ]);
 const recursiveSources = new Set(['public/directions', 'public/img']);
 await Promise.all(copies.map(([source, target]) => cp(source, target, { recursive: recursiveSources.has(source) })));

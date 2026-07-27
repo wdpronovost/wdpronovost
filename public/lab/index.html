@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4ddb7">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Motion &amp; AI Presence — pick a direction</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/lab.css">
+  <script src="/js/lab.js" defer></script>
+</head>
+<body>
+  <header class="lab-head">
+    <p class="lab-kicker">WDPRONOVOST / DIRECTION PICKER</p>
+    <h1>Which one feels right?</h1>
+    <p class="lab-intro">Five decisions about motion and how the site shows AI. Each one is <strong>live and running</strong> — not a description. Tap the one you like. If neither lands, tap <em>Neither</em>. At the end you get a summary to send back.</p>
+    <p class="lab-progress" data-progress>0 of 5 chosen</p>
+  </header>
+
+  <main class="lab-main">
+
+    <!-- ================= 1. HOW CONTENT ARRIVES ================= -->
+    <section class="q" data-q="arrival" aria-labelledby="q1">
+      <div class="q-head">
+        <span class="q-n">01</span>
+        <h2 id="q1">How content arrives as you scroll</h2>
+        <p>Right now the site fades things up gently. Replay each and pick the feel.</p>
+      </div>
+
+      <div class="q-grid">
+        <article class="opt" data-opt="arrival:soft">
+          <p class="opt-tag">A · SOFT LIFT <span>(what's on the site now)</span></p>
+          <div class="stage" data-stage>
+            <div class="demo-arrival demo-soft">
+              <span class="bar b1"></span><span class="bar b2"></span><span class="bar b3"></span>
+              <span class="blk"></span>
+            </div>
+          </div>
+          <div class="opt-foot">
+            <button class="replay" type="button" data-replay>Replay</button>
+            <button class="pick" type="button" data-pick>Pick A</button>
+          </div>
+        </article>
+
+        <article class="opt" data-opt="arrival:wipe">
+          <p class="opt-tag">B · MASK WIPE <span>(sharper, editorial)</span></p>
+          <div class="stage" data-stage>
+            <div class="demo-arrival demo-wipe">
+              <span class="bar b1"></span><span class="bar b2"></span><span class="bar b3"></span>
+              <span class="blk"></span>
+            </div>
+          </div>
+          <div class="opt-foot">
+            <button class="replay" type="button" data-replay>Replay</button>
+            <button class="pick" type="button" data-pick>Pick B</button>
+          </div>
+        </article>
+
+        <article class="opt" data-opt="arrival:snap">
+          <p class="opt-tag">C · NO MOTION <span>(instant, confident)</span></p>
+          <div class="stage" data-stage>
+            <div class="demo-arrival demo-snap">
+              <span class="bar b1"></span><span class="bar b2"></span><span class="bar b3"></span>
+              <span class="blk"></span>
+            </div>
+          </div>
+          <div class="opt-foot">
+            <button class="replay" type="button" data-replay>Replay</button>
+            <button class="pick" type="button" data-pick>Pick C</button>
+          </div>
+        </article>
+      </div>
+      <button class="neither" type="button" data-neither>Neither — none of these</button>
+    </section>
+
+    <!-- ================= 2. AI PRESENCE ================= -->
+    <section class="q" data-q="ai" aria-labelledby="q2">
+      <div class="q-head">
+        <span class="q-n">02</span>
+        <h2 id="q2">How the site shows you work with AI</h2>
+        <p>This is the big one. Same claim, four very different personalities.</p>
+      </div>
+
+      <div class="q-grid">
+        <article class="opt" data-opt="ai:stream">
+          <p class="opt-tag">A · IT WRITES ITSELF <span>(text streams in like a model)</span></p>
+          <div class="stage" data-stage>
+            <div class="demo-stream">
+              <p class="stream-label">DRAFTING</p>
+              <p class="stream-out" data-stream>I build small, useful systems with AI in the loop.</p>
+            </div>
+          </div>
+          <div class="opt-foot">
+            <button class="replay" type="button" data-replay>Replay</button>
+            <button class="pick" type="button" data-pick>Pick A</button>
+          </div>
+        </article>
+
+        <article class="opt" data-opt="ai:ticker">
+          <p class="opt-tag">B · LIVE WORK TICKER <span>(what the AI is doing, right now)</span></p>
+          <div class="stage" data-stage>
+            <div class="demo-ticker" data-ticker>
+              <p class="tick-label"><i></i>AGENT ACTIVITY</p>
+              <ol></ol>
+            </div>
+          </div>
+          <div class="opt-foot">
+            <button class="replay" type="button" data-replay>Replay</button>
+            <button class="pick" type="button" data-pick>Pick B</button>
+          </div>
+        </article>
+
+        <article class="opt" data-opt="ai:margin">
+          <p class="opt-tag">C · MARGIN NOTES <span>(AI annotates the page quietly)</span></p>
+          <div class="stage" data-stage>
+            <div class="demo-margin" data-margin>
+              <p>Splitting rent 50/50 when one partner earns twice as much isn't fair.</p>
+              <span class="note n1">flagged: this is the hook<i></i></span>
+              <span class="note n2">source: equa PRODUCT.md<i></i></span>
+            </div>
+          </div>
+          <div class="opt-foot">
+            <button class="replay" type="button" data-replay>Replay</button>
+            <button class="pick" type="button" data-pick>Pick C</button>
+          </div>
+        </article>
+
+        <article class="opt" data-opt="ai:diff">
+          <p class="opt-tag">D · SHOW THE DIFF <span>(AI's edit, applied in front of you)</span></p>
+          <div class="stage" data-stage>
+            <div class="demo-diff" data-diff>
+              <p class="diff-label">REVISION</p>
+              <p class="diff-line del">I leverage cutting-edge AI to deliver world-class solutions.</p>
+              <p class="diff-line add">I build small, useful systems with AI in the loop.</p>
+            </div>
+          </div>
+          <div class="opt-foot">
+            <button class="replay" type="button" data-replay>Replay</button>
+            <button class="pick" type="button" data-pick>Pick D</button>
+          </div>
+        </article>
+      </div>
+      <button class="neither" type="button" data-neither>Neither — none of these</button>
+    </section>
+
+    <!-- ================= 3. HERO ================= -->
+    <section class="q" data-q="hero" aria-labelledby="q3">
+      <div class="q-head">
+        <span class="q-n">03</span>
+        <h2 id="q3">The hero — your name, first impression</h2>
+        <p>Same words. Different amount of life.</p>
+      </div>
+
+      <div class="q-grid q-grid-2">
+        <article class="opt" data-opt="hero:still">
+          <p class="opt-tag">A · STILL &amp; TYPOGRAPHIC <span>(let the type do it)</span></p>
+          <div class="stage stage-tall" data-stage>
+            <div class="demo-hero demo-hero-still">
+              <p class="hk">HELLO, I'M</p>
+              <h3>Billy<br>Pronovost.</h3>
+              <p class="hs">I build small, useful systems <em>with AI in the loop.</em></p>
+            </div>
+          </div>
+          <div class="opt-foot">
+            <button class="replay" type="button" data-replay>Replay</button>
+            <button class="pick" type="button" data-pick>Pick A</button>
+          </div>
+        </article>
+
+        <article class="opt" data-opt="hero:alive">
+          <p class="opt-tag">B · QUIETLY ALIVE <span>(letters settle, one word cycles)</span></p>
+          <div class="stage stage-tall" data-stage>
+            <div class="demo-hero demo-hero-alive">
+              <p class="hk">HELLO, I'M</p>
+              <h3><span>B</span><span>i</span><span>l</span><span>l</span><span>y</span><br><span>P</span><span>r</span><span>o</span><span>n</span><span>o</span><span>v</span><span>o</span><span>s</span><span>t</span><span>.</span></h3>
+              <p class="hs">I build <em data-cycle>small</em> systems with AI in the loop.</p>
+            </div>
+          </div>
+          <div class="opt-foot">
+            <button class="replay" type="button" data-replay>Replay</button>
+            <button class="pick" type="button" data-pick>Pick B</button>
+          </div>
+        </article>
+      </div>
+      <button class="neither" type="button" data-neither>Neither — none of these</button>
+    </section>
+
+    <!-- ================= 4. INTERACTION FEEL ================= -->
+    <section class="q" data-q="feel" aria-labelledby="q4">
+      <div class="q-head">
+        <span class="q-n">04</span>
+        <h2 id="q4">How things respond when you touch them</h2>
+        <p>Drag the sliders. Same control, different physics.</p>
+      </div>
+
+      <div class="q-grid q-grid-2">
+        <article class="opt" data-opt="feel:instant">
+          <p class="opt-tag">A · INSTANT <span>(precise, tool-like)</span></p>
+          <div class="stage" data-stage>
+            <div class="demo-feel">
+              <input type="range" min="0" max="100" value="35" data-feel="instant" aria-label="Instant response demo">
+              <div class="feel-bar"><span data-feelbar="instant" style="width:35%"></span></div>
+              <p class="feel-num" data-feelnum="instant">35%</p>
+            </div>
+          </div>
+          <div class="opt-foot">
+            <button class="pick" type="button" data-pick>Pick A</button>
+          </div>
+        </article>
+
+        <article class="opt" data-opt="feel:spring">
+          <p class="opt-tag">B · WEIGHTED <span>(it has momentum, feels physical)</span></p>
+          <div class="stage" data-stage>
+            <div class="demo-feel">
+              <input type="range" min="0" max="100" value="35" data-feel="spring" aria-label="Weighted response demo">
+              <div class="feel-bar"><span data-feelbar="spring" style="width:35%"></span></div>
+              <p class="feel-num" data-feelnum="spring">35%</p>
+            </div>
+          </div>
+          <div class="opt-foot">
+            <button class="pick" type="button" data-pick>Pick B</button>
+          </div>
+        </article>
+      </div>
+      <button class="neither" type="button" data-neither>Neither — none of these</button>
+    </section>
+
+    <!-- ================= 5. AMBIENT ================= -->
+    <section class="q" data-q="ambient" aria-labelledby="q5">
+      <div class="q-head">
+        <span class="q-n">05</span>
+        <h2 id="q5">Background life</h2>
+        <p>Does the page breathe when nobody's touching it?</p>
+      </div>
+
+      <div class="q-grid">
+        <article class="opt" data-opt="ambient:none">
+          <p class="opt-tag">A · DEAD STILL <span>(paper)</span></p>
+          <div class="stage" data-stage><div class="demo-amb amb-none"><b>WDP</b></div></div>
+          <div class="opt-foot"><button class="pick" type="button" data-pick>Pick A</button></div>
+        </article>
+
+        <article class="opt" data-opt="ambient:drift">
+          <p class="opt-tag">B · SLOW DRIFT <span>(shapes move behind)</span></p>
+          <div class="stage" data-stage><div class="demo-amb amb-drift"><i></i><i></i><i></i><b>WDP</b></div></div>
+          <div class="opt-foot"><button class="pick" type="button" data-pick>Pick B</button></div>
+        </article>
+
+        <article class="opt" data-opt="ambient:pulse">
+          <p class="opt-tag">C · SIGNAL PULSE <span>(a system is running)</span></p>
+          <div class="stage" data-stage><div class="demo-amb amb-pulse"><i></i><i></i><b>WDP</b></div></div>
+          <div class="opt-foot"><button class="pick" type="button" data-pick>Pick C</button></div>
+        </article>
+      </div>
+      <button class="neither" type="button" data-neither>Neither — none of these</button>
+    </section>
+
+    <!-- ================= RESULT ================= -->
+    <section class="result" aria-labelledby="res" data-result hidden>
+      <h2 id="res">Your picks</h2>
+      <ol class="result-list" data-result-list></ol>
+      <p class="result-hint">Send this back to me and I'll build the real thing into the site.</p>
+      <textarea class="result-box" data-result-text readonly rows="8" aria-label="Summary of your picks"></textarea>
+      <button class="copy" type="button" data-copy>Copy summary</button>
+      <p class="result-free">
+        <label for="freeform">Anything you can name that none of these caught?</label>
+        <textarea id="freeform" data-free rows="3" placeholder="Even one word helps — 'calmer', 'weirder', 'more obvious it's AI'..."></textarea>
+      </p>
+    </section>
+  </main>
+
+  <footer class="lab-foot">
+    <a href="/">← back to the site</a>
+    <span>internal · not indexed</span>
+  </footer>
+</body>
+</html>
