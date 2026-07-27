@@ -131,7 +131,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .demo-feel{height:100%;display:flex;flex-direction:column;justify-content:center;gap:14px}
 .demo-feel input[type=range]{width:100%;min-height:34px;accent-color:var(--tomato)}
 .feel-bar{height:34px;border:1px solid var(--ink);background:var(--cream);overflow:hidden}
-.feel-bar span{display:block;height:100%;background:var(--plum)}
+.feel-bar span{display:block;height:100%;width:35%;background:var(--plum)}
 [data-feelbar=spring]{transition:width .62s cubic-bezier(.34,1.56,.64,1)}
 .feel-num{margin:0;font:500 26px var(--serif);letter-spacing:-.03em}
 

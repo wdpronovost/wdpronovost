@@ -1,5 +1,15 @@
 [
   {
+    "hash": "6d66e83",
+    "date": "2026-07-27",
+    "subject": "fix(lab): kill horizontal overflow from sticky bar, unstack margin notes, mobile clipping"
+  },
+  {
+    "hash": "94fb0bc",
+    "date": "2026-07-27",
+    "subject": "feat(lab): add live direction picker for motion + AI presence A/B choices"
+  },
+  {
     "hash": "0da4474",
     "date": "2026-07-27",
     "subject": "fix(skalable): correct status to TestFlight build 32, ground facts in repo STATUS"

@@ -12,7 +12,7 @@ async function collect(directory) {
   return files;
 }
 
-const files = [...await collect('src'), ...await collect('dist')];
+const files = [...await collect('src'), ...await collect('dist'), ...await collect('public/lab')];
 const text = (await Promise.all(files.map((file) => readFile(file, 'utf8')))).join('\n');
 const failures = [];
 const forbidden = [
@@ -23,6 +23,10 @@ const forbidden = [
   ['obvious credential token', /(?:gh[pousr]_|github_pat_|sk-|xox[bap]-|AKIA)[A-Za-z0-9_-]{12,}/]
 ];
 for (const [label, pattern] of forbidden) if (pattern.test(text)) failures.push(label);
+// The site ships a strict CSP (style-src 'self'), so a static style="..." attribute is
+// blocked at runtime and silently breaks the element. Use a class or a CSS rule instead.
+const inlineStyle = /<[^>]+\sstyle=["'][^"']+["']/i.exec(text);
+if (inlineStyle) failures.push(`inline style attribute violates CSP: ${inlineStyle[0].slice(0, 80)}`);
 if (!/<main id="main-content"/.test(text)) failures.push('main landmark');
 if (!/role="tablist"[^>]*aria-label="Modes of Practice"/.test(text)) failures.push('Modes of Practice tablist semantics');
 if (!/role="tabpanel"[^>]*aria-live="polite"/.test(text)) failures.push('Modes of Practice live panel semantics');
