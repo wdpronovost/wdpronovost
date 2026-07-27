@@ -1,5 +1,10 @@
 [
   {
+    "hash": "2553e46",
+    "date": "2026-07-27",
+    "subject": "fix(reveal): tall sections stranded at opacity:0 on mobile; threshold 0.12 unsatisfiable"
+  },
+  {
     "hash": "e90f68e",
     "date": "2026-07-27",
     "subject": "feat(bench): give each bench card a live vignette depicting its real function"
