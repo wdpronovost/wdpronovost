@@ -155,8 +155,12 @@ button{font:inherit;color:inherit;cursor:pointer}
 .result-list b{font-weight:850}
 .result-hint{margin:0 0 12px;font:italic 15px var(--serif);color:#5f574e}
 .result-box{width:100%;padding:14px;border:1px solid var(--ink);background:var(--butter);font:13px/1.55 ui-monospace,Menlo,monospace;resize:vertical}
-.copy{margin-top:12px;min-height:46px;padding:0 20px;border:1px solid var(--ink);background:var(--cream);font-size:12px;font-weight:850;letter-spacing:.11em;box-shadow:5px 5px 0 var(--ink)}
+.result-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:12px}
+.copy,.reset{min-height:46px;padding:0 20px;font-size:12px;font-weight:850;letter-spacing:.11em}
+.copy{border:1px solid var(--ink);background:var(--cream);box-shadow:5px 5px 0 var(--ink)}
 .copy:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.reset{border:1px solid var(--line);background:transparent;color:#5f574e}
+.reset:hover{border-color:var(--ink);color:var(--ink)}
 .result-free{margin:26px 0 0}
 .result-free label{display:block;margin-bottom:8px;font-size:13px;font-weight:750}
 .result-free textarea{width:100%;padding:12px;border:1px solid var(--line);background:var(--cream);font:15px/1.5 var(--sans);resize:vertical}

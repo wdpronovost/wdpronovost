@@ -1,5 +1,10 @@
 [
   {
+    "hash": "c704a72",
+    "date": "2026-07-27",
+    "subject": "fix(bench): rebalance Tocin vignette composition"
+  },
+  {
     "hash": "2553e46",
     "date": "2026-07-27",
     "subject": "fix(reveal): tall sections stranded at opacity:0 on mobile; threshold 0.12 unsatisfiable"

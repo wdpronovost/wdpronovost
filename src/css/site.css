@@ -240,7 +240,7 @@ body.trace-open{overflow:hidden}.trace-dialog{position:fixed;inset:0;z-index:30;
 
 /* ---- Sticky section bar + weighted reveal treatment ---- */
 .section-nav{position:sticky;top:0;z-index:8;display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:46px;padding:0 clamp(18px,4vw,64px);border-bottom:1px solid var(--ink);background:rgba(255,250,240,.92);backdrop-filter:saturate(140%) blur(8px)}
-.section-nav ol{list-style:none;display:flex;align-items:center;gap:clamp(14px,2.4vw,34px);margin:0;padding:0;overflow-x:auto;scrollbar-width:none}
+.section-nav ol{list-style:none;display:flex;flex:1;min-width:0;align-items:center;gap:clamp(14px,2.4vw,34px);margin:0;padding:0;overflow-x:auto;scrollbar-width:none}
 .section-nav ol::-webkit-scrollbar{display:none}
 .section-nav a{position:relative;display:flex;align-items:center;min-height:46px;white-space:nowrap;text-decoration:none;font-size:10px;font-weight:850;letter-spacing:.14em;text-transform:uppercase;color:rgba(35,31,32,.5);transition:color .2s ease}
 .section-nav a:hover{color:var(--ink)}

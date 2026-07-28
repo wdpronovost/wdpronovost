@@ -24,6 +24,7 @@
     'ambient:neither': 'Background — NEITHER'
   };
   const QUESTIONS = ['arrival', 'ai', 'hero', 'feel', 'ambient'];
+  const STORAGE_KEY = 'wdp-design-lab-v1';
   const picks = Object.create(null);
 
   /* ---------- demo runners ---------- */
@@ -137,6 +138,32 @@
   const resultText = document.querySelector('[data-result-text]');
   const free = document.querySelector('[data-free]');
 
+  function saveState() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ picks, free: free ? free.value : '' }));
+    } catch {
+      // The Lab remains fully usable when storage is unavailable.
+    }
+  }
+
+  function applyChoice(question, key) {
+    const section = document.querySelector(`[data-q="${question}"]`);
+    if (!section) return;
+    section.classList.toggle('is-done', Boolean(key));
+    section.querySelectorAll('[data-opt]').forEach((option) => {
+      const selected = option.dataset.opt === key;
+      option.classList.toggle('is-picked', selected);
+      const button = option.querySelector('[data-pick]');
+      if (button) button.setAttribute('aria-pressed', String(selected));
+    });
+    const neither = section.querySelector('[data-neither]');
+    if (neither) {
+      const selected = Boolean(key && key.endsWith(':neither'));
+      neither.classList.toggle('is-picked', selected);
+      neither.setAttribute('aria-pressed', String(selected));
+    }
+  }
+
   function render() {
     const chosen = QUESTIONS.filter((q) => picks[q]);
     if (progress) progress.textContent = `${chosen.length} of ${QUESTIONS.length} chosen`;
@@ -160,19 +187,14 @@
     });
     if (resultText) {
       const note = free && free.value.trim() ? `\n\nAlso: ${free.value.trim()}` : '';
-      resultText.value = `Direction picks for wdpronovost.com:\n${lines.join('\n')}${note}`;
+      resultText.value = `Design direction from the WDP Lab:\n${lines.join('\n')}${note}`;
     }
   }
 
-  function choose(question, key, el) {
+  function choose(question, key) {
     picks[question] = key;
-    const section = document.querySelector(`[data-q="${question}"]`);
-    if (section) {
-      section.classList.add('is-done');
-      section.querySelectorAll('.opt').forEach((o) => o.classList.toggle('is-picked', o === el));
-      const nei = section.querySelector('[data-neither]');
-      if (nei) nei.classList.toggle('is-picked', key.endsWith(':neither'));
-    }
+    applyChoice(question, key);
+    saveState();
     render();
   }
 
@@ -180,18 +202,21 @@
     btn.addEventListener('click', () => {
       const opt = btn.closest('[data-opt]');
       const key = opt.dataset.opt;
-      choose(key.split(':')[0], key, opt);
+      choose(key.split(':')[0], key);
     });
   });
 
   document.querySelectorAll('[data-neither]').forEach((btn) => {
     btn.addEventListener('click', () => {
       const q = btn.closest('.q').dataset.q;
-      choose(q, q + ':neither', null);
+      choose(q, q + ':neither');
     });
   });
 
-  if (free) free.addEventListener('input', render);
+  if (free) free.addEventListener('input', () => {
+    saveState();
+    render();
+  });
 
   const copyBtn = document.querySelector('[data-copy]');
   if (copyBtn && resultText) {
@@ -206,5 +231,43 @@
     });
   }
 
+  const resetBtn = document.querySelector('[data-reset]');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      QUESTIONS.forEach((question) => {
+        delete picks[question];
+        applyChoice(question, '');
+      });
+      if (free) free.value = '';
+      if (resultText) resultText.value = '';
+      if (resultList) resultList.innerHTML = '';
+      try {
+        localStorage.removeItem(STORAGE_KEY);
+      } catch {
+        // Nothing else to reset when storage is unavailable.
+      }
+      render();
+    });
+  }
+
+  function restoreSavedState() {
+    QUESTIONS.forEach((question) => applyChoice(question, ''));
+    try {
+      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
+      if (!saved || typeof saved !== 'object') return;
+      QUESTIONS.forEach((question) => {
+        const key = saved.picks && saved.picks[question];
+        if (typeof key === 'string' && key.startsWith(question + ':') && LABELS[key]) {
+          picks[question] = key;
+          applyChoice(question, key);
+        }
+      });
+      if (free && typeof saved.free === 'string') free.value = saved.free;
+    } catch {
+      // Ignore malformed or blocked local state and start clean.
+    }
+  }
+
+  restoreSavedState();
   render();
 })();

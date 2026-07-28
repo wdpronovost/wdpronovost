@@ -7,6 +7,9 @@ const html = await readFile(new URL('src/index.html', root), 'utf8');
 const css = await readFile(new URL('src/css/site.css', root), 'utf8');
 const js = await readFile(new URL('src/js/site.js', root), 'utf8');
 const build = await readFile(new URL('scripts/build.mjs', root), 'utf8');
+const labHtml = await readFile(new URL('public/lab/index.html', root), 'utf8');
+const labJs = await readFile(new URL('public/lab/lab.js', root), 'utf8');
+const labCss = await readFile(new URL('public/lab/lab.css', root), 'utf8');
 const nodeVersion = (await readFile(new URL('.nvmrc', root), 'utf8')).trim();
 
 const modes = [
@@ -101,8 +104,11 @@ test('Equa fair-split demo is interactive and computes from income', () => {
   assert.match(js, /const shareA = total > 0 \? a \/ total : 0\.5/);
   assert.match(js, /addEventListener\('input', render\)/);
   assert.match(css, /\.split-bar\{display:flex/);
-  // Facts must match the shipped product, no invented pricing on this page.
+  // Facts must match the prelaunch product, no invented pricing or live-domain claim on this page.
   assert.match(html, /One-time purchase/);
+  assert.match(html, /In prelaunch validation/);
+  assert.match(html, /STATUS · Prelaunch/);
+  assert.doesNotMatch(html, /getequa\.com|APP · SHIPPED|STATUS · Shipped/);
   assert.doesNotMatch(html, /\$\d+\.\d\d/);
 });
 
@@ -116,6 +122,27 @@ test('The Lab card showcases the method and links to the live picker', () => {
   assert.match(css, /\.lab-demo\{display:flex/);
   // The Lab must be the LAST exploration card: it explains how the others were made.
   assert.ok(html.indexOf('id="exp-lab"') > html.indexOf('id="exp-lumi"'), 'Lab card should close the section');
+});
+
+test('The linked Lab is a public-ready working artifact, not an internal handoff', () => {
+  assert.match(labHtml, /OPEN DESIGN LAB/);
+  assert.match(labHtml, /working instrument behind wdpronovost\.com/i);
+  assert.match(labHtml, /working code/i);
+  assert.doesNotMatch(labHtml, /noindex|nofollow|internal · not indexed|send this back to me/i);
+  assert.match(labHtml, /data-reset/);
+});
+
+test('The Lab restores saved choices and can reset the complete local workflow', () => {
+  assert.match(labJs, /const STORAGE_KEY = 'wdp-design-lab-v1'/);
+  assert.match(labJs, /localStorage\.getItem\(STORAGE_KEY\)/);
+  assert.match(labJs, /localStorage\.setItem\(STORAGE_KEY/);
+  assert.match(labJs, /localStorage\.removeItem\(STORAGE_KEY\)/);
+  assert.match(labJs, /resultText\.value = ''/);
+  assert.match(labJs, /data-reset/);
+  assert.match(labJs, /restoreSavedState\(\)/);
+  assert.match(labJs, /setAttribute\('aria-pressed'/);
+  assert.match(labCss, /\.result-actions/);
+  assert.match(labCss, /\.reset/);
 });
 
 test('bench cards carry live vignettes, not just prose', () => {
@@ -178,6 +205,7 @@ test('sticky section nav and weighted reveals render in built homepage', async (
   assert.match(css, /\.js \.reveal-group>\*/);
   assert.match(css, /cubic-bezier\(\.16,1,\.3,1\)/);
   assert.match(css, /\.section-nav\{position:sticky/);
+  assert.match(css, /\.section-nav ol\{[^}]*flex:1[^}]*min-width:0/);
   assert.doesNotMatch(css, /\.page-ledger\{position:fixed/);
   assert.match(css, /prefers-reduced-motion:reduce\)\{\.js \.reveal-group>\*/);
   assert.match(js, /IntersectionObserver/);
