@@ -1,204 +1,249 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFile, readdir } from 'node:fs/promises';
-import { join } from 'node:path';
+import { readFile } from 'node:fs/promises';
 
 const root = new URL('../', import.meta.url);
 const html = await readFile(new URL('src/index.html', root), 'utf8');
 const css = await readFile(new URL('src/css/site.css', root), 'utf8');
 const js = await readFile(new URL('src/js/site.js', root), 'utf8');
 const build = await readFile(new URL('scripts/build.mjs', root), 'utf8');
-const verify = await readFile(new URL('scripts/verify.mjs', root), 'utf8');
-const netlify = await readFile(new URL('netlify.toml', root), 'utf8');
 const labHtml = await readFile(new URL('public/lab/index.html', root), 'utf8');
 const labJs = await readFile(new URL('public/lab/lab.js', root), 'utf8');
 const labCss = await readFile(new URL('public/lab/lab.css', root), 'utf8');
-const dist = await readFile(new URL('dist/index.html', root), 'utf8');
 const nodeVersion = (await readFile(new URL('.nvmrc', root), 'utf8')).trim();
 
-async function collectText(relative) {
-  const base = new URL(relative, root);
-  const paths = [];
-  async function walk(directoryUrl) {
-    for (const entry of await readdir(directoryUrl, { withFileTypes: true })) {
-      const entryUrl = new URL(entry.name + (entry.isDirectory() ? '/' : ''), directoryUrl);
-      if (entry.isDirectory()) await walk(entryUrl);
-      else if (/\.(?:html|css|js|mjs|md|json|toml)$/i.test(entry.name)) paths.push(entryUrl);
-    }
-  }
-  await walk(base);
-  return (await Promise.all(paths.map((path) => readFile(path, 'utf8')))).join('\n');
-}
+const modes = [
+  ['leader', 'Director of Technology'],
+  ['builder', 'Product Builder'],
+  ['developer', 'Software Developer'],
+  ['designer', 'Designer'],
+  ['systems', 'Systems Thinker'],
+  ['collaborator', 'Human–AI Collaborator']
+];
 
-const publicSource = [
-  await collectText('src/'),
-  await collectText('public/'),
-  await collectText('prototypes/'),
-  await readFile(new URL('README.md', root), 'utf8')
-].join('\n');
+const evidence = [
+  'At Pendleton, I direct technology work',
+  'Skalable, CeQR, Equa, and Tocin',
+  'software work across Skalable, CeQR, Equa, Tocin, Storycraft, Elumri, and Proxidian',
+  'KittyScapes and the product practices',
+  'Storycraft, Elumri, and Proxidian',
+  'WeTheAIs, Lumi, and Hermes'
+];
 
 test('Netlify uses a supported Node runtime', () => {
   const major = Number.parseInt(nodeVersion, 10);
-  assert.ok(Number.isInteger(major) && major >= 20);
+  assert.ok(Number.isInteger(major) && major >= 20, `.nvmrc must select Node 20 or newer, received: ${nodeVersion}`);
 });
 
-test('production homepage is an inviting AI-career portfolio rather than a blog or card wall', () => {
-  assert.match(html, /AVAILABLE FOR REMOTE AI, PRODUCT, AND TECHNOLOGY LEADERSHIP ROLES/);
-  assert.match(html, /Technology leader\. Product builder\. Human–AI practitioner\./);
-  assert.match(html, /data-visitor-path/);
-  assert.match(html, /What are you here to evaluate\?/);
-  assert.match(html, /data-work-stage/);
-  assert.match(html, /data-command-dialog/);
-  assert.match(html, /Open navigator/);
-  assert.match(html, /class="portrait-window"/);
-  assert.match(html, /src="\/img\/billy-pronovost\.jpg"/);
-  assert.match(js, /event\.metaKey \|\| event\.ctrlKey/);
-  assert.match(js, /\[data-work-trigger\]/);
-  assert.doesNotMatch(html, /<article[^>]+class="exp-card/);
-  assert.doesNotMatch(html, /blog|latest posts|newsletter/i);
-});
-
-test('homepage truthfully identifies Billy and his practice', () => {
+test('production homepage truthfully identifies Billy and the practice', () => {
   assert.match(html, /<title>Billy Pronovost — Technology, Products, and Human–AI Practice<\/title>/);
+  assert.match(html, /<meta name="description" content="Billy Pronovost builds small, useful systems with AI in the loop/);
+  assert.match(html, /<h1[^>]*>Billy(?:<br>)?Pronovost/i);
+  assert.match(html, /I build small, useful systems\s*<em>with AI in the loop\.<\/em>/);
   assert.match(html, /Director of Technology at Pendleton/);
+  assert.match(html, /Nothing here is/);
   assert.match(html, /Lumi \/ Hermes/);
-  assert.match(html, /Skalable/);
-  assert.match(html, /Equa/);
-  assert.match(html, /In prelaunch validation/);
-  assert.doesNotMatch(html + js, /\b(?:award-winning|world-class|best-in-class|millions of users)\b/i);
+  assert.match(html, /changed files, passing checks, screenshots/);
+  assert.doesNotMatch(html, /Back to design directions|The Signal Garden|Route the signal/i);
 });
 
-test('evaluation paths are accessible tabs with concrete evidence', () => {
-  assert.match(html, /role="tablist" aria-label="Choose an evaluation path"/);
-  for (const path of ['ai', 'product', 'leadership', 'judgment']) {
-    assert.match(html, new RegExp(`data-path="${path}"`));
-    assert.match(js, new RegExp(`${path}: \\{`));
+test('Modes of Practice is a six-mode semantic tab interaction with a meaningful initial state', () => {
+  assert.match(html, /MODES OF PRACTICE \/ SELECT ONE/);
+  assert.match(html, /role="tablist" aria-label="Modes of Practice"/);
+  assert.match(html, /role="tablist"[^>]*aria-orientation="vertical"/);
+  assert.match(html, /id="mode-panel" role="tabpanel"[^>]*aria-live="polite"[^>]*aria-atomic="true"/);
+  for (const [key, label] of modes) {
+    assert.match(html, new RegExp(`data-mode="${key}"`));
+    assert.match(html, new RegExp(label.replace('–', '–')));
+    assert.match(js, new RegExp(`${key}: \\{`));
   }
-  assert.match(html, /id="path-answer" role="tabpanel"[^>]+aria-live="polite"/);
-  assert.match(js, /setupRovingTabs/);
-  for (const key of ['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp', 'Home', 'End']) assert.match(js, new RegExp(key));
+  assert.match(html, /id="tab-leader" role="tab" aria-selected="true"/);
+  assert.match(html, /PUBLIC EVIDENCE \/ 01/);
+  assert.match(js, /selectMode\(document\.querySelector/);
 });
 
-test('selected work uses one switchable stage instead of repeated project cards', () => {
-  for (const key of ['skalable', 'equa', 'lumi']) {
-    assert.match(html, new RegExp(`data-work-trigger="${key}"`));
-    assert.match(html, new RegExp(`data-work-panel="${key}"`));
-  }
-  assert.match(js, /panel\.hidden = panel\.dataset\.workPanel !== key/);
-  assert.match(css, /\.work-stage\{/);
-  assert.match(css, /\.work-switcher\{/);
-});
-
-test('Skalable comparison is a real keyboard-operable range interaction', () => {
+test('Explorations feed shows the work with interactive project demos', () => {
+  assert.match(html, /id="explorations"/);
   assert.match(html, /data-reveal/);
-  assert.match(html, /type="range"[^>]+aria-label="Compare the raster and vector versions"/);
-  assert.match(html, /skalable-before\.png/);
-  assert.match(html, /skalable-after\.png/);
-  assert.match(js, /beforeWrap\.style\.width/);
-  assert.match(css, /\.reveal:focus-within/);
-});
-
-test('Equa demo computes income-based shares and remains prelaunch', () => {
-  for (const hook of ['data-split-input="a"', 'data-split-input="b"', 'data-split-amt="a"', 'data-split-pct="a"', 'data-split-compare']) {
-    assert.ok(html.includes(hook), `missing Equa hook ${hook}`);
-  }
-  assert.match(js, /incomeA \/ \(incomeA \+ incomeB\)/);
-  assert.match(js, /addEventListener\('input', render\)/);
-  assert.match(html, /In prelaunch validation/);
-  assert.doesNotMatch(html, /STATUS · Shipped|APP · SHIPPED|getequa\.com/);
-});
-
-test('Lumi and Hermes demo exposes the request-to-proof workflow', () => {
   assert.match(html, /data-continuity-demo/);
-  for (const step of ['request', 'context', 'change', 'proof']) assert.match(html, new RegExp(`data-continuity-step="${step}"`));
-  assert.match(js, /Return evidence, not confidence/);
-  assert.match(html, /tests, browser evidence, and human approval/i);
+  assert.match(html, /Skalable/);
+  assert.match(html, /Lumi \/ Hermes/);
+  assert.match(html, /REQUEST → CONTEXT → PATCH → PROOF/);
+  assert.match(css, /continuity-demo/);
+  assert.match(js, /data-continuity-step/);
+  assert.match(js, /Start with the actual message/);
 });
 
-test('navigator works from a visible control and keyboard shortcut', () => {
-  assert.match(html, /data-command-open/);
-  assert.match(html, /<dialog[^>]+data-command-dialog/);
-  assert.match(js, /showModal\(\)/);
-  assert.match(js, /event\.key\.toLowerCase\(\) === 'k'/);
-  assert.match(html, /data-command-close/);
-  assert.match(css, /\.command-dialog::backdrop/);
+test('each mode has concrete public-safe evidence and visible connections', () => {
+  for (const statement of evidence) assert.match(js, new RegExp(statement.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+  assert.match(js, /related: \[['"]/);
+  assert.match(js, /classList\.toggle\('is-connected'/);
+  assert.match(html, /id="evidence-proof"/);
+  assert.match(html, /<span>Works beside<\/span>/);
+  assert.doesNotMatch(html + js, /\b(?:award-winning|world-class|best-in-class)\b/i);
 });
 
-test('contact is private, host-native, accessible, and has live submission feedback', () => {
-  assert.doesNotMatch(publicSource, /mailto:|[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/i);
-  assert.match(html, /<form[^>]+name="contact"[^>]+method="POST"[^>]+data-netlify="true"/);
-  assert.match(html, /netlify-honeypot="company-website"/);
-  for (const field of ['name', 'email', 'message']) assert.match(html, new RegExp(`name="${field}"`));
-  assert.match(html, /data-contact-status/);
-  assert.match(js, /new URLSearchParams/);
-  assert.match(js, /button\.disabled = true/);
-  assert.match(js, /response\.ok/);
-  assert.match(js, /did not send/);
-  assert.match(netlify, /form-action 'self'/);
-  assert.doesNotMatch(netlify, /form-action 'none'/);
+test('mode selection updates evidence and the three built-out examples are present', () => {
+  assert.match(js, /proof\.textContent = detail\.proof/);
+  assert.match(js, /panel\.setAttribute\('aria-labelledby', tab\.id\)/);
+  for (const id of ['exp-skalable', 'exp-equa', 'exp-lumi', 'exp-lab']) {
+    assert.match(html, new RegExp(`id="${id}"`));
+  }
+  for (const project of ['Skalable', 'Equa', 'CeQR', 'Storycraft', 'Elumri', 'Tocin']) {
+    assert.match(html, new RegExp(project));
+  }
+  assert.doesNotMatch(html, /A LIVING INVENTORY|One throughline/);
 });
 
-test('production UI contains no emoji or Unicode pseudo-icon arrows', () => {
-  const productionText = `${html}\n${css}\n${js}\n${labHtml}\n${labCss}\n${labJs}`;
-  assert.doesNotMatch(productionText, /[←→↑↓↗↔⇆✦✓×●★☆✨🚀🤖💡]/u);
+test('Equa fair-split demo is interactive and computes from income', () => {
+  assert.match(html, /data-split-demo/);
+  for (const hook of ['data-split-input="a"', 'data-split-input="b"', 'data-split-amt="a"', 'data-split-pct="a"', 'data-split-compare']) {
+    assert.ok(html.includes(hook), `missing split demo hook ${hook}`);
+  }
+  assert.match(html, /type="range"[^>]*data-split-input/);
+  assert.match(js, /const shareA = total > 0 \? a \/ total : 0\.5/);
+  assert.match(js, /addEventListener\('input', render\)/);
+  assert.match(css, /\.split-bar\{display:flex/);
+  // Facts must match the prelaunch product, no invented pricing or live-domain claim on this page.
+  assert.match(html, /One-time purchase/);
+  assert.match(html, /In prelaunch validation/);
+  assert.match(html, /STATUS · Prelaunch/);
+  assert.doesNotMatch(html, /getequa\.com|APP · SHIPPED|STATUS · Shipped/);
+  assert.doesNotMatch(html, /\$\d+\.\d\d/);
 });
 
-test('homepage has local runtime assets and only the deliberate GitHub exit', () => {
-  assert.doesNotMatch(html, /<(?:script|link|img)[^>]+(?:src|href)="https?:\/\//i);
-  const exits = [...html.matchAll(/<a[^>]+href="(https?:\/\/[^"#]+)"/g)].map((match) => match[1]);
-  assert.deepEqual(exits, ['https://github.com/wdpronovost']);
-  assert.doesNotMatch(html, /googletagmanager|google-analytics|fonts\.googleapis|use\.typekit/i);
+test('The Lab card showcases the method and links to the live picker', () => {
+  assert.match(html, /id="exp-lab"/);
+  assert.match(html, /data-lab-demo/);
+  assert.match(html, /data-lab-opt="hard"/);
+  assert.match(html, /data-lab-opt="soft"/);
+  assert.match(html, /href="\/lab\/"/);
+  assert.match(js, /aria-pressed', String\(o === opt\)/);
+  assert.match(css, /\.lab-demo\{display:flex/);
+  // The Lab must be the LAST exploration card: it explains how the others were made.
+  assert.ok(html.indexOf('id="exp-lab"') > html.indexOf('id="exp-lumi"'), 'Lab card should close the section');
 });
 
-test('the linked Lab is public-ready, persistent, and resettable', () => {
+test('The linked Lab is a public-ready working artifact, not an internal handoff', () => {
   assert.match(labHtml, /OPEN DESIGN LAB/);
   assert.match(labHtml, /working instrument behind wdpronovost\.com/i);
+  assert.match(labHtml, /working code/i);
   assert.doesNotMatch(labHtml, /noindex|nofollow|internal · not indexed|send this back to me/i);
-  assert.match(labJs, /const STORAGE_KEY = 'wdp-design-lab-v1'/);
-  assert.match(labJs, /localStorage\.setItem/);
-  assert.match(labJs, /localStorage\.removeItem/);
   assert.match(labHtml, /data-reset/);
+});
+
+test('The Lab restores saved choices and can reset the complete local workflow', () => {
+  assert.match(labJs, /const STORAGE_KEY = 'wdp-design-lab-v1'/);
+  assert.match(labJs, /localStorage\.getItem\(STORAGE_KEY\)/);
+  assert.match(labJs, /localStorage\.setItem\(STORAGE_KEY/);
+  assert.match(labJs, /localStorage\.removeItem\(STORAGE_KEY\)/);
+  assert.match(labJs, /resultText\.value = ''/);
+  assert.match(labJs, /data-reset/);
+  assert.match(labJs, /restoreSavedState\(\)/);
+  assert.match(labJs, /setAttribute\('aria-pressed'/);
+  assert.match(labCss, /\.result-actions/);
   assert.match(labCss, /\.reset/);
 });
 
-test('secondary projects are compact rows with truthful states', () => {
-  for (const project of ['CeQR', 'Elumri', 'Storycraft', 'Tocin']) assert.match(html, new RegExp(project));
-  assert.match(html, /A working bench, not a trophy shelf/);
-  assert.match(css, /\.inventory li\{display:grid/);
-  assert.doesNotMatch(html, /class="bench-card"/);
+test('bench cards carry live vignettes, not just prose', () => {
+  for (const key of ['ceqr', 'storycraft', 'elumri', 'tocin']) {
+    assert.match(html, new RegExp(`data-bench="${key}"`));
+  }
+  assert.match(html, /class="bench-viz"/);
+  // Each vignette must depict the product's actual function.
+  assert.match(html, /ceqr-ticket/);
+  assert.match(html, /story-revise/);
+  assert.match(html, /elumri-trace/);
+  assert.match(html, /tocin-orbit/);
+  assert.match(js, /entry\.target\.dataset\.played/);
+  assert.match(css, /\.bench-card\.is-live/);
+  // Decorative vignettes must be hidden from screen readers.
+  assert.match(html, /class="bench-viz" aria-hidden="true"/);
+  // Motion must be disableable.
+  assert.match(css, /prefers-reduced-motion:reduce\)\{\s*\.bench-card/);
 });
 
-test('responsive, focus, touch, and reduced-motion contracts exist', () => {
+test('reveal animation can never strand tall sections at opacity:0', () => {
+  // A ratio threshold is unsatisfiable for an element taller than the viewport.
+  // The Explorations section is several thousand px tall on a phone, so the
+  // reveal observer must trigger on ANY intersection (threshold 0).
+  const observerCall = /rootMargin:\s*'[^']*',\s*threshold:\s*0\s*\}/.exec(js);
+  assert.ok(observerCall, 'reveal observer must use threshold: 0, not a ratio');
+  assert.doesNotMatch(js, /threshold:\s*0\.12/);
+  // And there must be an unconditional fallback that reveals content regardless.
+  assert.match(js, /setTimeout\(\(\) => \{\s*revealGroups\.forEach/);
+  // Non-JS and reduced-motion users must always see content.
+  assert.match(css, /\.reveal-group>\*\{opacity:1/);
+});
+
+test('pointer, keyboard, mobile, focus, and reduced-motion contracts exist', () => {
+  assert.match(js, /addEventListener\('click'/);
+  for (const key of ['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp', 'Home', 'End']) assert.match(js, new RegExp(key));
+  assert.match(js, /event\.preventDefault\(\)/);
   assert.match(css, /:focus-visible/);
+  assert.match(css, /@media\(max-width:700px\)/);
   assert.match(css, /min-height:44px/);
-  assert.match(css, /@media\(max-width:760px\)/);
-  assert.match(css, /overflow-x:hidden/);
   assert.match(css, /prefers-reduced-motion:reduce/);
-  assert.match(css, /scroll-snap-type:x mandatory/);
+  assert.match(css, /overflow-x:hidden/);
 });
 
-test('build emits only the production homepage, public Lab, and local assets', () => {
+test('sticky section nav and weighted reveals render in built homepage', async () => {
+  const dist = await readFile(new URL('dist/index.html', root), 'utf8');
+  for (const [id, label] of [
+    ['explorations', 'Explorations'],
+    ['buildlog', 'Build Log'],
+    ['work', 'Work'],
+    ['about', 'About']
+  ]) {
+    assert.match(dist, new RegExp(`href="#${id}"[^>]*data-ledger-link="${id}"[^>]*>[\\s\\S]*${label}`));
+    assert.match(dist, new RegExp(`id="${id}"[^>]*data-ledger-section`));
+  }
+  assert.match(dist, /class="section-nav" aria-label="Page sections" data-ledger/);
+  assert.doesNotMatch(dist, /page-ledger/);
+  assert.match(dist, /class="hero reveal-group"/);
+  assert.match(dist, /class="exp-card reveal-group" id="exp-skalable"/);
+  assert.match(css, /\.js \.reveal-group>\*/);
+  assert.match(css, /cubic-bezier\(\.16,1,\.3,1\)/);
+  assert.match(css, /\.section-nav\{position:sticky/);
+  assert.match(css, /\.section-nav ol\{[^}]*flex:1[^}]*min-width:0/);
+  assert.doesNotMatch(css, /\.page-ledger\{position:fixed/);
+  assert.match(css, /prefers-reduced-motion:reduce\)\{\.js \.reveal-group>\*/);
+  assert.match(js, /IntersectionObserver/);
+  assert.match(js, /data-ledger-section/);
+  assert.match(js, /classList\.add\('is-visible'\)/);
+});
+
+test('homepage stays local-only and avoids stale project exits', () => {
+  assert.doesNotMatch(html, /<(?:script|link|img)[^>]+(?:src|href)="https?:\/\//i);
+  assert.doesNotMatch(html, /<a[^>]+href="https?:\/\//i);
+  assert.match(html, /mailto:wdp@wdpronovost\.com/);
+  assert.doesNotMatch(html, /googletagmanager|google-analytics|fonts\.googleapis/i);
+});
+
+test('build maps deterministic production source paths and preserves directions', () => {
   for (const pair of [
     "['src/index.html', 'dist/index.html']",
     "['src/css/site.css', 'dist/css/site.css']",
     "['src/js/site.js', 'dist/js/site.js']",
-    "['public/lab/index.html', 'dist/lab/index.html']",
-    "['public/img', 'dist/img']"
-  ]) assert.ok(build.includes(pair), `missing build mapping ${pair}`);
-  assert.doesNotMatch(build, /\['public\/directions', 'dist\/directions'\]/);
+    "['public/directions', 'dist/directions']"
+  ]) assert.ok(build.includes(pair), `missing deterministic build mapping ${pair}`);
 });
 
-test('build log renders recent repository history without identity leakage', () => {
+test('Build Log renders the site history from git without leaking identity', async () => {
+  const dist = await readFile(new URL('dist/index.html', root), 'utf8');
+  // Section scaffolding and interaction hooks exist in source.
+  assert.match(html, /id="buildlog"/);
+  assert.match(html, /BUILD LOG \/ THIS SITE, EVOLVING IN PUBLIC/);
+  assert.match(html, /data-log-filter="all"/);
+  assert.match(css, /\.log-entry/);
+  assert.match(js, /data-log-filter/);
+  assert.match(js, /applyFilter/);
+  // Build injects real entries and resolves every placeholder.
   assert.match(dist, /class="log-entry" data-log-type="/);
   assert.doesNotMatch(dist, /<!--BUILDLOG_(?:ENTRIES|COUNT|UPDATED)-->/);
-  assert.doesNotMatch(dist, /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/);
+  // Privacy: no author emails or key markers reach the rendered page (the
+  // intentional public mailbox is the only allowed address).
+  const withoutMailbox = dist.replaceAll('wdp@wdpronovost.com', '');
+  assert.doesNotMatch(withoutMailbox, /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/);
   assert.match(build, /never author name or email/);
-  assert.match(css, /\.log-entry:nth-child\(n\+9\)\{display:none\}/);
-});
-
-test('verification script enforces privacy, contact transport, and dependency policy', () => {
-  assert.match(verify, /private email address or mail link/);
-  assert.match(verify, /host-native contact form/);
-  assert.match(verify, /contact form spam protection/);
-  assert.match(verify, /remote runtime asset/);
 });

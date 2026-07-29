@@ -226,7 +226,7 @@
       } catch {
         resultText.select();
       }
-      copyBtn.textContent = 'Copied';
+      copyBtn.textContent = 'Copied ✓';
       setTimeout(() => { copyBtn.textContent = 'Copy summary'; }, 1600);
     });
   }

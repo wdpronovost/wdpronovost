@@ -88,9 +88,11 @@ test('Billy direction is a truthful, local, mode-driven homepage candidate', () 
   assert.match(js, /aria-selected/);
 });
 
-test('build retires rejected direction routes from production', async () => {
-  assert.doesNotMatch(build, /\['public\/directions', 'dist\/directions'\]/);
+test('build copies public directions deterministically and routes reach dist', async () => {
+  assert.match(build, /public\/directions/);
   for (const route of routeNames) {
-    await assert.rejects(access(new URL(`dist/directions/${route}/index.html`, root)));
+    await access(new URL(`dist/directions/${route}/index.html`, root));
+    await access(new URL(`dist/directions/${route}/site.css`, root));
+    await access(new URL(`dist/directions/${route}/site.js`, root));
   }
 });

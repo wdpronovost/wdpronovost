@@ -10,8 +10,9 @@ const copies = [
   ['src/js/site.js', 'dist/js/site.js'],
   ['public/favicon.ico', 'dist/favicon.ico'],
   ['public/_redirects', 'dist/_redirects'],
+  ['public/directions', 'dist/directions'],
   ['public/img', 'dist/img'],
-  // Public design lab: the working method used by the homepage.
+  // Internal direction picker (noindex): live A/B demos for design decisions.
   ['public/lab/index.html', 'dist/lab/index.html'],
   ['public/lab/lab.css', 'dist/css/lab.css'],
   ['public/lab/lab.js', 'dist/js/lab.js']
