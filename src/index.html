@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f4ddb7">
-  <meta name="description" content="Billy Pronovost builds small, useful systems with AI in the loop—as a technology leader, product builder, developer, designer, systems thinker, and human–AI collaborator.">
+  <meta name="theme-color" content="#0b0d0f">
+  <meta name="description" content="Billy Pronovost is a technology leader, product builder, and human–AI practitioner who builds useful systems with AI in the loop.">
   <title>Billy Pronovost — Technology, Products, and Human–AI Practice</title>
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/css/site.css">
@@ -12,554 +12,238 @@
 </head>
 <body>
   <a class="skip" href="#main-content">Skip to main content</a>
+
   <header class="site-header">
-    <a class="wordmark" href="#main-content" aria-label="Billy Pronovost, home" data-ai-trace-trigger>W<span>D</span>P</a>
-    <p>PORTLAND, OREGON</p>
-    <a href="mailto:wdp@wdpronovost.com">LET’S TALK <span aria-hidden="true">↗</span></a>
+    <a class="wordmark" href="#main-content" aria-label="Billy Pronovost, home">WDP</a>
+    <nav aria-label="Primary navigation">
+      <a href="#work">Work</a>
+      <a href="#practice">Practice</a>
+      <a href="#about">About</a>
+    </nav>
+    <button class="navigator-open" type="button" data-command-open>Open navigator <kbd>CMD K</kbd></button>
   </header>
 
-  <nav class="section-nav" aria-label="Page sections" data-ledger>
-    <ol>
-      <li><a href="#explorations" data-ledger-link="explorations">Explorations</a></li>
-      <li><a href="#exp-lab" data-ledger-link="exp-lab">The Lab</a></li>
-      <li><a href="#buildlog" data-ledger-link="buildlog">Build Log</a></li>
-      <li><a href="#work" data-ledger-link="work">On the bench</a></li>
-      <li><a href="#about" data-ledger-link="about">About</a></li>
-    </ol>
-    <a class="section-nav-cta" href="#contact">Get in touch <span aria-hidden="true">↗</span></a>
-  </nav>
-
   <main id="main-content">
-    <section class="hero reveal-group" id="hero" aria-labelledby="hero-title">
-      <div class="hero-intro">
-        <p class="kicker"><span>HELLO, I’M</span> <span class="issue">A PERSON OF MANY MODES</span></p>
-        <h1 id="hero-title">Billy<br>Pronovost.</h1>
-        <p class="statement">I build small, useful systems <em>with AI in the loop.</em></p>
-        <p class="intro-copy">I’m Director of Technology at Pendleton. I lead technology, make software, shape products, and work alongside AI—usually where those jobs overlap.</p>
-        <a class="down" href="#explorations">TRY THE WORK <span aria-hidden="true">↓</span></a>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="availability"><span aria-hidden="true"></span>AVAILABLE FOR REMOTE AI, PRODUCT, AND TECHNOLOGY LEADERSHIP ROLES</p>
+        <p class="role-line">Technology leader. Product builder. Human–AI practitioner.</p>
+        <h1 id="hero-title">I turn complicated systems into useful things.</h1>
+        <p class="hero-statement">I’m Billy Pronovost, Director of Technology at Pendleton. I lead teams, make software, shape products, and build alongside AI—usually where those jobs overlap.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#work">Use the work</a>
+          <a class="button button-secondary" href="#contact">Start a conversation</a>
+        </div>
+        <dl class="hero-facts">
+          <div><dt>Based in</dt><dd>Portland, Oregon</dd></div>
+          <div><dt>Working across</dt><dd>Leadership / software / AI systems</dd></div>
+        </dl>
       </div>
 
-      <div class="mode-composer" data-interaction="identity-modes">
-        <p class="mode-eyebrow">MODES OF PRACTICE / SELECT ONE</p>
-        <p class="mode-prompt" id="mode-instructions">Choose a mode. Arrow keys work here too.</p>
-        <div class="mode-layout">
-          <div class="mode-tabs" role="tablist" aria-label="Modes of Practice" aria-describedby="mode-instructions" aria-orientation="vertical">
-            <button id="tab-leader" role="tab" aria-selected="true" aria-controls="mode-panel" tabindex="0" data-mode="leader"><span>01</span>Director of Technology</button>
-            <button id="tab-builder" role="tab" aria-selected="false" aria-controls="mode-panel" tabindex="-1" data-mode="builder"><span>02</span>Product Builder</button>
-            <button id="tab-developer" role="tab" aria-selected="false" aria-controls="mode-panel" tabindex="-1" data-mode="developer"><span>03</span>Software Developer</button>
-            <button id="tab-designer" role="tab" aria-selected="false" aria-controls="mode-panel" tabindex="-1" data-mode="designer"><span>04</span>Designer</button>
-            <button id="tab-systems" role="tab" aria-selected="false" aria-controls="mode-panel" tabindex="-1" data-mode="systems"><span>05</span>Systems Thinker</button>
-            <button id="tab-collaborator" role="tab" aria-selected="false" aria-controls="mode-panel" tabindex="-1" data-mode="collaborator"><span>06</span>Human–AI Collaborator</button>
-          </div>
-          <div class="mode-evidence" id="mode-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-leader" aria-live="polite" aria-atomic="true">
-            <p class="evidence-label" id="evidence-label">PUBLIC EVIDENCE / 01</p>
-            <h2 id="evidence-title">Make the work legible.</h2>
-            <p id="evidence-copy">Turn competing needs into a direction people can understand, question, and carry forward together.</p>
-            <p class="evidence-proof" id="evidence-proof">At Pendleton, I direct technology work while translating between people, priorities, and the systems that support them.</p>
-            <p class="evidence-connection" id="evidence-connection"><span>Works beside</span> Systems Thinker + Product Builder</p>
-          </div>
+      <div class="portrait-window">
+        <div class="portrait-stage">
+          <img src="/img/billy-pronovost.jpg" alt="Billy Pronovost smiling">
+        </div>
+        <div class="portrait-footer">
+          <strong>Building the bridge between possibility and practice.</strong>
         </div>
       </div>
     </section>
 
-    <section class="explorations reveal-group" id="explorations" aria-labelledby="exp-title" data-ledger-section>
-      <div class="section-head">
-        <p>THINGS I'VE BUILT / USE THEM RIGHT HERE</p>
-        <h2 id="exp-title">Nothing here is<br><em>a screenshot.</em></h2>
-        <p class="section-lede">Every card below runs the real thing in your browser — drag it, tap it, break it. The last one is the method I used to build this page.</p>
+    <section class="visitor-path" aria-labelledby="path-title" data-visitor-path>
+      <div class="path-heading">
+        <p>START WHERE YOU ARE</p>
+        <h2 id="path-title">What are you here to evaluate?</h2>
+      </div>
+      <div class="path-controls" role="tablist" aria-label="Choose an evaluation path">
+        <button id="path-ai" role="tab" aria-selected="true" aria-controls="path-answer" data-path="ai">AI systems</button>
+        <button id="path-product" role="tab" aria-selected="false" aria-controls="path-answer" data-path="product" tabindex="-1">Product building</button>
+        <button id="path-leadership" role="tab" aria-selected="false" aria-controls="path-answer" data-path="leadership" tabindex="-1">Technology leadership</button>
+        <button id="path-judgment" role="tab" aria-selected="false" aria-controls="path-answer" data-path="judgment" tabindex="-1">Human judgment</button>
+      </div>
+      <div class="path-answer" id="path-answer" role="tabpanel" tabindex="0" aria-labelledby="path-ai" aria-live="polite">
+        <p class="path-answer-label" data-path-label>AI SYSTEMS / PROOF</p>
+        <h3 data-path-title>AI should leave useful evidence behind.</h3>
+        <p data-path-copy>Lumi and Hermes carry context into real work: changed files, passing checks, screenshots, and decisions a person can inspect.</p>
+        <a href="#work-lumi" data-path-link>Open the AI workflow</a>
+      </div>
+    </section>
+
+    <section class="work" id="work" aria-labelledby="work-title">
+      <div class="section-intro">
+        <p>SELECTED WORK / LIVE IN THE BROWSER</p>
+        <h2 id="work-title">Don’t take my word for it. Try the work.</h2>
+        <p>Three working slices of the practice: a product utility, a fairness model, and an AI collaboration system.</p>
       </div>
 
-      <article class="exp-card reveal-group" id="exp-skalable" aria-labelledby="exp-skalable-title">
-        <div class="exp-top">
-          <div class="exp-demo">
+      <div class="work-stage" data-work-stage>
+        <div class="work-switcher" role="tablist" aria-label="Selected work">
+          <button id="work-trigger-skalable" role="tab" aria-selected="true" aria-controls="work-skalable" data-work-trigger="skalable"><span>01</span><strong>Skalable</strong><small>Image to vector</small></button>
+          <button id="work-trigger-equa" role="tab" aria-selected="false" aria-controls="work-equa" data-work-trigger="equa" tabindex="-1"><span>02</span><strong>Equa</strong><small>Fair household math</small></button>
+          <button id="work-trigger-lumi" role="tab" aria-selected="false" aria-controls="work-lumi" data-work-trigger="lumi" tabindex="-1"><span>03</span><strong>Lumi / Hermes</strong><small>AI work with proof</small></button>
+        </div>
+
+        <article class="work-panel" id="work-skalable" role="tabpanel" aria-labelledby="work-trigger-skalable" data-work-panel="skalable">
+          <div class="work-demo work-demo-reveal">
             <div class="reveal" data-reveal>
-              <img class="reveal-after" src="/img/explorations/skalable-after.png" alt="" aria-hidden="true" draggable="false">
+              <img class="reveal-after" src="/img/explorations/skalable-after.png" alt="Clean vector version of the Skalable mark" draggable="false">
               <div class="reveal-before-wrap" aria-hidden="true">
                 <img class="reveal-before" src="/img/explorations/skalable-before.png" alt="" draggable="false">
               </div>
-              <span class="reveal-tag reveal-tag-before" aria-hidden="true">MESSY IMAGE</span>
-              <span class="reveal-tag reveal-tag-after" aria-hidden="true">CLEAN VECTOR</span>
-              <input class="reveal-range" type="range" min="0" max="100" value="50"
-                     aria-label="Reveal slider: drag from the messy raster logo to the clean vector version">
-              <span class="reveal-handle" aria-hidden="true"></span>
+              <span class="reveal-tag reveal-tag-before">RASTER</span>
+              <span class="reveal-tag reveal-tag-after">VECTOR</span>
+              <input class="reveal-range" type="range" min="0" max="100" value="50" aria-label="Compare the raster and vector versions">
+              <span class="reveal-handle" aria-hidden="true"><i></i><b></b></span>
             </div>
-            <p class="exp-demo-caption">Drag the handle — a pixel-blurred mark becomes a crisp, infinitely scalable vector.</p>
+            <p>Drag the divider. The rough source becomes a clean, scalable vector.</p>
           </div>
-
-          <div class="exp-text">
-            <p class="exp-eyebrow">NATIVE iOS APP · IN TESTFLIGHT</p>
-            <h3 id="exp-skalable-title">Skalable</h3>
-            <p class="exp-line">Turn any image into a clean, usable <strong>SVG</strong> — right from your phone, in seconds.</p>
-            <ul class="exp-pills" aria-label="At a glance">
-              <li>iOS 17+</li>
-              <li>Image → SVG</li>
-              <li>Fidelity-first</li>
-              <li>On-device</li>
-            </ul>
-            <p class="exp-date">Build 32 · TestFlight</p>
+          <div class="work-detail">
+            <p class="work-kicker">NATIVE iOS APP / TESTFLIGHT</p>
+            <h3>Skalable</h3>
+            <p class="work-lede">Turn an image into a usable SVG from your phone, without opening a desktop design tool.</p>
+            <dl class="work-facts">
+              <div><dt>Why</dt><dd>AI-generated raster marks fall apart in real product work.</dd></div>
+              <div><dt>How</dt><dd>On-device tracing, live preview, fine controls, and layered SVG export.</dd></div>
+              <div><dt>State</dt><dd>Build 32 in TestFlight.</dd></div>
+            </dl>
           </div>
-        </div>
+        </article>
 
-        <div class="exp-why">
-          <p class="exp-block-label">WHY IT EXISTS</p>
-          <p>I was building with AI agents and needed a logo. What I had was an AI-generated PNG at some unknown resolution — and raster marks fall apart at the sizes a real site needs. I wanted to fix that from my phone, in the moment, without opening a design tool. So I built Skalable.</p>
-        </div>
-
-        <div class="exp-steps" aria-label="How it works">
-          <p class="exp-block-label">HOW IT WORKS</p>
-          <ol>
-            <li><span class="step-n">1</span><span class="step-t">Import</span><span class="step-d">Pull an image in from Photos, Files, or the share sheet — PNG, JPEG, HEIC, WEBP.</span></li>
-            <li><span class="step-n">2</span><span class="step-t">Trace</span><span class="step-d">It vectorizes on your device, with live preview and fine-tune controls.</span></li>
-            <li><span class="step-n">3</span><span class="step-t">Export</span><span class="step-d">Send the SVG to Files, the share sheet, or straight to the clipboard.</span></li>
-          </ol>
-        </div>
-
-        <div class="exp-features">
-          <p class="exp-block-label">WHAT MAKES IT DIFFERENT</p>
-          <ul class="chip-grid">
-            <li>Runs on-device</li>
-            <li>No servers, no accounts</li>
-            <li>Fidelity-first output</li>
-            <li>Gradient synthesis</li>
-            <li>Outline inspection mode</li>
-            <li>Layered SVG export</li>
-            <li>No desktop, no design tool</li>
-          </ul>
-        </div>
-
-        <div class="exp-foot">
-          <span class="foot-badge">STATUS · TestFlight</span>
-          <span class="foot-badge">OUTPUT · SVG</span>
-          <span class="foot-badge">STACK · SwiftUI + Rust</span>
-        </div>
-      </article>
-
-      <article class="exp-card exp-card-equa reveal-group" id="exp-equa" aria-labelledby="exp-equa-title">
-        <div class="exp-top">
-          <div class="exp-demo">
+        <article class="work-panel" id="work-equa" role="tabpanel" aria-labelledby="work-trigger-equa" data-work-panel="equa" hidden>
+          <div class="work-demo">
             <div class="split-demo" data-split-demo>
-              <p class="split-label">SHARED HOUSEHOLD BILLS / <strong data-split-bill>$2,400</strong> A MONTH</p>
-
+              <p class="demo-label">SHARED BILLS / <strong>$2,400 A MONTH</strong></p>
               <div class="split-inputs">
-                <label>
-                  <span>Partner A earns</span>
-                  <output data-split-out="a">$70,000</output>
-                  <input type="range" min="20000" max="200000" step="5000" value="70000"
-                         data-split-input="a" aria-label="Partner A annual income">
-                </label>
-                <label>
-                  <span>Partner B earns</span>
-                  <output data-split-out="b">$110,000</output>
-                  <input type="range" min="20000" max="200000" step="5000" value="110000"
-                         data-split-input="b" aria-label="Partner B annual income">
-                </label>
+                <label><span>Partner A earns</span><output data-split-out="a">$70,000</output><input type="range" min="20000" max="200000" step="5000" value="70000" data-split-input="a" aria-label="Partner A annual income"></label>
+                <label><span>Partner B earns</span><output data-split-out="b">$110,000</output><input type="range" min="20000" max="200000" step="5000" value="110000" data-split-input="b" aria-label="Partner B annual income"></label>
               </div>
-
-              <div class="split-bar" role="img" aria-hidden="true">
-                <span class="split-seg split-seg-a" data-split-seg="a"><b data-split-pct="a">39%</b></span>
-                <span class="split-seg split-seg-b" data-split-seg="b"><b data-split-pct="b">61%</b></span>
-              </div>
-
-              <div class="split-result" aria-live="polite">
-                <div><span>A pays</span><strong data-split-amt="a">$933</strong></div>
-                <div><span>B pays</span><strong data-split-amt="b">$1,467</strong></div>
-              </div>
-
+              <div class="split-bar" aria-hidden="true"><span data-split-seg="a"><b data-split-pct="a">39%</b></span><span data-split-seg="b"><b data-split-pct="b">61%</b></span></div>
+              <div class="split-result" aria-live="polite"><div><span>A pays</span><strong data-split-amt="a">$933</strong></div><div><span>B pays</span><strong data-split-amt="b">$1,467</strong></div></div>
               <p class="split-compare" data-split-compare>Split 50/50 instead and Partner A pays <b>$267</b> more than their income share.</p>
             </div>
-            <p class="exp-demo-caption">Move either income — the fair share recalculates. This is the actual math inside the app.</p>
+            <p>Move either income. The actual product math recalculates in place.</p>
           </div>
-
-          <div class="exp-text">
-            <p class="exp-eyebrow">iOS + ANDROID APP · PRELAUNCH</p>
-            <h3 id="exp-equa-title">Equa</h3>
-            <p class="exp-line">Couples split shared expenses by <strong>what each person earns</strong> — not down the middle.</p>
-            <ul class="exp-pills" aria-label="At a glance">
-              <li>iOS + Android</li>
-              <li>Income-based split</li>
-              <li>Zero-knowledge</li>
-              <li>One-time purchase</li>
-            </ul>
-            <p class="exp-date">In prelaunch validation</p>
+          <div class="work-detail">
+            <p class="work-kicker">iOS + ANDROID / PRELAUNCH</p>
+            <h3>Equa</h3>
+            <p class="work-lede">A private couples-expense app that makes income-based fairness the default.</p>
+            <dl class="work-facts">
+              <div><dt>Why</dt><dd>A 50/50 split can create unequal strain when incomes differ.</dd></div>
+              <div><dt>How</dt><dd>Income-based shares, end-to-end encrypted data, receipt scanning, and no bank connection.</dd></div>
+              <div><dt>State</dt><dd>In prelaunch validation.</dd></div>
+            </dl>
           </div>
-        </div>
+        </article>
 
-        <div class="exp-why">
-          <p class="exp-block-label">WHY IT EXISTS</p>
-          <p>Splitting rent 50/50 when one partner earns twice as much isn’t actually fair, and most couples know it — they just don’t want to run the spreadsheet every month. Equa does that math quietly in the background so the conversation can be about something else.</p>
-        </div>
-
-        <div class="exp-steps" aria-label="How it works">
-          <p class="exp-block-label">HOW IT WORKS</p>
-          <ol>
-            <li><span class="step-n">1</span><span class="step-t">Pair</span><span class="step-d">Two people connect with a pairing code. One purchase covers both.</span></li>
-            <li><span class="step-n">2</span><span class="step-t">Split</span><span class="step-d">Enter incomes; Equa sets each fair share. Override to 50/50 or custom any time.</span></li>
-            <li><span class="step-n">3</span><span class="step-t">Balance</span><span class="step-d">Log expenses or scan a receipt. Equa tracks who covered what and when you’re even.</span></li>
-          </ol>
-        </div>
-
-        <div class="exp-features">
-          <p class="exp-block-label">WHAT MAKES IT DIFFERENT</p>
-          <ul class="chip-grid">
-            <li>Fairness is the default</li>
-            <li>End-to-end encrypted on device</li>
-            <li>No bank connection required</li>
-            <li>No subscription</li>
-            <li>Receipt scanning</li>
-            <li>Shared savings goals</li>
-            <li>Free demo, no account</li>
-          </ul>
-        </div>
-
-        <div class="exp-foot">
-          <span class="foot-badge">STATUS · Prelaunch</span>
-          <span class="foot-badge">PLATFORM · iOS + Android</span>
-          <span class="foot-badge">MODEL · One-time purchase</span>
-        </div>
-      </article>
-
-      <article class="exp-card exp-card-system reveal-group" id="exp-lumi" aria-labelledby="exp-lumi-title">
-        <div class="exp-top exp-top-system">
-          <div class="exp-demo">
-            <div class="continuity-demo" data-continuity-demo aria-label="Interactive demo of an AI partner turning a real request into verified site work">
-              <div class="continuity-map" aria-hidden="true">
-                <span class="channel-node node-discord">“Site feels stalled”</span>
-                <span class="channel-node node-cli">brief + repo</span>
-                <span class="channel-node node-cron">tests + screenshots</span>
-                <span class="continuity-core">PATCH
-THE SITE</span>
-                <span class="action-node">visible
-card</span>
-                <svg viewBox="0 0 640 360" preserveAspectRatio="none">
-                  <path class="route route-1" d="M118 74 C220 74 252 146 320 180" />
-                  <path class="route route-2" d="M118 180 C212 180 254 180 320 180" />
-                  <path class="route route-3" d="M118 286 C220 286 252 214 320 180" />
-                  <path class="route route-4" d="M394 180 C470 180 505 180 548 180" />
-                </svg>
-              </div>
-
-              <div class="continuity-panel" aria-live="polite">
-                <p class="continuity-label">REQUEST → CONTEXT → PATCH → PROOF</p>
-                <strong data-continuity-title>Start with the actual message.</strong>
-                <span data-continuity-copy>“You aren’t actually doing anything with the site” becomes a concrete target: make a visible card, not another plan.</span>
-              </div>
-
-              <div class="continuity-controls" aria-label="Step through the AI partner workflow">
+        <article class="work-panel" id="work-lumi" role="tabpanel" aria-labelledby="work-trigger-lumi" data-work-panel="lumi" hidden>
+          <div class="work-demo">
+            <div class="workflow-demo" data-continuity-demo>
+              <div class="workflow-track" aria-hidden="true"><span>REQUEST</span><span>CONTEXT</span><span>CHANGE</span><span>PROOF</span></div>
+              <div class="workflow-output" aria-live="polite"><p data-continuity-title>Start with the actual request.</p><span data-continuity-copy>A correction becomes a concrete target in the real repository—not another plan.</span></div>
+              <div class="workflow-controls" aria-label="Step through the AI workflow">
                 <button type="button" aria-pressed="true" data-continuity-step="request">Request</button>
                 <button type="button" aria-pressed="false" data-continuity-step="context">Context</button>
-                <button type="button" aria-pressed="false" data-continuity-step="patch">Patch</button>
+                <button type="button" aria-pressed="false" data-continuity-step="change">Change</button>
                 <button type="button" aria-pressed="false" data-continuity-step="proof">Proof</button>
               </div>
             </div>
-            <p class="exp-demo-caption">Tap the chips — a complaint turns into a repo patch, tests, and screenshots.</p>
+            <p>Step through the workflow. The final output is evidence a person can inspect.</p>
           </div>
-
-          <div class="exp-text">
-            <p class="exp-eyebrow">AI PARTNER SYSTEM</p>
-            <h3 id="exp-lumi-title">Lumi / Hermes</h3>
-            <p class="exp-line">A local AI partner that can pick up context, edit the real site, and prove the work happened.</p>
-            <ul class="exp-pills" aria-label="At a glance">
-              <li>Local context</li>
-              <li>Repo edits</li>
-              <li>Tests</li>
-              <li>Screenshots</li>
-            </ul>
-            <p class="exp-date">Live system</p>
+          <div class="work-detail">
+            <p class="work-kicker">LOCAL HUMAN–AI SYSTEM / ACTIVE</p>
+            <h3>Lumi / Hermes</h3>
+            <p class="work-lede">A persistent AI partner that can recover context, act in real tools, and verify the result.</p>
+            <dl class="work-facts">
+              <div><dt>Why</dt><dd>AI collaboration should improve the artifact, not merely produce more conversation.</dd></div>
+              <div><dt>How</dt><dd>Memory, repository tools, automation, tests, browser evidence, and human approval.</dd></div>
+              <div><dt>State</dt><dd>Running locally as an active working system.</dd></div>
+            </dl>
           </div>
-        </div>
-
-        <div class="exp-why">
-          <p class="exp-block-label">WHY IT EXISTS</p>
-          <p>I want AI collaboration to leave artifacts behind: changed files, passing checks, screenshots, and a better next version of the thing we’re building.</p>
-        </div>
-
-        <div class="exp-steps" aria-label="How this workflow works">
-          <p class="exp-block-label">HOW IT WORKS</p>
-          <ol>
-            <li><span class="step-n">1</span><span class="step-t">Read</span><span class="step-d">Load the brief, repo state, and the latest correction.</span></li>
-            <li><span class="step-n">2</span><span class="step-t">Change</span><span class="step-d">Patch source files in the actual site, not a throwaway mockup.</span></li>
-            <li><span class="step-n">3</span><span class="step-t">Verify</span><span class="step-d">Run tests and capture screenshots before claiming progress.</span></li>
-          </ol>
-        </div>
-
-        <div class="exp-features">
-          <p class="exp-block-label">WHAT MAKES IT DIFFERENT</p>
-          <ul class="chip-grid">
-            <li>Starts from real feedback</li>
-            <li>Touches the actual repo</li>
-            <li>Uses memory without leaking secrets</li>
-            <li>Shows proof, not promises</li>
-          </ul>
-        </div>
-
-        <div class="exp-foot">
-          <span class="foot-badge">STATUS · Running locally</span>
-          <span class="foot-badge">OUTPUT · Site changes</span>
-          <span class="foot-badge">PROOF · Tests + screenshots</span>
-        </div>
-      </article>
-      <article class="exp-card exp-card-lab reveal-group" id="exp-lab" aria-labelledby="exp-lab-title">
-        <div class="exp-top">
-          <div class="exp-demo">
-            <div class="lab-demo" data-lab-demo>
-              <p class="lab-demo-label">DESIGN DECISION / PICK ONE</p>
-
-              <div class="lab-demo-opts" role="group" aria-label="Choose a button treatment">
-                <button type="button" class="lab-demo-opt" data-lab-opt="hard" aria-pressed="false">
-                  <span class="lab-swatch sw-hard">Get in touch</span>
-                  <span class="lab-demo-name">A · Hard shadow</span>
-                </button>
-                <button type="button" class="lab-demo-opt" data-lab-opt="soft" aria-pressed="false">
-                  <span class="lab-swatch sw-soft">Get in touch</span>
-                  <span class="lab-demo-name">B · Soft lift</span>
-                </button>
-              </div>
-
-              <p class="lab-demo-out" role="status" aria-live="polite" data-lab-out>Nothing picked yet — that's the point. The machine doesn't choose.</p>
-            </div>
-            <p class="exp-demo-caption">Pick one. That's the whole loop — AI builds the options, a human makes the call.</p>
-          </div>
-
-          <div class="exp-text">
-            <p class="exp-eyebrow">METHOD · RUNNING ON THIS SITE</p>
-            <h3 id="exp-lab-title">The Lab</h3>
-            <p class="exp-line">I can't describe a design in words. So I have my AI <strong>build the options for real</strong> and I pick.</p>
-            <ul class="exp-pills" aria-label="At a glance">
-              <li>Live options</li>
-              <li>No mockups</li>
-              <li>Human decides</li>
-              <li>Ships same day</li>
-            </ul>
-            <p class="exp-date">Used to build this page</p>
-          </div>
-        </div>
-
-        <div class="exp-why">
-          <p class="exp-block-label">WHY IT EXISTS</p>
-          <p>Describing motion in words doesn’t work — “make it feel calmer” means nothing until you see it. So instead of writing a spec, I have the AI build every option as working code, put them side by side, and choose from the real thing. Taste stays human; the labor of building five variants doesn’t.</p>
-        </div>
-
-        <div class="exp-steps" aria-label="How it works">
-          <p class="exp-block-label">HOW IT WORKS</p>
-          <ol>
-            <li><span class="step-n">1</span><span class="step-t">Build</span><span class="step-d">AI implements each candidate as real, running code — not a picture of one.</span></li>
-            <li><span class="step-n">2</span><span class="step-t">Choose</span><span class="step-d">I use them side by side on my phone and pick what actually feels right.</span></li>
-            <li><span class="step-n">3</span><span class="step-t">Ship</span><span class="step-d">The winner goes into the live site, tested and deployed, usually within the hour.</span></li>
-          </ol>
-        </div>
-
-        <div class="exp-foot">
-          <span class="foot-badge">STATUS · In use</span>
-          <span class="foot-badge">ROLE · AI builds, human decides</span>
-          <a class="foot-badge foot-badge-link" href="/lab/">OPEN THE LAB <span aria-hidden="true">↗</span></a>
-        </div>
-      </article>
-    </section>
-
-    <section class="buildlog reveal-group" id="buildlog" aria-labelledby="buildlog-title" data-ledger-section>
-      <div class="section-head">
-        <p>BUILD LOG / THIS SITE, EVOLVING IN PUBLIC</p>
-        <h2 id="buildlog-title">The page keeps<br><em>a record of itself.</em></h2>
-      </div>
-
-      <div class="log-shell">
-        <div class="log-meta">
-          <p class="log-lead">Every change to this site lands as an entry below — rendered from the repo's own history when the page is built. No hand-authored changelog; the site documents its own evolution.</p>
-          <dl class="log-stats" aria-label="Build log summary">
-            <div><dt>Entries</dt><dd><!--BUILDLOG_COUNT--></dd></div>
-            <div><dt>Last change</dt><dd><!--BUILDLOG_UPDATED--></dd></div>
-            <div><dt>Source</dt><dd>git history</dd></div>
-          </dl>
-        </div>
-
-        <div class="log-filters" role="group" aria-label="Filter build log by change type">
-          <button type="button" class="log-chip" aria-pressed="true" data-log-filter="all">All</button>
-          <button type="button" class="log-chip" aria-pressed="false" data-log-filter="exploration">Explorations</button>
-          <button type="button" class="log-chip" aria-pressed="false" data-log-filter="feature">Features</button>
-          <button type="button" class="log-chip" aria-pressed="false" data-log-filter="fix">Fixes</button>
-        </div>
-
-        <p class="log-status" role="status" aria-live="polite" data-log-status></p>
-
-        <ol class="log-list" aria-label="Chronological record of changes to this site, newest first">
-<!--BUILDLOG_ENTRIES-->
-        </ol>
+        </article>
       </div>
     </section>
 
-    <section class="work reveal-group" id="work" aria-labelledby="work-title" data-ledger-section>
-      <div class="section-head">
-        <p>ALSO IN FLIGHT / SHORTER FORM</p>
-        <h2 id="work-title">Other things<br><em>on the bench.</em></h2>
+    <section class="practice" id="practice" aria-labelledby="practice-title">
+      <div class="practice-heading">
+        <p>HOW I WORK</p>
+        <h2 id="practice-title">AI accelerates the build. Judgment stays human.</h2>
       </div>
+      <div class="practice-sequence">
+        <div><span>01</span><h3>Frame the real problem</h3><p>Start with the person, constraint, and decision—not the model.</p></div>
+        <div><span>02</span><h3>Build something usable</h3><p>Close the distance between a promising idea and a working artifact.</p></div>
+        <div><span>03</span><h3>Make the evidence visible</h3><p>Tests, screenshots, decision traces, and clear states replace confident claims.</p></div>
+        <div><span>04</span><h3>Keep a human in charge</h3><p>AI proposes and executes; people set direction and make consequential calls.</p></div>
+      </div>
+      <a class="lab-link" href="/lab/"><span>OPEN DESIGN LAB</span><strong>Use the working instrument behind this site.</strong><small>Real options / persisted choices / complete reset</small></a>
+    </section>
 
-      <ul class="bench-grid">
-        <li class="bench-card" data-bench="ceqr">
-          <div class="bench-viz" aria-hidden="true">
-            <div class="ceqr-scan">
-              <span class="qr">
-                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-              </span>
-              <span class="scanline"></span>
-              <span class="ceqr-ticket">
-                <b>ISSUE #481</b>
-                <em>Leaking faucet · Bldg C</em>
-              </span>
-            </div>
-          </div>
-          <p class="bench-kind">FIELD REPORTING</p>
-          <h3>CeQR</h3>
-          <p class="bench-line">A QR code on the wall becomes a facility issue report — no app, no login for whoever finds the problem.</p>
-          <p class="bench-status">Near launch</p>
-        </li>
-
-        <li class="bench-card" data-bench="storycraft">
-          <div class="bench-viz" aria-hidden="true">
-            <div class="story-revise">
-              <span class="agent a1">DRAFT</span>
-              <span class="agent a2">CRITIQUE</span>
-              <span class="agent a3">REVISE</span>
-              <span class="story-line l1">The room was very dark.</span>
-              <span class="story-line l2">Dark enough that she felt the door before she saw it.</span>
-            </div>
-          </div>
-          <p class="bench-kind">AI WRITING SYSTEM</p>
-          <h3>Storycraft</h3>
-          <p class="bench-line">Multiple agents draft, critique, and revise a long-form novel against a shared story bible.</p>
-          <p class="bench-status">Working prototype</p>
-        </li>
-
-        <li class="bench-card" data-bench="elumri">
-          <div class="bench-viz" aria-hidden="true">
-            <div class="elumri-trace">
-              <span class="node n1">PROPOSED<b>agent</b></span>
-              <span class="node n2">REVIEWED<b>human</b></span>
-              <span class="node n3">DECIDED<b>logged</b></span>
-              <span class="trace-rail"></span>
-            </div>
-          </div>
-          <p class="bench-kind">GOVERNANCE PLATFORM</p>
-          <h3>Elumri</h3>
-          <p class="bench-line">Structure for human–AI decisions: who decided what, on what basis, and what changed because of it.</p>
-          <p class="bench-status">In build</p>
-        </li>
-
-        <li class="bench-card" data-bench="tocin">
-          <div class="bench-viz" aria-hidden="true">
-            <div class="tocin-orbit">
-              <span class="person p1">JM</span>
-              <span class="person p2">KR</span>
-              <span class="person p3">DL</span>
-              <span class="tocin-nudge">3 months<b>since you talked</b></span>
-            </div>
-          </div>
-          <p class="bench-kind">RELATIONSHIP TRACKER</p>
-          <h3>Tocin</h3>
-          <p class="bench-line">A quiet iOS app for keeping up with the people you actually mean to keep up with.</p>
-          <p class="bench-status">In build</p>
-        </li>
+    <section class="inventory" aria-labelledby="inventory-title">
+      <div class="section-intro compact">
+        <p>MORE IN FLIGHT</p>
+        <h2 id="inventory-title">A working bench, not a trophy shelf.</h2>
+      </div>
+      <ul>
+        <li><span>CeQR</span><strong>QR-based facility issue reporting</strong><em>Near launch</em></li>
+        <li><span>Elumri</span><strong>Human–AI decision governance</strong><em>In build</em></li>
+        <li><span>Storycraft</span><strong>Multi-agent long-form fiction system</strong><em>Working prototype</em></li>
+        <li><span>Tocin</span><strong>A quiet relationship tracker for iOS</strong><em>In build</em></li>
       </ul>
     </section>
 
-    <section class="about reveal-group" id="about" aria-labelledby="about-title" data-ledger-section>
-      <div class="about-lead">
-        <p>ABOUT / THE SHORT VERSION</p>
-        <h2 id="about-title">The medium changed.<br>The concern didn’t.</h2>
+    <section class="about" id="about" aria-labelledby="about-title">
+      <div class="about-portrait"><img src="/img/billy-pronovost.jpg" alt="" aria-hidden="true"></div>
+      <div class="about-copy">
+        <p>ABOUT BILLY</p>
+        <h2 id="about-title">The medium changed. The concern didn’t.</h2>
+        <p>I started in communications, moved through design and software, and now direct technology work. The throughline is making complicated systems understandable enough for people to use, question, and improve.</p>
+        <p>Human–AI work extends that practice: use new capability to increase agency without quietly giving away judgment.</p>
+        <div class="career-line" role="list" aria-label="Career path"><span role="listitem">Communications</span><span role="listitem">Design</span><span role="listitem">Software</span><span role="listitem">Technology leadership</span><span role="listitem">Human–AI systems</span></div>
+        <a href="https://github.com/wdpronovost" rel="noreferrer">See public work on GitHub</a>
       </div>
-      <div class="about-story">
-        <p>I started in <strong>communications</strong>, learning that the way an idea is explained changes who gets to take part.</p>
-        <p>That led through <strong>design</strong> and <strong>software</strong> into <strong>technology leadership</strong>: translating between people, possibilities, and the systems that have to hold up after launch.</p>
-        <p>Now, <strong>human–AI experimentation</strong> extends the same question: how can new tools increase people’s agency instead of quietly taking it away?</p>
-      </div>
-      <div class="path" aria-label="Billy's path from communications to human–AI experimentation">
-        <span>communications</span><i aria-hidden="true">→</i><span>design</span><i aria-hidden="true">→</i><span>software</span><i aria-hidden="true">→</i><span>technology leadership</span><i aria-hidden="true">→</i><span>human–AI experimentation</span>
-      </div>
-      <aside class="personal-note">
-        <span aria-hidden="true">✦</span>
-        <p><strong>A working belief:</strong> serious work can be clear, warm, and a little surprising at the same time.</p>
-      </aside>
     </section>
 
-    <section class="contact reveal-group" id="contact" aria-labelledby="contact-title">
-      <p>HAVE A COMPLICATED, HUMAN PROBLEM?</p>
-      <h2 id="contact-title">Let’s make it<br>easier to hold.</h2>
-      <a href="mailto:wdp@wdpronovost.com">wdp@wdpronovost.com <span aria-hidden="true">↗</span></a>
+    <section class="build-record" id="buildlog" aria-labelledby="buildlog-title">
+      <details>
+        <summary><span>BUILD RECORD / FROM THIS REPOSITORY</span><strong id="buildlog-title">See how the site changes in public</strong><small><!--BUILDLOG_COUNT--> recorded changes / latest <!--BUILDLOG_UPDATED--></small></summary>
+        <ol class="log-list" aria-label="Recent changes to this site">
+<!--BUILDLOG_ENTRIES-->
+        </ol>
+      </details>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="contact-copy">
+        <p>START A CONVERSATION</p>
+        <h2 id="contact-title">Have a complicated, human problem?</h2>
+        <span>Tell me what you’re trying to make clearer, safer, or more useful. Your address is used only to reply.</span>
+      </div>
+      <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="company-website" action="/#contact" data-contact-form>
+        <input type="hidden" name="form-name" value="contact">
+        <p class="contact-trap" aria-hidden="true"><label>Leave this field empty <input name="company-website" tabindex="-1" autocomplete="off"></label></p>
+        <label><span>Name</span><input type="text" name="name" autocomplete="name" maxlength="120" required></label>
+        <label><span>Your email</span><input type="email" name="email" autocomplete="email" maxlength="254" required></label>
+        <label class="message-field"><span>What should I know?</span><textarea name="message" rows="5" maxlength="4000" required></textarea></label>
+        <button type="submit">Send message</button>
+        <p class="contact-status" role="status" aria-live="polite" data-contact-status hidden></p>
+      </form>
     </section>
   </main>
 
-  <div class="trace-dialog" role="dialog" aria-modal="true" aria-labelledby="trace-title" hidden data-ai-trace>
-    <div class="trace-shell" role="document">
-      <button class="trace-close" type="button" aria-label="Close AI signal trace" data-ai-trace-close>×</button>
-      <div class="trace-head">
-        <p class="trace-kicker">EASTER EGG / SIGNAL TRACE</p>
-        <h2 id="trace-title">My AI brought you here.</h2>
-        <p>Respectfully. The point wasn’t automation replacing judgment — it was a better system for finding signal, preparing clearly, and keeping a human decision in the loop.</p>
-      </div>
-
-      <div class="trace-board" aria-label="AI-assisted path that led to this page">
-        <svg class="trace-map" viewBox="0 0 760 240" role="img" aria-labelledby="trace-map-title trace-map-desc">
-          <title id="trace-map-title">AI signal path from opportunity discovery to human review</title>
-          <desc id="trace-map-desc">A visible path connects discovery, fit synthesis, application packet, site redesign, and human approval.</desc>
-          <path class="trace-path" d="M62 142 C160 36 250 226 356 118 S548 40 690 122" />
-          <g class="trace-node trace-node-1">
-            <circle cx="62" cy="142" r="18" />
-            <text x="62" y="147">1</text>
-          </g>
-          <g class="trace-node trace-node-2">
-            <circle cx="214" cy="92" r="18" />
-            <text x="214" y="97">2</text>
-          </g>
-          <g class="trace-node trace-node-3">
-            <circle cx="356" cy="118" r="18" />
-            <text x="356" y="123">3</text>
-          </g>
-          <g class="trace-node trace-node-4">
-            <circle cx="526" cy="82" r="18" />
-            <text x="526" y="87">4</text>
-          </g>
-          <g class="trace-node trace-node-5">
-            <circle cx="690" cy="122" r="18" />
-            <text x="690" y="127">✓</text>
-          </g>
-        </svg>
-
-        <ol class="trace-steps">
-          <li><span>01</span><strong>Found the signal</strong><em>role discovery</em></li>
-          <li><span>02</span><strong>Tested the fit</strong><em>research + synthesis</em></li>
-          <li><span>03</span><strong>Built the packet</strong><em>draft, critique, refine</em></li>
-          <li><span>04</span><strong>Rebuilt the page</strong><em>visual proof, not résumé prose</em></li>
-          <li><span>05</span><strong>Human call</strong><em>approval required</em></li>
-        </ol>
-      </div>
-
-      <div class="packet-grid" aria-label="Application packet artifacts">
-        <article>
-          <span>research brief</span>
-          <strong>What opportunity is this, really?</strong>
-          <p>AI helped sort noise from signal before I spent human attention on it.</p>
-        </article>
-        <article>
-          <span>application packet</span>
-          <strong>Why this work, why me, why now?</strong>
-          <p>Drafted with machine leverage; edited with human taste and judgment.</p>
-        </article>
-        <article>
-          <span>site redesign</span>
-          <strong>Show the way I work.</strong>
-          <p>This page became part of the packet: proof that the workflow is real.</p>
-        </article>
-      </div>
-
-      <p class="trace-footnote">AI surfaced the path. I made the calls. That’s the practice: systems that expand judgment without pretending to replace it.</p>
-    </div>
-  </div>
-
   <footer>
-    <a href="#main-content">BACK TO TOP ↑</a>
-    <span>BILLY PRONOVOST / 2026</span>
-    <span>BUILT LOCALLY · NO TRACKERS</span>
+    <a href="#main-content">Back to top</a>
+    <span>BILLY PRONOVOST / PORTLAND, OREGON</span>
+    <span>BUILT LOCALLY / NO TRACKERS</span>
   </footer>
+
+  <dialog class="command-dialog" data-command-dialog aria-labelledby="command-title">
+    <div class="command-bar"><span id="command-title">NAVIGATE THE PRACTICE</span><button type="button" data-command-close>Close</button></div>
+    <p>Choose a destination. Press Escape to close.</p>
+    <nav aria-label="Navigator destinations">
+      <a href="#work" data-command-link><span>01</span><strong>Use selected work</strong><small>Product demos and AI workflow</small></a>
+      <a href="#practice" data-command-link><span>02</span><strong>Understand the practice</strong><small>How AI and human judgment work together</small></a>
+      <a href="#about" data-command-link><span>03</span><strong>Meet Billy</strong><small>Career path and operating perspective</small></a>
+      <a href="#contact" data-command-link><span>04</span><strong>Start a conversation</strong><small>Private server-side contact form</small></a>
+    </nav>
+  </dialog>
 </body>
 </html>

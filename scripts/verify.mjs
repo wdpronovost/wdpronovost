@@ -28,9 +28,12 @@ for (const [label, pattern] of forbidden) if (pattern.test(text)) failures.push(
 const inlineStyle = /<[^>]+\sstyle=["'][^"']+["']/i.exec(text);
 if (inlineStyle) failures.push(`inline style attribute violates CSP: ${inlineStyle[0].slice(0, 80)}`);
 if (!/<main id="main-content"/.test(text)) failures.push('main landmark');
-if (!/role="tablist"[^>]*aria-label="Modes of Practice"/.test(text)) failures.push('Modes of Practice tablist semantics');
-if (!/role="tabpanel"[^>]*aria-live="polite"/.test(text)) failures.push('Modes of Practice live panel semantics');
+if (!/role="tablist"[^>]*aria-label="Choose an evaluation path"/.test(text)) failures.push('evaluation path tablist semantics');
+if (!/role="tabpanel"[^>]*aria-live="polite"/.test(text)) failures.push('interactive live panel semantics');
 if (!/prefers-reduced-motion:reduce/.test(text)) failures.push('reduced-motion protection');
-if (!/mailto:wdp@wdpronovost\.com/.test(text)) failures.push('intentional mailbox address');
+// A private contact address must never appear in source, generated output, or public assets.
+if (/mailto:|[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/i.test(text)) failures.push('private email address or mail link');
+if (!/<form[^>]+name="contact"[^>]+data-netlify="true"/.test(text)) failures.push('host-native contact form');
+if (!/netlify-honeypot="company-website"/.test(text)) failures.push('contact form spam protection');
 if (failures.length) throw new Error(`Verification failed: ${failures.join(', ')}`);
 console.log(`Verified ${files.length} source and public text assets: landmarks, interaction hooks, contact intent, secret patterns, and dependency policy passed.`);
