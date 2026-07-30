@@ -68,7 +68,7 @@ test('Explorations feed shows the work with interactive project demos', () => {
   assert.match(html, /data-continuity-demo/);
   assert.match(html, /Skalable/);
   assert.match(html, /Lumi \/ Hermes/);
-  assert.match(html, /REQUEST → CONTEXT → PATCH → PROOF/);
+  assert.match(html, /REQUEST \/ CONTEXT \/ PATCH \/ PROOF/);
   assert.match(css, /continuity-demo/);
   assert.match(js, /data-continuity-step/);
   assert.match(js, /Start with the actual message/);
@@ -213,10 +213,15 @@ test('sticky section nav and weighted reveals render in built homepage', async (
   assert.match(js, /classList\.add\('is-visible'\)/);
 });
 
-test('homepage stays local-only and avoids stale project exits', () => {
+test('homepage stays local-only, uses the protected contact form, and avoids stale project exits', () => {
   assert.doesNotMatch(html, /<(?:script|link|img)[^>]+(?:src|href)="https?:\/\//i);
   assert.doesNotMatch(html, /<a[^>]+href="https?:\/\//i);
-  assert.match(html, /mailto:wdp@wdpronovost\.com/);
+  assert.match(html, /<form[^>]+name="contact"[^>]+data-netlify="true"[^>]+netlify-honeypot="company-website"/);
+  assert.match(html, /name="form-name" value="contact"/);
+  assert.match(html, /data-contact-status/);
+  assert.match(js, /new URLSearchParams\(new FormData\(form\)\)/);
+  assert.match(js, /Content-Type': 'application\/x-www-form-urlencoded'/);
+  assert.doesNotMatch(html, /mailto:|wdp@wdpronovost\.com/i);
   assert.doesNotMatch(html, /googletagmanager|google-analytics|fonts\.googleapis/i);
 });
 
@@ -241,9 +246,7 @@ test('Build Log renders the site history from git without leaking identity', asy
   // Build injects real entries and resolves every placeholder.
   assert.match(dist, /class="log-entry" data-log-type="/);
   assert.doesNotMatch(dist, /<!--BUILDLOG_(?:ENTRIES|COUNT|UPDATED)-->/);
-  // Privacy: no author emails or key markers reach the rendered page (the
-  // intentional public mailbox is the only allowed address).
-  const withoutMailbox = dist.replaceAll('wdp@wdpronovost.com', '');
-  assert.doesNotMatch(withoutMailbox, /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/);
+  // Privacy: no author emails or key markers reach the rendered page.
+  assert.doesNotMatch(dist, /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/);
   assert.match(build, /never author name or email/);
 });

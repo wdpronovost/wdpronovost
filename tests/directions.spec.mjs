@@ -48,6 +48,7 @@ test('pages use only local assets and include accessibility/mobile protections',
     assert.match(html, /<main\b/);
     assert.doesNotMatch(html, /<(?:script|link|img)[^>]+(?:src|href)=["']https?:\/\//i);
     assert.doesNotMatch(html, /fonts\.googleapis|googletagmanager|google-analytics/i);
+    assert.doesNotMatch(html, /mailto:|wdp@wdpronovost\.com/i);
   }
   for (const css of allCss) {
     assert.match(css, /:focus-visible/);

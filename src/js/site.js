@@ -449,3 +449,38 @@ document.querySelectorAll('[data-reveal]').forEach((reveal) => {
     ledgerSections.forEach((section) => ledgerObserver.observe(section));
   }
 })();
+
+/* ---- Contact: progressively enhance Netlify Forms without exposing an email address ---- */
+(() => {
+  const form = document.querySelector('[data-contact-form]');
+  const status = form?.querySelector('[data-contact-status]');
+  if (!form || !status) return;
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+
+    const button = form.querySelector('button[type="submit"]');
+    button.disabled = true;
+    status.hidden = false;
+    status.classList.remove('is-error');
+    status.textContent = 'Sending…';
+
+    try {
+      const body = new URLSearchParams(new FormData(form));
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: body.toString()
+      });
+      if (!response.ok) throw new Error(`Contact form returned ${response.status}`);
+      form.reset();
+      status.textContent = 'Message sent. I’ll get back to you soon.';
+    } catch {
+      status.classList.add('is-error');
+      status.textContent = 'That didn’t send. Please try again in a moment.';
+    } finally {
+      button.disabled = false;
+    }
+  });
+})();
