@@ -1,5 +1,10 @@
 [
   {
+    "hash": "e14bfaa",
+    "date": "2026-07-31",
+    "subject": "feat(site): publish AI workflow case study"
+  },
+  {
     "hash": "2b6c248",
     "date": "2026-07-30",
     "subject": "chore(deploy): register contact form"

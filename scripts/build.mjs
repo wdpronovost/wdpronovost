@@ -24,6 +24,9 @@ const copies = [
   // Internal direction picker (noindex): live A/B demos for design decisions.
   ['public/lab/index.html', 'dist/lab/index.html'],
   ['public/lab/lab.css', 'dist/css/lab.css'],
+  ['public/lab/voices/index.html', 'dist/lab/voices/index.html'],
+  ['public/lab/voices/voices.css', 'dist/css/voices.css'],
+  ['public/lab/voices/voices.js', 'dist/js/voices.js'],
   ['public/lab/lab.js', 'dist/js/lab.js']
 ];
 
@@ -32,6 +35,7 @@ await Promise.all([
   mkdir('dist/css', { recursive: true }),
   mkdir('dist/js', { recursive: true }),
   mkdir('dist/lab', { recursive: true }),
+  mkdir('dist/lab/voices', { recursive: true }),
   mkdir('dist/ai-workflow', { recursive: true }),
   mkdir('dist/downloads', { recursive: true })
 ]);
