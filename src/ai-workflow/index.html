@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4ddb7">
+  <meta name="description" content="A public, sanitized case study on AI-assisted technology operations reporting and the Lumi/Hermes latest experiment.">
+  <title>AI Workflow Case Study — Billy Pronovost</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="stylesheet" href="/css/ai-workflow.css">
+  <script src="/js/ai-workflow.js" defer></script>
+</head>
+<body class="ai-case-page">
+  <a class="skip" href="#main-content">Skip to main content</a>
+  <header class="case-header">
+    <a class="wordmark" href="/" aria-label="Billy Pronovost home">W<span>D</span>P</a>
+    <p>AI workflow case study</p>
+    <a href="/">Home</a>
+  </header>
+  <main id="main-content">
+    <section class="case-hero" aria-labelledby="case-title">
+      <div class="case-hero-copy">
+        <p class="case-kicker">AI WORKFLOW CASE STUDY / CURRENT ROLE</p>
+        <h1 id="case-title">AI-assisted reporting with human approval.</h1>
+        <p class="case-statement">A weekly Technology Operations reporting workflow turns scattered operational inputs into a leadership-ready draft, while I verify the evidence, priorities, and final voice before anything is shared.</p>
+        <div class="case-actions">
+          <a class="case-button" href="/downloads/ai-workflow-case-study.pdf">Download PDF <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4v12m-5-5 5 5 5-5M5 20h14"/></svg></a>
+          <a class="case-link-button" href="#workflow">Explore workflow</a>
+        </div>
+      </div>
+      <div class="case-hero-visual" aria-hidden="true">
+        <div class="paper-stack">
+          <span class="paper paper-one"></span>
+          <span class="paper paper-two"></span>
+          <span class="paper paper-three"></span>
+        </div>
+        <div class="report-card-mini"><b>Weekly report</b><span></span><span></span><span></span></div>
+      </div>
+    </section>
+
+    <section class="case-proof-strip" aria-label="Case study proof points">
+      <p><span>01</span>Current role example</p>
+      <p><span>02</span>Sanitized public version</p>
+      <p><span>03</span>Human-in-the-loop controls</p>
+    </section>
+
+    <section class="case-section workflow-section" id="workflow" aria-labelledby="workflow-title">
+      <div class="case-section-head">
+        <p>WORKFLOW / INTERACTIVE</p>
+        <h2 id="workflow-title">Source material becomes a reviewed report.</h2>
+      </div>
+      <div class="workflow-board" data-flow-board>
+        <div class="workflow-visual">
+
+          <svg class="workflow-svg" viewBox="0 0 900 360" role="img" aria-labelledby="workflow-svg-title workflow-svg-desc">
+            <title id="workflow-svg-title">Source to structure to review to publish workflow diagram</title>
+            <desc id="workflow-svg-desc">Four labeled stages connected by lines, with review emphasized before publishing.</desc>
+            <path class="flow-line" d="M145 180 C260 100 330 100 445 180 S630 260 755 180"/>
+            <g class="flow-node flow-node-source" data-svg-node="source"><rect x="54" y="112" width="182" height="136" rx="18"/><text x="145" y="170">SOURCE</text><text x="145" y="198">inputs</text></g>
+            <g class="flow-node flow-node-structure" data-svg-node="structure"><rect x="354" y="112" width="182" height="136" rx="18"/><text x="445" y="170">STRUCTURE</text><text x="445" y="198">draft</text></g>
+            <g class="flow-node flow-node-review" data-svg-node="review"><circle cx="610" cy="180" r="72"/><text x="610" y="174">REVIEW</text><text x="610" y="202">human check</text></g>
+            <g class="flow-node flow-node-publish" data-svg-node="publish"><rect x="704" y="112" width="154" height="136" rx="18"/><text x="781" y="170">PUBLISH</text><text x="781" y="198">approved</text></g>
+          </svg>
+          <div class="workflow-controls" role="group" aria-label="Step through the workflow">
+
+            <button type="button" data-flow-step="source" aria-pressed="true">
+              <span>01</span>Source
+            </button>
+
+            <button type="button" data-flow-step="structure" aria-pressed="false">
+              <span>02</span>Structure
+            </button>
+
+            <button type="button" data-flow-step="review" aria-pressed="false">
+              <span>03</span>Review
+            </button>
+
+            <button type="button" data-flow-step="publish" aria-pressed="false">
+              <span>04</span>Publish
+            </button>
+          </div>
+        </div>
+        <div class="flow-card-stack" aria-live="polite">
+
+          <article class="flow-card is-active" id="flow-source" data-flow-card="source" aria-labelledby="flow-source-title">
+            <p class="flow-index">01 / Source</p>
+            <h3 id="flow-source-title">Collect the operating picture</h3>
+            <p>Team recap submissions, meeting notes, Work Radar items, a prior finalized report, and live Jira queries are gathered as the source set.</p>
+          </article>
+
+          <article class="flow-card" id="flow-structure" data-flow-card="structure" aria-labelledby="flow-structure-title">
+            <p class="flow-index">02 / Structure</p>
+            <h3 id="flow-structure-title">Ask AI to shape the draft</h3>
+            <p>The assistant organizes the source material into reporting sections, carries forward open priorities, and highlights gaps instead of inventing answers.</p>
+          </article>
+
+          <article class="flow-card" id="flow-review" data-flow-card="review" aria-labelledby="flow-review-title">
+            <p class="flow-index">03 / Review</p>
+            <h3 id="flow-review-title">Verify before it leaves the room</h3>
+            <p>I check source completeness, Jira counts, status and priority changes, tone, omissions, and whether each claim is safe to share.</p>
+          </article>
+
+          <article class="flow-card" id="flow-publish" data-flow-card="publish" aria-labelledby="flow-publish-title">
+            <p class="flow-index">04 / Publish</p>
+            <h3 id="flow-publish-title">Approve the leadership version</h3>
+            <p>Only the reviewed and finalized report becomes the record. AI accelerates synthesis; accountability stays human.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section split-section" aria-labelledby="split-title">
+      <div class="case-section-head">
+        <p>OPERATING MODEL / HUMAN IN THE LOOP</p>
+        <h2 id="split-title">AI does the synthesis. Billy decides what is true.</h2>
+      </div>
+      <div class="decision-split">
+        <article>
+          <p class="split-label-case">AI DOES</p>
+          <ul><li>Structures a first draft from known inputs</li>
+<li>Carries forward priorities from prior reports</li>
+<li>Surfaces missing or ambiguous source areas</li>
+<li>Suggests concise leadership-reporting language</li></ul>
+        </article>
+        <article>
+          <p class="split-label-case">BILLY DECIDES</p>
+          <ul><li>Confirms every source was included</li>
+<li>Checks Jira counts and status changes</li>
+<li>Removes or rewrites anything sensitive</li>
+<li>Approves the final report and owns the decision</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="case-section mockup-section" aria-labelledby="mockup-title">
+      <div class="case-section-head">
+        <p>SANITIZED REPORT MOCKUP / NO SOURCE DATA</p>
+        <h2 id="mockup-title">The page shows the shape of work, not private content.</h2>
+      </div>
+      <div class="mockup-composition">
+        <div class="mock-source">
+          <h3>Before synthesis</h3>
+          <span>Recap fragments</span>
+          <span>Meeting notes</span>
+          <span>Open Jira counts</span>
+          <span>Prior report threads</span>
+        </div>
+        <div class="mock-bridge" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div class="mock-report">
+          <div class="mock-report-head"><span></span><span></span></div>
+          <h3>Reviewed weekly report</h3>
+          <p>Executive summary</p>
+          <p>Priority movement</p>
+          <p>Operational gaps</p>
+          <p>Next actions</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section guardrail-section" aria-labelledby="guardrail-title">
+      <div class="case-section-head">
+        <p>CONTROLS / BOUNDARIES</p>
+        <h2 id="guardrail-title">Speed is useful only when the guardrails are explicit.</h2>
+      </div>
+      <div class="guardrail-grid">
+
+          <article>
+            <span>01</span>
+            <h3>No sensitive identifiers</h3>
+            <p>The public case study avoids confidential project names, ticket keys, team names, screenshots, source data, credentials, internal systems, and private memory contents.</p>
+          </article>
+
+          <article>
+            <span>02</span>
+            <h3>Evidence stays inspectable</h3>
+            <p>The workflow treats source completeness and query results as checks, not assumptions.</p>
+          </article>
+
+          <article>
+            <span>03</span>
+            <h3>AI cannot finalize</h3>
+            <p>Drafting and synthesis are delegated. Approval, business judgment, and communication responsibility are not.</p>
+          </article>
+      </div>
+    </section>
+
+    <section class="case-section experiment-section" aria-labelledby="experiment-title">
+      <div>
+        <p class="case-kicker">LATEST EXPERIMENT / PERSISTENT AI PARTNER</p>
+        <h2 id="experiment-title">Latest experiment: Lumi / Hermes</h2>
+        <p>Lumi/Hermes is a persistent AI partner runtime I use for real work. It can load context, invoke tools, edit files, run scheduled tasks, and verify outputs. The experiment is not replacing judgment; it is making the path from intent to tested artifact shorter.</p>
+      </div>
+      <ol class="experiment-steps">
+        <li><span>01</span>Load relevant context</li>
+        <li><span>02</span>Use tools on real artifacts</li>
+        <li><span>03</span>Run verification</li>
+        <li><span>04</span>Return proof for human decision</li>
+      </ol>
+    </section>
+
+    <section class="case-cta" aria-labelledby="cta-title">
+      <p class="case-kicker">DOWNLOADABLE CASE STUDY / PDF READY</p>
+      <h2 id="cta-title">A self-contained PDF is available for upload.</h2>
+      <p>The PDF includes the same sanitized story and vector diagrams for offline review. The public page adds interactivity, but the PDF does not depend on the site.</p>
+      <div class="case-actions">
+        <a class="case-button" href="/downloads/ai-workflow-case-study.pdf">Download case-study PDF <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4v12m-5-5 5 5 5-5M5 20h14"/></svg></a>
+        <a class="case-link-button" href="/#contact">Contact</a>
+      </div>
+      <p class="public-url">wdpronovost.com/ai-workflow/</p>
+    </section>
+  </main>
+  <footer>
+    <span>WDP</span>
+    <a href="/">Home <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+    <span>AI workflow case study</span>
+  </footer>
+</body>
+</html>

@@ -1,5 +1,30 @@
 [
   {
+    "hash": "2b6c248",
+    "date": "2026-07-30",
+    "subject": "chore(deploy): register contact form"
+  },
+  {
+    "hash": "e2d2734",
+    "date": "2026-07-30",
+    "subject": "fix(site): restore private contact journey"
+  },
+  {
+    "hash": "9a08cb1",
+    "date": "2026-07-28",
+    "subject": "Revert \"feat(site): launch interactive AI career portfolio\""
+  },
+  {
+    "hash": "b87547d",
+    "date": "2026-07-28",
+    "subject": "feat(site): launch interactive AI career portfolio"
+  },
+  {
+    "hash": "369b9c7",
+    "date": "2026-07-28",
+    "subject": "fix(site): harden application-ready public surface"
+  },
+  {
     "hash": "c704a72",
     "date": "2026-07-27",
     "subject": "fix(bench): rebalance Tocin vignette composition"

@@ -1,0 +1,96 @@
+{
+  "meta": {
+    "title": "AI Workflow Case Study — Billy Pronovost",
+    "description": "A public, sanitized case study on AI-assisted technology operations reporting and the Lumi/Hermes latest experiment.",
+    "publicUrl": "wdpronovost.com/ai-workflow/"
+  },
+  "hero": {
+    "kicker": "AI WORKFLOW CASE STUDY / CURRENT ROLE",
+    "title": "AI-assisted reporting with human approval.",
+    "statement": "A weekly Technology Operations reporting workflow turns scattered operational inputs into a leadership-ready draft, while I verify the evidence, priorities, and final voice before anything is shared.",
+    "proofPoints": [
+      "Current role example",
+      "Sanitized public version",
+      "Human-in-the-loop controls"
+    ]
+  },
+  "workflow": [
+    {
+      "id": "source",
+      "label": "Source",
+      "title": "Collect the operating picture",
+      "body": "Team recap submissions, meeting notes, Work Radar items, a prior finalized report, and live Jira queries are gathered as the source set."
+    },
+    {
+      "id": "structure",
+      "label": "Structure",
+      "title": "Ask AI to shape the draft",
+      "body": "The assistant organizes the source material into reporting sections, carries forward open priorities, and highlights gaps instead of inventing answers."
+    },
+    {
+      "id": "review",
+      "label": "Review",
+      "title": "Verify before it leaves the room",
+      "body": "I check source completeness, Jira counts, status and priority changes, tone, omissions, and whether each claim is safe to share."
+    },
+    {
+      "id": "publish",
+      "label": "Publish",
+      "title": "Approve the leadership version",
+      "body": "Only the reviewed and finalized report becomes the record. AI accelerates synthesis; accountability stays human."
+    }
+  ],
+  "split": {
+    "ai": [
+      "Structures a first draft from known inputs",
+      "Carries forward priorities from prior reports",
+      "Surfaces missing or ambiguous source areas",
+      "Suggests concise leadership-reporting language"
+    ],
+    "human": [
+      "Confirms every source was included",
+      "Checks Jira counts and status changes",
+      "Removes or rewrites anything sensitive",
+      "Approves the final report and owns the decision"
+    ]
+  },
+  "mockup": {
+    "before": [
+      "Recap fragments",
+      "Meeting notes",
+      "Open Jira counts",
+      "Prior report threads"
+    ],
+    "after": [
+      "Executive summary",
+      "Priority movement",
+      "Operational gaps",
+      "Next actions"
+    ]
+  },
+  "guardrails": [
+    {
+      "title": "No sensitive identifiers",
+      "body": "The public case study avoids confidential project names, ticket keys, team names, screenshots, source data, credentials, internal systems, and private memory contents."
+    },
+    {
+      "title": "Evidence stays inspectable",
+      "body": "The workflow treats source completeness and query results as checks, not assumptions."
+    },
+    {
+      "title": "AI cannot finalize",
+      "body": "Drafting and synthesis are delegated. Approval, business judgment, and communication responsibility are not."
+    }
+  ],
+  "experiment": {
+    "title": "Latest experiment: Lumi / Hermes",
+    "body": "Lumi/Hermes is a persistent AI partner runtime I use for real work. It can load context, invoke tools, edit files, run scheduled tasks, and verify outputs. The experiment is not replacing judgment; it is making the path from intent to tested artifact shorter.",
+    "steps": [
+      "Load relevant context",
+      "Use tools on real artifacts",
+      "Run verification",
+      "Return proof for human decision"
+    ]
+  },
+  "answer": "Today I use AI as part of a weekly Technology Operations reporting workflow. It brings together team recaps, meeting notes, open work, the prior finalized report, and live Jira data. AI helps organize the inputs, identify gaps, carry forward open priorities, and produce a leadership-ready draft. I remain responsible for accuracy and final judgment: I verify source coverage, Jira counts, status and priority changes, tone, omissions, and every claim before anything is shared. My latest experiment is Lumi/Hermes, a persistent AI partner runtime I built and continue to develop. It maintains context across work, uses tools, edits real files, runs scheduled workflows, and verifies outputs while keeping decisions and approval with me. The attached case study shows how I use that system in practice, including what the AI handles, where human review remains required, and the controls that keep the result grounded. A visual walkthrough is available at wdpronovost.com/ai-workflow/."
+}

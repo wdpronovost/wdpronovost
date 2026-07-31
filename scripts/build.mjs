@@ -4,14 +4,23 @@ import { promisify } from 'node:util';
 
 const run = promisify(execFile);
 
+await run('node', ['scripts/render-ai-workflow.mjs'], { cwd: process.cwd() });
+await mkdir('public/downloads', { recursive: true });
+
 const copies = [
   ['src/index.html', 'dist/index.html'],
   ['src/css/site.css', 'dist/css/site.css'],
+  ['src/css/ai-workflow.css', 'dist/css/ai-workflow.css'],
+  ['src/css/ai-workflow-print.css', 'dist/css/ai-workflow-print.css'],
   ['src/js/site.js', 'dist/js/site.js'],
+  ['src/js/ai-workflow.js', 'dist/js/ai-workflow.js'],
+  ['src/ai-workflow/index.html', 'dist/ai-workflow/index.html'],
+  ['src/ai-workflow/print.html', 'dist/ai-workflow/print.html'],
   ['public/favicon.ico', 'dist/favicon.ico'],
   ['public/_redirects', 'dist/_redirects'],
   ['public/directions', 'dist/directions'],
   ['public/img', 'dist/img'],
+  ['public/downloads', 'dist/downloads'],
   // Internal direction picker (noindex): live A/B demos for design decisions.
   ['public/lab/index.html', 'dist/lab/index.html'],
   ['public/lab/lab.css', 'dist/css/lab.css'],
@@ -22,9 +31,11 @@ await rm('dist', { recursive: true, force: true });
 await Promise.all([
   mkdir('dist/css', { recursive: true }),
   mkdir('dist/js', { recursive: true }),
-  mkdir('dist/lab', { recursive: true })
+  mkdir('dist/lab', { recursive: true }),
+  mkdir('dist/ai-workflow', { recursive: true }),
+  mkdir('dist/downloads', { recursive: true })
 ]);
-const recursiveSources = new Set(['public/directions', 'public/img']);
+const recursiveSources = new Set(['public/directions', 'public/img', 'public/downloads']);
 await Promise.all(copies.map(([source, target]) => cp(source, target, { recursive: recursiveSources.has(source) })));
 
 /* ---- Build Log: render the site's own evolution from git history ---- */

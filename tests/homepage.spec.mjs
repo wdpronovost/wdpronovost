@@ -10,6 +10,12 @@ const build = await readFile(new URL('scripts/build.mjs', root), 'utf8');
 const labHtml = await readFile(new URL('public/lab/index.html', root), 'utf8');
 const labJs = await readFile(new URL('public/lab/lab.js', root), 'utf8');
 const labCss = await readFile(new URL('public/lab/lab.css', root), 'utf8');
+const aiData = JSON.parse(await readFile(new URL('src/data/ai-workflow.json', root), 'utf8'));
+const aiHtml = await readFile(new URL('src/ai-workflow/index.html', root), 'utf8');
+const aiCss = await readFile(new URL('src/css/ai-workflow.css', root), 'utf8');
+const aiJs = await readFile(new URL('src/js/ai-workflow.js', root), 'utf8');
+const aiPrintHtml = await readFile(new URL('src/ai-workflow/print.html', root), 'utf8');
+const aiPrintCss = await readFile(new URL('src/css/ai-workflow-print.css', root), 'utf8');
 const nodeVersion = (await readFile(new URL('.nvmrc', root), 'utf8')).trim();
 
 const modes = [
@@ -230,8 +236,64 @@ test('build maps deterministic production source paths and preserves directions'
     "['src/index.html', 'dist/index.html']",
     "['src/css/site.css', 'dist/css/site.css']",
     "['src/js/site.js', 'dist/js/site.js']",
+    "['src/ai-workflow/index.html', 'dist/ai-workflow/index.html']",
+    "['src/css/ai-workflow.css', 'dist/css/ai-workflow.css']",
+    "['src/js/ai-workflow.js', 'dist/js/ai-workflow.js']",
+    "['public/downloads', 'dist/downloads']",
     "['public/directions', 'dist/directions']"
   ]) assert.ok(build.includes(pair), `missing deterministic build mapping ${pair}`);
+});
+
+test('Lumi card links to the dedicated AI workflow case study without changing its core story', () => {
+  assert.match(html, /id="exp-lumi"/);
+  assert.match(html, /href="\/ai-workflow\/">OPEN AI WORKFLOW CASE STUDY/);
+  assert.match(html, /A local AI partner that can pick up context, edit the real site, and prove the work happened/);
+});
+
+test('AI workflow route is generated from shared data and contains required visual case-study sections', async () => {
+  const distAi = await readFile(new URL('dist/ai-workflow/index.html', root), 'utf8');
+  for (const required of [
+    'AI-assisted reporting with human approval.',
+    'Team recap submissions',
+    'live Jira queries',
+    'AI does the synthesis. Billy decides what is true.',
+    'SANITIZED REPORT MOCKUP / NO SOURCE DATA',
+    'Speed is useful only when the guardrails are explicit.',
+    'Latest experiment: Lumi / Hermes',
+    'wdpronovost.com/ai-workflow/'
+  ]) {
+    assert.match(aiHtml, new RegExp(required.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+    assert.match(distAi, new RegExp(required.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+  }
+  assert.match(aiHtml, /data-flow-board/);
+  assert.match(aiHtml, /workflow-svg/);
+  assert.match(aiHtml, /data-flow-step="source"/);
+  assert.match(aiHtml, /data-flow-step="publish"/);
+  assert.match(aiCss, /\.mockup-composition/);
+  assert.match(aiCss, /min-height:48px/);
+  assert.match(aiCss, /prefers-reduced-motion:reduce/);
+  assert.match(aiJs, /ArrowRight/);
+  assert.match(aiJs, /aria-pressed/);
+});
+
+test('AI workflow public route and PDF source stay sanitized and local-only', () => {
+  const combined = `${aiHtml}\n${aiData.answer}\n${aiPrintHtml}`;
+  assert.doesNotMatch(combined, /Airtable|Greenhouse|8654173002/i);
+  assert.doesNotMatch(combined, /[A-Z]+-\d{2,}/);
+  assert.doesNotMatch(combined, /\b(?:ticket key|internal IP|credential|password|secret key)\b/i);
+  assert.doesNotMatch(combined, /<(?:script|link|img)[^>]+(?:src|href)="https?:\/\//i);
+  assert.doesNotMatch(combined, /<a[^>]+href="https?:\/\//i);
+  assert.doesNotMatch(combined, /\b(?:award-winning|best-in-class|world-class)\b/i);
+});
+
+test('AI workflow print/PDF source is self-contained and exactly three pages', () => {
+  assert.match(aiPrintHtml, /ai-workflow-print\.css/);
+  assert.match(aiPrintCss, /@page\{size:letter/);
+  assert.match(aiPrintCss, /page-break-after:always/);
+  assert.equal((aiPrintHtml.match(/class="pdf-page/g) || []).length, 3);
+  for (const required of ['Current-role AI workflow', 'AI does', 'Billy decides', 'Controls and latest experiment']) {
+    assert.match(aiPrintHtml, new RegExp(required.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+  }
 });
 
 test('Build Log renders the site history from git without leaking identity', async () => {
