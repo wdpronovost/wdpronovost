@@ -484,3 +484,66 @@ document.querySelectorAll('[data-reveal]').forEach((reveal) => {
     }
   });
 })();
+
+/* ---- Working with me: rotating review themes ---- */
+(() => {
+  const root = document.querySelector('[data-voices]');
+  if (!root) return;
+  const cards = [...root.querySelectorAll('[data-voice-card]')];
+  const dots = [...root.querySelectorAll('[data-voice-dot]')];
+  if (!cards.length) return;
+
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const DWELL = 7000;
+  let index = 0;
+  let timer = null;
+  let auto = !reduced;
+
+  function show(next) {
+    index = (next + cards.length) % cards.length;
+    cards.forEach((card, i) => {
+      const on = i === index;
+      card.hidden = !on;
+      card.classList.toggle('is-active', on);
+    });
+    dots.forEach((dot, i) => {
+      const on = i === index;
+      dot.classList.toggle('is-on', on);
+      dot.setAttribute('aria-selected', String(on));
+    });
+  }
+
+  function stop() {
+    auto = false;
+    if (timer) { clearInterval(timer); timer = null; }
+  }
+
+  function start() {
+    if (!auto || timer) return;
+    timer = setInterval(() => show(index + 1), DWELL);
+  }
+
+  root.querySelector('[data-voice-next]')?.addEventListener('click', () => { stop(); show(index + 1); });
+  root.querySelector('[data-voice-prev]')?.addEventListener('click', () => { stop(); show(index - 1); });
+  dots.forEach((dot, i) => dot.addEventListener('click', () => { stop(); show(i); }));
+
+  root.addEventListener('keydown', (event) => {
+    if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
+    stop();
+    show(index + (event.key === 'ArrowRight' ? 1 : -1));
+  });
+
+  root.addEventListener('mouseenter', () => { if (timer) { clearInterval(timer); timer = null; } });
+  root.addEventListener('mouseleave', start);
+
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => { entry.isIntersecting ? start() : (timer && (clearInterval(timer), timer = null)); });
+    }, { threshold: 0 });
+    io.observe(root);
+  } else {
+    start();
+  }
+
+  show(0);
+})();

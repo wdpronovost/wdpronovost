@@ -256,3 +256,33 @@ body.trace-open{overflow:hidden}.trace-dialog{position:fixed;inset:0;z-index:30;
 .js .reveal-group.is-visible>*{opacity:1;transform:translateY(0)}
 @media(max-width:700px){.section-nav{gap:12px;padding:0 16px}.section-nav-cta{display:none}}
 @media(prefers-reduced-motion:reduce){.js .reveal-group>*{opacity:1!important;transform:none!important;transition:none!important}.section-nav{backdrop-filter:none}}
+
+/* ---- Working with me: rotating review themes ---- */
+.voices{padding:clamp(70px,9vw,130px) clamp(20px,7vw,110px);border-top:1px solid var(--ink);background:var(--cream)}
+.voices .section-head{margin-bottom:0}
+.voices .section-lede{margin:18px 0 clamp(38px,5vw,62px);max-width:64ch}
+.voice-rotator{max-width:1040px;margin:0 auto}
+.voice-track{position:relative;min-height:clamp(260px,26vw,300px);display:grid}
+.voice-card{grid-area:1/1;display:flex;flex-direction:column;justify-content:center;gap:14px;padding:clamp(30px,4.5vw,58px) clamp(24px,4vw,64px);border:1px solid var(--ink);border-radius:8px;background:var(--butter);box-shadow:10px 10px 0 rgba(35,31,32,.14);opacity:0;transform:translateY(10px);pointer-events:none}
+.voice-card[hidden]{display:none}
+.voice-card.is-active{opacity:1;transform:none;pointer-events:auto;transition:opacity .5s ease,transform .5s ease}
+.voice-n{margin:0;font-family:var(--serif);font-size:clamp(28px,3.4vw,42px);line-height:1;color:var(--tomato)}
+.voice-card h3{margin:0;font:500 clamp(24px,3.2vw,38px)/1.1 var(--serif);letter-spacing:-.035em;max-width:24ch}
+.voice-card p:not(.voice-n):not(.voice-src){margin:0;font-size:clamp(15px,1.7vw,18px);line-height:1.65;max-width:62ch}
+.voice-src{margin:8px 0 0;font-size:10px;font-weight:850;letter-spacing:.13em;color:var(--faint)}
+.voice-controls{display:flex;align-items:center;justify-content:center;gap:clamp(10px,2vw,22px);margin-top:clamp(24px,3vw,36px)}
+.voice-arrow{display:grid;place-items:center;width:48px;height:48px;border:1.5px solid var(--ink);border-radius:50%;background:var(--cream)}
+.voice-arrow:hover{background:var(--butter)}
+.voice-dots{display:flex;gap:8px}
+.voice-dot{min-width:48px;min-height:48px;padding:0 6px;border:1.5px solid var(--line);border-radius:3px;background:transparent;font-size:11px;font-weight:850;letter-spacing:.1em;color:var(--faint)}
+.voice-dot:hover{border-color:var(--ink);color:var(--ink)}
+.voice-dot.is-on{border-color:var(--ink);background:var(--ink);color:var(--cream)}
+@media(max-width:760px){
+  .voice-track{min-height:340px}
+  .voice-card{box-shadow:5px 5px 0 rgba(35,31,32,.14)}
+  .voice-controls{gap:8px}
+  .voice-dot{min-width:44px}
+}
+@media(prefers-reduced-motion:reduce){
+  .voice-card.is-active{transition:none}
+}

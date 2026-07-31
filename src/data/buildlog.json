@@ -1,5 +1,10 @@
 [
   {
+    "hash": "a7483de",
+    "date": "2026-07-31",
+    "subject": "feat(lab): add voices A/B comparison for review-sourced section"
+  },
+  {
     "hash": "e14bfaa",
     "date": "2026-07-31",
     "subject": "feat(site): publish AI workflow case study"

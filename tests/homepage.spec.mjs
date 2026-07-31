@@ -312,3 +312,23 @@ test('Build Log renders the site history from git without leaking identity', asy
   assert.doesNotMatch(dist, /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/);
   assert.match(build, /never author name or email/);
 });
+
+test('Working with me rotates review themes without exposing employer or names', () => {
+  assert.match(html, /id="voices"/);
+  assert.match(html, /Four things managers/);
+  assert.equal((html.match(/data-voice-card="/g) || []).length, 4);
+  assert.equal((html.match(/data-voice-dot="/g) || []).length, 4);
+  // Paraphrased only: no verbatim reviewer text, no manager names inside the section.
+  const voices = html.slice(html.indexOf('id="voices"'), html.indexOf('id="contact"'));
+  assert.doesNotMatch(voices, /Pendleton|Batchelor|Dearborn|Herring|hand on keys|Warranted to Be/i);
+  // Rotator contracts: autoplay, manual control, keyboard, reduced motion.
+  assert.match(js, /data-voice-next/);
+  assert.match(js, /ArrowRight/);
+  assert.match(js, /prefers-reduced-motion/);
+  assert.match(js, /setInterval\(\(\) => show\(index \+ 1\), DWELL\)/);
+  // Placement: after About, before the contact CTA.
+  assert.ok(html.indexOf('id="voices"') > html.indexOf('id="about"'), 'voices must follow about');
+  assert.ok(html.indexOf('id="voices"') < html.indexOf('id="contact"'), 'voices must precede contact');
+  // Touch targets stay tappable on mobile.
+  assert.match(css, /\.voice-dot\{[^}]*min-height:48px/);
+});
